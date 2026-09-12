@@ -236,6 +236,7 @@ export async function runBenchmarkFeed(
     saveRankingSnapshot(join(config.stateDir, LIVEBENCH_SNAPSHOT_FILE), {
       savedAt,
       snapshotDate: board.snapshotDate,
+      releaseDate: board.releaseDate,
       entries: board.entries
     });
   } else {

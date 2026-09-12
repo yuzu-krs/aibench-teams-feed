@@ -36,7 +36,7 @@ function arenaPage(names: string[]): unknown {
   };
 }
 
-/** Official category -> task mapping, from categories_2026_06_25.json. */
+/** Official category -> task mapping, from categories_2026_09_04.json. */
 const CATEGORIES = {
   Reasoning: ["theory_of_mind"],
   Coding: ["code_generation", "code_completion"],
@@ -59,13 +59,21 @@ const LIVEBENCH_CSV = [
   "model-c,70,70,70,70,,,,70,70"
 ].join("\n");
 
-const LISTING = [
+/**
+ * The official RELEASES constant already lists 2026-09-04 while the deployed
+ * gh-pages listing is stale (only 2026-06-25) — discovery must take the max.
+ */
+const CONSTANTS_JS = `export const RELEASES = [
+  "2024-06-24", "2026-06-25", "2026-09-04",
+];`;
+
+const STALE_LISTING = [
   { name: "index.html", type: "file" },
-  { name: "categories_2026_01_08.json", type: "file" },
-  { name: "table_2026_01_08.csv", type: "file" },
-  { name: "categories_2026_06_25.json", type: "file" },
-  { name: "table_2026_06_25.csv", type: "file" }
+  { name: "table_2026_06_25.csv", type: "file" },
+  { name: "categories_2026_06_25.json", type: "file" }
 ];
+
+const LIVEBENCH_LAST_MODIFIED = "Thu, 10 Sep 2026 15:13:40 GMT";
 
 /** A catalog entry that matches none of the fixture model names. */
 const UNRELATED_CATALOG = [
@@ -79,7 +87,13 @@ const UNRELATED_CATALOG = [
   }
 ];
 
-type Slot = "arena" | "listing" | "table" | "categories" | "openrouter";
+type Slot =
+  | "arena"
+  | "constants"
+  | "listing"
+  | "live-table"
+  | "live-categories"
+  | "openrouter";
 
 function jsonResponse(payload: unknown): () => Promise<Response> {
   return () =>
@@ -91,9 +105,11 @@ function jsonResponse(payload: unknown): () => Promise<Response> {
     );
 }
 
-function textResponse(body: string): () => Promise<Response> {
+function textResponse(body: string, headers: Record<string, string> = {}): () => Promise<Response> {
   return () =>
-    Promise.resolve(new Response(body, { status: 200, headers: { "content-type": "text/csv" } }));
+    Promise.resolve(
+      new Response(body, { status: 200, headers: { "content-type": "text/csv", ...headers } })
+    );
 }
 
 function httpError(status: number): () => Promise<Response> {
@@ -114,9 +130,10 @@ function createHarness(arenaNames: string[]): Harness {
   const requests: string[] = [];
   const responses = new Map<Slot, () => Promise<Response>>([
     ["arena", jsonResponse(arenaPage(arenaNames))],
-    ["listing", jsonResponse(LISTING)],
-    ["table", textResponse(LIVEBENCH_CSV)],
-    ["categories", jsonResponse(CATEGORIES)],
+    ["constants", textResponse(CONSTANTS_JS)],
+    ["listing", jsonResponse(STALE_LISTING)],
+    ["live-table", textResponse(LIVEBENCH_CSV, { "last-modified": LIVEBENCH_LAST_MODIFIED })],
+    ["live-categories", jsonResponse(CATEGORIES)],
     ["openrouter", jsonResponse({ data: UNRELATED_CATALOG })]
   ]);
   const fetchFn = (async (input: string | URL | Request) => {
@@ -125,9 +142,10 @@ function createHarness(arenaNames: string[]): Harness {
     let slot: Slot;
     if (url.includes("openrouter.ai")) slot = "openrouter";
     else if (url.includes("config=webdev")) slot = "arena";
+    else if (url.includes("src/lib/constants.js")) slot = "constants";
     else if (url.includes("api.github.com")) slot = "listing";
-    else if (url.includes("table_2026_06_25.csv")) slot = "table";
-    else if (url.includes("categories_2026_06_25.json")) slot = "categories";
+    else if (url.includes("livebench.ai") && url.includes("table_")) slot = "live-table";
+    else if (url.includes("livebench.ai") && url.includes("categories_")) slot = "live-categories";
     else throw new Error(`unexpected url: ${url}`);
     const responder = responses.get(slot);
     if (!responder) throw new Error(`no responder for ${slot}`);
@@ -210,9 +228,10 @@ describe("digest", () => {
     expect(description).toContain("1. arena-model-x (Example AI) — 1500 ➖");
     expect(description).toContain("2. arena-model-y (Example AI) — 1493 ➖");
 
-    // LiveBench: official overall plus coding / agentic coding, snapshot date.
+    // LiveBench: snapshot date is the data actually used (the served file's
+    // Last-Modified), not the release label.
     expect(description).toContain("=== LiveBench ===");
-    expect(description).toContain("Snapshot: 2026-06-25");
+    expect(description).toContain("Snapshot: 2026-09-10");
     expect(description).toContain("1. model-a — 80.00 (coding 80.00 / agentic 80.00) ➖");
     expect(description).toContain("2. model & b — 70.00 (coding 70.00 / agentic 70.00) ➖");
     // A model without an official overall is unrankable and must not appear.
@@ -233,25 +252,42 @@ describe("digest", () => {
     expect(description).not.toContain("AA指数");
 
     // Source discipline: only the official HF dataset for Arena (never the
-    // website), no AA API calls, and the Overall board is never fetched.
+    // website), no AA API calls, the Overall board is never fetched, and the
+    // LiveBench files come from the live site for the NEWEST release only.
     const hosts = harness.requests.map((request) => new URL(request).host);
-    expect(hosts.every((host) =>
-      ["datasets-server.huggingface.co", "api.github.com", "raw.githubusercontent.com", "openrouter.ai"].includes(host)
-    )).toBe(true);
-    expect(harness.requests.some((request) => request.includes("lmarena-ai/leaderboard-dataset"))).toBe(
-      true
-    );
+    expect(
+      hosts.every((host) =>
+        [
+          "datasets-server.huggingface.co",
+          "api.github.com",
+          "raw.githubusercontent.com",
+          "livebench.ai",
+          "openrouter.ai"
+        ].includes(host)
+      )
+    ).toBe(true);
+    expect(
+      harness.requests.some((request) => request.includes("lmarena-ai/leaderboard-dataset"))
+    ).toBe(true);
     expect(harness.requests.some((request) => request.includes("text_style_control"))).toBe(false);
     expect(harness.requests.some((request) => request.includes("artificialanalysis.ai"))).toBe(
       false
     );
+    // The newest release is fetched from the live site; the stale release is
+    // never requested from anywhere.
+    expect(harness.requests.some((request) => request.includes("table_2026_09_04"))).toBe(true);
+    expect(harness.requests.some((request) => request.includes("livebench.ai/table_2026_09_04"))).toBe(
+      true
+    );
+    expect(harness.requests.some((request) => request.includes("table_2026_06_25"))).toBe(false);
 
     // Snapshots saved for both boards.
     expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"))?.entries).toHaveLength(
       2
     );
     const livebenchSnapshot = loadRankingSnapshot(join(harness.stateDir, "livebench.json"));
-    expect(livebenchSnapshot?.snapshotDate).toBe("2026-06-25");
+    expect(livebenchSnapshot?.snapshotDate).toBe("2026-09-10");
+    expect(livebenchSnapshot?.releaseDate).toBe("2026-09-04");
     expect(livebenchSnapshot?.entries).toHaveLength(2);
 
     const saved = harness.store.loadLastPosted();
@@ -278,15 +314,34 @@ describe("digest", () => {
     saveRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"), {
       savedAt: "2026-09-12T00:00:00.000Z",
       entries: [
-        { entityKey: "arena-model-y", name: "arena-model-y", rank: 1, score: 1493, scoreDisplay: "1493" },
-        { entityKey: "arena-model-x", name: "arena-model-x", rank: 2, score: 1500, scoreDisplay: "1500" }
+        {
+          entityKey: "arena-model-y",
+          name: "arena-model-y",
+          rank: 1,
+          score: 1493,
+          scoreDisplay: "1493"
+        },
+        {
+          entityKey: "arena-model-x",
+          name: "arena-model-x",
+          rank: 2,
+          score: 1500,
+          scoreDisplay: "1500"
+        }
       ]
     });
     saveRankingSnapshot(join(harness.stateDir, "livebench.json"), {
       savedAt: "2026-09-12T00:00:00.000Z",
-      snapshotDate: "2026-06-25",
+      snapshotDate: "2026-09-10",
+      releaseDate: "2026-09-04",
       entries: [
-        { entityKey: "model & b", name: "model & b", rank: 1, score: 70, scoreDisplay: "70.00" },
+        {
+          entityKey: "model & b",
+          name: "model & b",
+          rank: 1,
+          score: 70,
+          scoreDisplay: "70.00"
+        },
         { entityKey: "model-a", name: "model-a", rank: 2, score: 80, scoreDisplay: "80.00" }
       ]
     });
@@ -294,7 +349,9 @@ describe("digest", () => {
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
     expect(digest?.description).toContain("1. arena-model-x (Example AI) — 1500 ⬆️ +1");
     expect(digest?.description).toContain("2. arena-model-y (Example AI) — 1493 ⬇️ -1");
-    expect(digest?.description).toContain("1. model-a — 80.00 (coding 80.00 / agentic 80.00) ⬆️ +1");
+    expect(digest?.description).toContain(
+      "1. model-a — 80.00 (coding 80.00 / agentic 80.00) ⬆️ +1"
+    );
   });
 
   it("publishes with a failure line when only Arena Coding fails", async () => {
@@ -302,7 +359,13 @@ describe("digest", () => {
     saveRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"), {
       savedAt: "2026-09-12T00:00:00.000Z",
       entries: [
-        { entityKey: "arena-model-x", name: "arena-model-x", rank: 1, score: 1500, scoreDisplay: "1500" }
+        {
+          entityKey: "arena-model-x",
+          name: "arena-model-x",
+          rank: 1,
+          score: 1500,
+          scoreDisplay: "1500"
+        }
       ]
     });
     harness.setResponse("arena", httpError(500));
@@ -320,7 +383,12 @@ describe("digest", () => {
 
   it("publishes with a failure line when only LiveBench fails", async () => {
     const harness = createHarness(["arena-model-x"]);
+    // Every LiveBench discovery and file source must fail for the board to
+    // count as unavailable.
+    harness.setResponse("constants", httpError(500));
     harness.setResponse("listing", httpError(500));
+    harness.setResponse("live-table", httpError(404));
+    harness.setResponse("live-categories", httpError(404));
     const result = await run(harness);
     expect(result.status).toBe("posted");
     expect(result.boards).toEqual({ "arena-coding": "ok", livebench: "failed" });
@@ -332,7 +400,10 @@ describe("digest", () => {
   it("throws without writing anything when both boards fail", async () => {
     const harness = createHarness(["arena-model-x"]);
     harness.setResponse("arena", httpError(500));
+    harness.setResponse("constants", httpError(500));
     harness.setResponse("listing", httpError(500));
+    harness.setResponse("live-table", httpError(404));
+    harness.setResponse("live-categories", httpError(404));
     await expect(run(harness)).rejects.toThrow(/both Arena Coding and LiveBench failed/);
     expect(existsSync(join(harness.stateDir, "last-posted.json"))).toBe(false);
     expect(existsSync(join(harness.stateDir, "feed-items-benchmark.json"))).toBe(false);

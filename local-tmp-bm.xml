@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>AI Bench — デイリーランキング</title>
+    <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
+    <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
+    <language>ja</language>
+    <generator>aibench-teams-feed</generator>
+  </channel>
+</rss>

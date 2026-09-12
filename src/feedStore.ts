@@ -16,6 +16,7 @@ const snapshotEntrySchema = z
 const rankingSnapshotSchema = z.object({
   savedAt: z.string().min(1),
   snapshotDate: z.string().min(1).optional(),
+  releaseDate: z.string().min(1).optional(),
   entries: z.array(snapshotEntrySchema)
 });
 
@@ -26,6 +27,7 @@ export type RankingSnapshotFile = z.infer<typeof rankingSnapshotSchema>;
 export interface RankingSnapshotInput {
   savedAt: string;
   snapshotDate?: string;
+  releaseDate?: string;
   entries: ReadonlyArray<{
     entityKey: string;
     name: string;
