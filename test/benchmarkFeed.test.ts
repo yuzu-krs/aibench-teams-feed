@@ -242,7 +242,9 @@ describe("digest", () => {
       "Source: Arena\nDataset: lmarena-ai/leaderboard-dataset\nLicense: CC BY 4.0\nChanges: Ranking data reformatted for RSS."
     );
     expect(description).toContain("Source: LiveBench\nLicense: Apache License 2.0");
-    expect(description).toContain("⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン");
+    expect(description).toContain(
+      "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n\nPrices: openrouter.ai"
+    );
 
     // Removed benchmarks: no Arena Overall, no MMLU-Pro, no Artificial Analysis.
     expect(description).not.toContain("Arena Overall");

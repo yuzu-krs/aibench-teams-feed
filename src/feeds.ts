@@ -9,7 +9,7 @@ const FEED_SPECS: Record<FeedId, { fileName: string; title: string; description:
   "new-model": {
     fileName: "new-model.xml",
     title: "AI Bench — 新モデル通知",
-    description: "プロバイダー公式の発表から検出した新モデルの通知 (Teams配信)"
+    description: "プロバイダー公式の発表から検出した新モデルの通知 (Teams配信) · Prices: openrouter.ai"
   },
   benchmark: {
     fileName: "benchmark.xml",

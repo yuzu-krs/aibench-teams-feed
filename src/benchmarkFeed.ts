@@ -259,7 +259,9 @@ export async function runBenchmarkFeed(
     "License: Apache License 2.0",
     "",
     FOOTER_MOVEMENT,
-    FOOTER_PRICE
+    FOOTER_PRICE,
+    "",
+    "Prices: openrouter.ai"
   ];
   const description = [
     `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 Updated: ${formatLocalDateTime(now, config.timeZone)}`,

@@ -128,6 +128,19 @@ https://github.com/livebench/livebench
 License:
 Apache License 2.0
 
+Note: the LiveBench project is licensed Apache License 2.0; the score data
+is published on livebench.ai without a separate data-license file. It is
+credited as "Source: LiveBench" in every digest.
+
+### OpenRouter
+
+Model prices shown in the RSS come from the public OpenRouter models API
+(unauthenticated, no API key) and are credited as "Prices: openrouter.ai".
+aibench-teams-feed is not affiliated with OpenRouter.
+
+Site:
+https://openrouter.ai/
+
 ### Artificial Analysis
 
 Artificial Analysis data is used separately by AIBench where permitted
