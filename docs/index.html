@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIBench Teams Feed</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1f2430;
+        --muted: #6b7280;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --accent: #4f46e5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e5e7eb;
+          --muted: #9ca3af;
+          --card: #1b1e27;
+          --border: #31363f;
+          --accent: #a5b4fc;
+        }
+      }
+      body {
+        margin: 0;
+        padding: 3rem 1.25rem;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: transparent;
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      main {
+        max-width: 42rem;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin: 0 0 0.25rem;
+      }
+      p.lead {
+        color: var(--muted);
+        margin: 0 0 2rem;
+      }
+      section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.05rem;
+        margin: 0 0 0.5rem;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.875rem;
+        margin: 0 0 0.75rem;
+      }
+      code {
+        font-size: 0.85rem;
+        background: color-mix(in srgb, var(--fg) 8%, transparent);
+        padding: 0.15em 0.45em;
+        border-radius: 0.4em;
+        word-break: break-all;
+      }
+      a {
+        color: var(--accent);
+      }
+      footer {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>AIBench Teams Feed</h1>
+      <p class="lead">AI モデル情報を RSS 経由で Microsoft Teams へ届けるフィードです。</p>
+
+      <section>
+        <h2>🚀 新モデル通知</h2>
+        <p class="meta">1時間ごと更新 · プロバイダー公式の発表から新モデルを検出</p>
+        <a href="./rss/new-model.xml"><code>rss/new-model.xml</code></a>
+      </section>
+
+      <section>
+        <h2>📊 デイリーランキング</h2>
+        <p class="meta">毎日 07:17 JST 頃更新 · LMArena / Artificial Analysis の TOP10</p>
+        <a href="./rss/benchmark.xml"><code>rss/benchmark.xml</code></a>
+      </section>
+
+      <footer>
+        データ: <a href="https://artificialanalysis.ai/">artificialanalysis.ai</a> ·
+        <a href="https://lmarena.ai/">LMArena</a> · 運用: aibench-teams-feed
+      </footer>
+    </main>
+  </body>
+</html>

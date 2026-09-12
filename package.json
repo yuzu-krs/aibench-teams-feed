@@ -1,0 +1,30 @@
+{
+  "name": "aibench-teams-feed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RSS feeds of AI new-model alerts and daily benchmark rankings, published to GitHub Pages for Power Automate -> Microsoft Teams.",
+  "type": "module",
+  "engines": {
+    "node": ">=24.18.1"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "feed": "node dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "ai-benchmark-bot": "github:yuzu-krs/ai-benchmark-bot#v1.1.1",
+    "fast-xml-parser": "5.10.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  },
+  "allowScripts": {
+    "github:yuzu-krs/ai-benchmark-bot#adbbd5860fffc757d95adb47c697a34cb6fe7b7e": true
+  }
+}

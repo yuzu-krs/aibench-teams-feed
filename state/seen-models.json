@@ -1,0 +1,898 @@
+{
+  "models": [
+    {
+      "key": "openai:gpt-6",
+      "providerId": "openai",
+      "modelId": "gpt-6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-6-astra",
+      "providerId": "openai",
+      "modelId": "gpt-6-astra",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.6",
+      "providerId": "openai",
+      "modelId": "gpt-5.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.6-sol",
+      "providerId": "openai",
+      "modelId": "gpt-5.6-sol",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.6-terra",
+      "providerId": "openai",
+      "modelId": "gpt-5.6-terra",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.6-luna",
+      "providerId": "openai",
+      "modelId": "gpt-5.6-luna",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.5",
+      "providerId": "openai",
+      "modelId": "gpt-5.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.5-pro",
+      "providerId": "openai",
+      "modelId": "gpt-5.5-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.4",
+      "providerId": "openai",
+      "modelId": "gpt-5.4",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.4-mini",
+      "providerId": "openai",
+      "modelId": "gpt-5.4-mini",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.4-nano",
+      "providerId": "openai",
+      "modelId": "gpt-5.4-nano",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.4-pro",
+      "providerId": "openai",
+      "modelId": "gpt-5.4-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.3",
+      "providerId": "openai",
+      "modelId": "gpt-5.3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.3-chat-latest",
+      "providerId": "openai",
+      "modelId": "gpt-5.3-chat-latest",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.3-codex",
+      "providerId": "openai",
+      "modelId": "gpt-5.3-codex",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.2",
+      "providerId": "openai",
+      "modelId": "gpt-5.2",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.2-codex",
+      "providerId": "openai",
+      "modelId": "gpt-5.2-codex",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5",
+      "providerId": "openai",
+      "modelId": "gpt-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.1",
+      "providerId": "openai",
+      "modelId": "gpt-5.1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.2-chat-latest",
+      "providerId": "openai",
+      "modelId": "gpt-5.2-chat-latest",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.1-codex-max",
+      "providerId": "openai",
+      "modelId": "gpt-5.1-codex-max",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.1-codex",
+      "providerId": "openai",
+      "modelId": "gpt-5.1-codex",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.1-chat-latest",
+      "providerId": "openai",
+      "modelId": "gpt-5.1-chat-latest",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "openai:gpt-5.1-codex-mini",
+      "providerId": "openai",
+      "modelId": "gpt-5.1-codex-mini",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-fable-5",
+      "providerId": "anthropic",
+      "modelId": "claude-fable-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-fable-5-1",
+      "providerId": "anthropic",
+      "modelId": "claude-fable-5-1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-fable-5.1",
+      "providerId": "anthropic",
+      "modelId": "claude-fable-5.1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-mythos-5-1",
+      "providerId": "anthropic",
+      "modelId": "claude-mythos-5-1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-mythos-5.1",
+      "providerId": "anthropic",
+      "modelId": "claude-mythos-5.1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4.8",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4.8",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-5",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-4.6",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-5",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-mythos-5",
+      "providerId": "anthropic",
+      "modelId": "claude-mythos-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4-8",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4-8",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4.7",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4.7",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-4.6",
+      "providerId": "anthropic",
+      "modelId": "claude-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4.6",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4.5",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-haiku-4.5",
+      "providerId": "anthropic",
+      "modelId": "claude-haiku-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-4.5",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-opus-4.1",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-4.1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-4",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-4",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-3.7",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-3.7",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-haiku-3.5",
+      "providerId": "anthropic",
+      "modelId": "claude-haiku-3.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "anthropic:claude-sonnet-3.5",
+      "providerId": "anthropic",
+      "modelId": "claude-sonnet-3.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.8-flash",
+      "providerId": "google",
+      "modelId": "gemini-3.8-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.7-flash",
+      "providerId": "google",
+      "modelId": "gemini-3.7-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.5-flash-lite",
+      "providerId": "google",
+      "modelId": "gemini-3.5-flash-lite",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.6-flash",
+      "providerId": "google",
+      "modelId": "gemini-3.6-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.5-flash",
+      "providerId": "google",
+      "modelId": "gemini-3.5-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.1-flash-lite",
+      "providerId": "google",
+      "modelId": "gemini-3.1-flash-lite",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3",
+      "providerId": "google",
+      "modelId": "gemini-3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3.1-pro",
+      "providerId": "google",
+      "modelId": "gemini-3.1-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3-flash",
+      "providerId": "google",
+      "modelId": "gemini-3-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3-flash-preview",
+      "providerId": "google",
+      "modelId": "gemini-3-flash-preview",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3-pro",
+      "providerId": "google",
+      "modelId": "gemini-3-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-3-pro-preview",
+      "providerId": "google",
+      "modelId": "gemini-3-pro-preview",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5",
+      "providerId": "google",
+      "modelId": "gemini-2.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-lite-preview-09-2025",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-lite-preview-09-2025",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-preview-09-2025",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-preview-09-2025",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-lite",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-lite",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-pro",
+      "providerId": "google",
+      "modelId": "gemini-2.5-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-pro-preview-05-06",
+      "providerId": "google",
+      "modelId": "gemini-2.5-pro-preview-05-06",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-preview-04-17",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-preview-04-17",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-lite-preview-06-17",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-lite-preview-06-17",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-pro-preview-06-05",
+      "providerId": "google",
+      "modelId": "gemini-2.5-pro-preview-06-05",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-flash-preview-05-20",
+      "providerId": "google",
+      "modelId": "gemini-2.5-flash-preview-05-20",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-pro-preview-03-25",
+      "providerId": "google",
+      "modelId": "gemini-2.5-pro-preview-03-25",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.5-pro-exp-03-25",
+      "providerId": "google",
+      "modelId": "gemini-2.5-pro-exp-03-25",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-flash-lite",
+      "providerId": "google",
+      "modelId": "gemini-2.0-flash-lite",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-flash",
+      "providerId": "google",
+      "modelId": "gemini-2.0-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-flash-001",
+      "providerId": "google",
+      "modelId": "gemini-2.0-flash-001",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-pro",
+      "providerId": "google",
+      "modelId": "gemini-2.0-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-pro-exp-02-05",
+      "providerId": "google",
+      "modelId": "gemini-2.0-pro-exp-02-05",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-flash-lite-preview-02-05",
+      "providerId": "google",
+      "modelId": "gemini-2.0-flash-lite-preview-02-05",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-2.0-flash-thinking-exp-01",
+      "providerId": "google",
+      "modelId": "gemini-2.0-flash-thinking-exp-01",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-8b-001",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-8b-001",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-002",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-002",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro-002",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro-002",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-8b-exp-0827",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-8b-exp-0827",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-8b-exp-0924",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-8b-exp-0924",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-exp-0827",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-exp-0827",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro-exp-0827",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro-exp-0827",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro-exp-0801",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro-exp-0801",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro-001",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro-001",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-001",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-001",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-flash-latest",
+      "providerId": "google",
+      "modelId": "gemini-1.5-flash-latest",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "google:gemini-1.5-pro-latest",
+      "providerId": "google",
+      "modelId": "gemini-1.5-pro-latest",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "mistral:mistral-3",
+      "providerId": "mistral",
+      "modelId": "mistral-3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "mistral:codestral-25.08",
+      "providerId": "mistral",
+      "modelId": "codestral-25.08",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "xai:grok-4.6",
+      "providerId": "xai",
+      "modelId": "grok-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "xai:grok-4.5",
+      "providerId": "xai",
+      "modelId": "grok-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v4-flash",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v4-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v4-flash-vision-exp",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v4-flash-vision-exp",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v4.1-flash",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v4.1-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v4",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v4",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v4-pro",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v4-pro",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "deepseek:deepseek-v3",
+      "providerId": "deepseek",
+      "modelId": "deepseek-v3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-5.3-flash",
+      "providerId": "zai",
+      "modelId": "glm-5.3-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-5.2",
+      "providerId": "zai",
+      "modelId": "glm-5.2",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-5.3",
+      "providerId": "zai",
+      "modelId": "glm-5.3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:claude-opus-4.6",
+      "providerId": "zai",
+      "modelId": "claude-opus-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-5.1",
+      "providerId": "zai",
+      "modelId": "glm-5.1",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:claude-opus-4.5",
+      "providerId": "zai",
+      "modelId": "claude-opus-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-5",
+      "providerId": "zai",
+      "modelId": "glm-5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.7",
+      "providerId": "zai",
+      "modelId": "glm-4.7",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.7-flash",
+      "providerId": "zai",
+      "modelId": "glm-4.7-flash",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:autoglm-phone-multilingual",
+      "providerId": "zai",
+      "modelId": "autoglm-phone-multilingual",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:autoglm-phone-multilingual-we",
+      "providerId": "zai",
+      "modelId": "autoglm-phone-multilingual-we",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.6v",
+      "providerId": "zai",
+      "modelId": "glm-4.6v",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.6",
+      "providerId": "zai",
+      "modelId": "glm-4.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.5v",
+      "providerId": "zai",
+      "modelId": "glm-4.5v",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "zai:glm-4.5",
+      "providerId": "zai",
+      "modelId": "glm-4.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.8-flash-next",
+      "providerId": "qwen",
+      "modelId": "qwen3.8-flash-next",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.8-2.4t-a95b",
+      "providerId": "qwen",
+      "modelId": "qwen3.8-2.4t-a95b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.8-27b",
+      "providerId": "qwen",
+      "modelId": "qwen3.8-27b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3-forcedaligner-0.6b-hf",
+      "providerId": "qwen",
+      "modelId": "qwen3-forcedaligner-0.6b-hf",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.5-35b-a3b-base-w128k",
+      "providerId": "qwen",
+      "modelId": "qwen3.5-35b-a3b-base-w128k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.5-35b-a3b-base-w32k",
+      "providerId": "qwen",
+      "modelId": "qwen3.5-35b-a3b-base-w32k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3-30b-a3b-base-w128k",
+      "providerId": "qwen",
+      "modelId": "qwen3-30b-a3b-base-w128k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3-30b-a3b-base-w32k",
+      "providerId": "qwen",
+      "modelId": "qwen3-30b-a3b-base-w32k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.5-27b-w80k",
+      "providerId": "qwen",
+      "modelId": "qwen3.5-27b-w80k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.5-9b-base-w64k",
+      "providerId": "qwen",
+      "modelId": "qwen3.5-9b-base-w64k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.5-2b-base-w32k",
+      "providerId": "qwen",
+      "modelId": "qwen3.5-2b-base-w32k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3-8b-base-w64k",
+      "providerId": "qwen",
+      "modelId": "qwen3-8b-base-w64k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3-1.7b-base-w32k",
+      "providerId": "qwen",
+      "modelId": "qwen3-1.7b-base-w32k",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.6-27b",
+      "providerId": "qwen",
+      "modelId": "qwen3.6-27b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "qwen:qwen3.6-35b-a3b",
+      "providerId": "qwen",
+      "modelId": "qwen3.6-35b-a3b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k3",
+      "providerId": "moonshot",
+      "modelId": "kimi-k3",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2.7-code",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2.7-code",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2.6",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2.6",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2.5",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2.5",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2-instruct-0905",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2-instruct-0905",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2-instruct",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "moonshot:kimi-k2-base",
+      "providerId": "moonshot",
+      "modelId": "kimi-k2-base",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-4-maverick-17b-128e",
+      "providerId": "meta",
+      "modelId": "llama-4-maverick-17b-128e",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-4-scout-17b-16e",
+      "providerId": "meta",
+      "modelId": "llama-4-scout-17b-16e",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-4-scout-17b-16e-instruct",
+      "providerId": "meta",
+      "modelId": "llama-4-scout-17b-16e-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-4-maverick-17b-128e-instruct",
+      "providerId": "meta",
+      "modelId": "llama-4-maverick-17b-128e-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-3.3-70b-instruct",
+      "providerId": "meta",
+      "modelId": "llama-3.3-70b-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-3.2-3b-instruct",
+      "providerId": "meta",
+      "modelId": "llama-3.2-3b-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-3.2-1b-instruct",
+      "providerId": "meta",
+      "modelId": "llama-3.2-1b-instruct",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-3.2-3b",
+      "providerId": "meta",
+      "modelId": "llama-3.2-3b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "meta:llama-3.2-1b",
+      "providerId": "meta",
+      "modelId": "llama-3.2-1b",
+      "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    }
+  ]
+}

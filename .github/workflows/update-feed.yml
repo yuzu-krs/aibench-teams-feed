@@ -1,0 +1,84 @@
+name: update-feed
+
+on:
+  schedule:
+    # UTC. GitHub delays scheduled runs by 0-40 min; the benchmark's daily
+    # gate lives in the CLI, so jitter only shifts the digest, never skips it.
+    # 22:17 UTC = 07:17 JST = the first digest chance of each JST day.
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      which:
+        description: Which update to run
+        type: choice
+        default: auto
+        options:
+          - auto
+          - new-model
+          - benchmark
+  push:
+    branches: [main]
+    paths-ignore:
+      # The workflow's own commits use GITHUB_TOKEN (never re-triggers), but
+      # also skip human pushes that only touch generated files.
+      - "docs/**"
+      - "state/**"
+
+concurrency:
+  # Serialize every run so two updates never race on the state commit.
+  group: update-feed
+  cancel-in-progress: false
+
+permissions:
+  contents: write # push state + feeds; branch-mode Pages needs nothing more
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Both optional: without AA_API_KEY the digest runs with the two
+      # LMArena boards only; the token just raises HF rate limits.
+      AA_API_KEY: ${{ secrets.AA_API_KEY }}
+      HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history keeps the rebase-retry below bulletproof
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      # npm ci runs the pinned bot's `prepare`, building dist/ from the
+      # allowScripts-approved commit recorded in package.json.
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - name: Update feeds
+        run: |
+          case "${{ inputs.which }}" in
+            benchmark) node dist/cli.js benchmark --force ;;
+            new-model) node dist/cli.js new-model ;;
+            *) node dist/cli.js auto ;;
+          esac
+      - name: Validate RSS
+        run: node dist/cli.js validate
+      - name: Commit state and feeds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state docs
+          if git diff --cached --quiet; then
+            echo "No changes; skipping commit"
+          else
+            git commit -m "feed: update $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          fi
+      - name: Push with rebase retry
+        run: |
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git fetch origin main
+            git rebase origin/main || { git rebase --abort; exit 1; }
+            sleep $((i * 5))
+          done
+          exit 1
