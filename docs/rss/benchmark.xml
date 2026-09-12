@@ -6,51 +6,5 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Sat, 12 Sep 2026 17:46:06 GMT</lastBuildDate>
-    <item>
-      <title>📊 Benchmark Daily — 2026/09/13</title>
-      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-13</guid>
-      <pubDate>Sat, 12 Sep 2026 17:46:06 GMT</pubDate>
-      <description>📅 2026/09/13
-🕒 Updated: 2026/09/13 02:46 JST
-
-=== Arena Coding ===
-データ: 2026-09-11 時点のランキング
-1. gpt-6-astra-max (openai) — 1800 ➖
-2. claude-fable-5.1-max (anthropic) — 1758 ➖
-3. claude-opus-5-max (anthropic) — 1687 ➖
-4. qwen3.8-max-0902 (alibaba) — 1681 · $2/$6 ➖
-5. kimi-k3-max (moonshot) — 1674 ➖
-6. qwen3.8-max (alibaba) — 1671 ➖
-7. claude-opus-5-high (anthropic) — 1660 · $5/$25 ➖
-8. muse-spark-1.3-max (meta) — 1652 ➖
-9. qwen3.8-flash-next (alibaba) — 1635 · $0.15/$0.47 ➖
-10. claude-fable-5 (anthropic) — 1628 · $10/$50 ➖
-
-=== LiveBench ===
-Snapshot: 2026-06-25
-1. gpt-5.5-xhigh — 79.91 (coding 82.15 / agentic 52.07) ➖
-2. claude-fable-5-xhigh-effort — 79.53 (coding 82.53 / agentic 50.66) ➖
-3. claude-opus-4-8-xhigh-effort — 78.93 (coding 79.27 / agentic 56.06) ➖
-4. gpt-5.5-high — 78.75 (coding 80.04 / agentic 46.77) ➖
-5. gpt-5.4-xhigh — 77.97 (coding 77.54 / agentic 53.84) ➖
-6. gemini-3.1-pro-preview-high — 77.13 (coding 76.45 / agentic 45.40) ➖
-7. claude-opus-4-7-xhigh-effort — 76.53 (coding 82.09 / agentic 50.66) ➖
-8. claude-sonnet-5-xhigh-effort — 74.85 (coding 80.68 / agentic 51.06) ➖
-9. gemini-3.5-flash-high — 74.64 (coding 78.18 / agentic 48.99) ➖
-10. gpt-5.2-2025-12-11-high — 74.63 (coding 76.07 / agentic 50.25) ➖
-
-Source: Arena
-Dataset: lmarena-ai/leaderboard-dataset
-License: CC BY 4.0
-Changes: Ranking data reformatted for RSS.
-
-Source: LiveBench
-License: Apache License 2.0
-
-⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし
-💰 入力/出力 $/1Mトークン</description>
-    </item>
   </channel>
 </rss>
