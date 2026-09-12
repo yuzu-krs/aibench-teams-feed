@@ -66,8 +66,7 @@ async function main(): Promise<void> {
       });
       logger.info("benchmark feed finished", {
         status: result.status,
-        boards: result.boards,
-        skipped: result.skipped
+        boards: result.boards
       });
       break;
     }

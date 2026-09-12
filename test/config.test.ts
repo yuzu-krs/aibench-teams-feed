@@ -32,10 +32,10 @@ describe("loadConfig", () => {
   });
 
   it("turns blank secrets into undefined", () => {
-    const blank = loadConfig({ AA_API_KEY: "  ", HUGGINGFACE_TOKEN: "" });
-    expect(blank.aaApiKey).toBeUndefined();
+    const blank = loadConfig({ GITHUB_TOKEN: "  ", HUGGINGFACE_TOKEN: "" });
+    expect(blank.githubToken).toBeUndefined();
     expect(blank.huggingFaceToken).toBeUndefined();
-    const set = loadConfig({ AA_API_KEY: "key" });
-    expect(set.aaApiKey).toBe("key");
+    const set = loadConfig({ GITHUB_TOKEN: "key" });
+    expect(set.githubToken).toBe("key");
   });
 });

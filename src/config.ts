@@ -30,7 +30,7 @@ const configSchema = z.object({
   BENCHMARK_MAX_ITEMS: z.coerce.number().int().min(7).max(365).default(90),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
   HUGGINGFACE_TOKEN: optionalSecret,
-  AA_API_KEY: optionalSecret
+  GITHUB_TOKEN: optionalSecret
 });
 
 export interface AppConfig {
@@ -45,8 +45,8 @@ export interface AppConfig {
   benchmarkMaxItems: number;
   logLevel: "debug" | "info" | "warn" | "error";
   huggingFaceToken?: string;
-  /** Artificial Analysis key; without it the digest runs without AA boards. */
-  aaApiKey?: string;
+  /** GitHub token; only raises api.github.com rate limits for LiveBench discovery. */
+  githubToken?: string;
 }
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
@@ -63,6 +63,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     logLevel: parsed.LOG_LEVEL
   };
   if (parsed.HUGGINGFACE_TOKEN) config.huggingFaceToken = parsed.HUGGINGFACE_TOKEN;
-  if (parsed.AA_API_KEY) config.aaApiKey = parsed.AA_API_KEY;
+  if (parsed.GITHUB_TOKEN) config.githubToken = parsed.GITHUB_TOKEN;
   return config;
 }

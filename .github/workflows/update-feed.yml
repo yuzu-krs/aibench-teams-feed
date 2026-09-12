@@ -37,9 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      # Both optional: without AA_API_KEY the digest runs with the two
-      # LMArena boards only; the token just raises HF rate limits.
-      AA_API_KEY: ${{ secrets.AA_API_KEY }}
+      # Both optional: the HF token just raises datasets-server rate limits,
+      # the GitHub token just raises api.github.com limits for LiveBench's
+      # snapshot discovery. Neither grants access to anything private.
+      GITHUB_TOKEN: ${{ github.token }}
       HUGGINGFACE_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
     steps:
       - uses: actions/checkout@v4

@@ -3,6 +3,73 @@ import { dirname } from "node:path";
 import { z } from "zod";
 import type { FeedItem, FeedItemsFile } from "./types.js";
 
+const snapshotEntrySchema = z
+  .object({
+    entityKey: z.string().min(1),
+    name: z.string(),
+    rank: z.number().int(),
+    score: z.number(),
+    scoreDisplay: z.string()
+  })
+  .passthrough();
+
+const rankingSnapshotSchema = z.object({
+  savedAt: z.string().min(1),
+  snapshotDate: z.string().min(1).optional(),
+  entries: z.array(snapshotEntrySchema)
+});
+
+export type SnapshotEntry = z.infer<typeof snapshotEntrySchema>;
+export type RankingSnapshotFile = z.infer<typeof rankingSnapshotSchema>;
+
+/** Write-side shape: structural so bot RankedModel[] and LiveBench entries fit. */
+export interface RankingSnapshotInput {
+  savedAt: string;
+  snapshotDate?: string;
+  entries: ReadonlyArray<{
+    entityKey: string;
+    name: string;
+    rank: number;
+    score: number;
+    scoreDisplay: string;
+    organization?: string;
+    coding?: number;
+    agenticCoding?: number;
+  }>;
+}
+
+/**
+ * Loads a board ranking snapshot (same shape as the bot's RankingSnapshot
+ * plus an optional official snapshotDate). A missing file is a baseline;
+ * a corrupt one throws.
+ */
+export function loadRankingSnapshot(file: string): RankingSnapshotFile | undefined {
+  if (!existsSync(file)) return undefined;
+  let raw: string;
+  try {
+    raw = readFileSync(file, "utf8");
+  } catch (error) {
+    throw new Error(`Snapshot file ${file} could not be read`, { cause: error });
+  }
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Snapshot file ${file} is corrupt; fix or restore it before running`, {
+      cause: error
+    });
+  }
+  return rankingSnapshotSchema.parse(parsed);
+}
+
+/** Atomic tmp+rename write, mirroring the bot's StateStore. */
+export function saveRankingSnapshot(file: string, snapshot: RankingSnapshotInput): void {
+  mkdirSync(dirname(file), { recursive: true });
+  const temporary = `${file}.tmp`;
+  writeFileSync(temporary, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
+  renameSync(temporary, file);
+}
+
 const feedItemSchema = z.object({
   guid: z.string().min(1),
   title: z.string(),

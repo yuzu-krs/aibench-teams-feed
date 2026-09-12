@@ -14,7 +14,7 @@ const FEED_SPECS: Record<FeedId, { fileName: string; title: string; description:
   benchmark: {
     fileName: "benchmark.xml",
     title: "AI Bench — デイリーランキング",
-    description: "LMArena / Artificial Analysis のデイリーランキング (Teams配信)"
+    description: "Arena Coding / LiveBench のデイリーランキング (Teams配信)"
   }
 };
 

@@ -59,8 +59,8 @@ npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 
 | 変数 | 既定 | 説明 |
 |---|---|---|
-| `AA_API_KEY` | なし | Artificial Analysis。無ければ AA 2ボードを skip |
 | `HUGGINGFACE_TOKEN` | なし | HF datasets-server のレート制限対策 |
+| `GITHUB_TOKEN` | なし | LiveBenchスナップショット探索(api.github.com)のレート制限対策 |
 | `TIME_ZONE` | `Asia/Tokyo` | dateKey・表示の基準タイムゾーン |
 | `DIGEST_HOUR` / `DIGEST_MINUTE` | `7` / `0` | benchmark 発火時刻(JST) |
 | `FEED_BASE_URL` | `https://yuzu-krs.github.io/aibench-teams-feed` | channel link |
@@ -91,6 +91,50 @@ Secret をリポジトリに置かないこと。Actions では `AA_API_KEY` と
   短い間隔(例: 30 分)にする。benchmark.xml は 90 日保持なので 24 時間間隔で十分
 - PA 初回接続時の大量通知を防ぐため、**フィードが空の状態で接続する**
   (過去 item の backfill はしない)
+
+## Data Sources
+
+Benchmark RSS は GHC(コーディング用途)のモデル選定を目的とし、
+**Arena Coding** と **LiveBench** の2ソースのみを扱う。
+Arena Overall・MMLU-Pro・Artificial Analysis は本RSSに含めない。
+
+### Arena / LMArena (Arena Coding)
+
+Benchmark rankings are sourced from the public Arena leaderboard
+dataset on Hugging Face. The Arena website is never scraped and no
+automated queries are sent to the Arena web service.
+
+Dataset:
+https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset
+
+License:
+CC BY 4.0
+
+Arena:
+https://arena.ai/
+
+### LiveBench
+
+LiveBench scores are sourced from the official LiveBench published
+leaderboard snapshots and scored with the official aggregation formula
+(category mean of task scores, overall = mean of category means).
+
+Site:
+https://livebench.ai/
+
+GitHub:
+https://github.com/livebench/livebench
+
+License:
+Apache License 2.0
+
+### Artificial Analysis
+
+Artificial Analysis data is used separately by AIBench where permitted
+by the applicable Artificial Analysis API and Data Platform Terms.
+
+Artificial Analysis data is not redistributed through the public
+aibench-teams-feed RSS.
 
 ## ディレクトリ
 
