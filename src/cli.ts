@@ -36,8 +36,12 @@ async function main(): Promise<void> {
 
   switch (command) {
     case "auto": {
-      const newModel = await runNewModelFeed({ config, store, logger });
+      // Benchmark first: a failed digest throws and exits before the
+      // new-model poll, whose delta must always be followed by the commit —
+      // once the bot records models as seen, a lost feed write cannot be
+      // recovered on the next run.
       const benchmark = await runBenchmarkFeed({ config, store, logger });
+      const newModel = await runNewModelFeed({ config, store, logger });
       logger.info("feed update finished", {
         newModelAlerts: newModel.alerts,
         newModelItemsAdded: newModel.itemsAdded,

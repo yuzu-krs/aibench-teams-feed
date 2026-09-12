@@ -27,7 +27,12 @@ ai-benchmark-bot (v1.1.1, npm git dependency)
 - **GUID は安定・不変**(重複通知防止の必須要件):
   - New Model: `urn:aibench:new-model:<providerId>:<modelId>`(モデル単位)
   - Benchmark: `urn:aibench:benchmark:<YYYY-MM-DD>`(JST, 1日1件)
-  - 同一 GUID の再発行は既存レコードが勝つ(内容・pubDate は初回作成時に凍結)
+  - Benchmark は同一 GUID の再発行でも既存レコードが勝つ(内容・pubDate は初回作成時に凍結)
+- **new-model.xml は差分フィード**: 今回の実行で新規検出されたモデルだけを掲載し、
+  次回実行で丸ごと置き換わる。新規 0 件なら `<item>` なしの有効な RSS になる。
+  検知済みかどうかの永続管理は `state/seen-models.json` のみが担う(RSSは差分、
+  seen-models は永続状態と明確に分離)。benchmark.xml は1日1itemを90件保持する
+  履歴フィードのまま変更なし。
 - **no-op では commit しない**: 変化がないとき XML はバイト等価。`lastBuildDate` は
   最新 item の pubDate を使うため wall clock に依存しない。
 - **benchmark の日次ゲート**: 「JST 07:00 以降」かつ「今日の dateKey 未記録」の両方を
@@ -80,8 +85,10 @@ Secret をリポジトリに置かないこと。Actions では `AA_API_KEY` と
 - 普段は無運用。Actions の赤ランは障害シグナル。state 破損時は `git revert` で復旧
 - cron は UTC 指定で 0〜40 分遅延する。benchmark が 07:17〜07:45 JST 頃に届くのは正常
 - Power Automate 側に独自の通知済み管理を作らない(GUID による重複排除に委任し、
-  実挙動は E2E で確認する)。RSS は過去 item を保持するため PA のポーリングが
-  数十分遅れても取りこぼさない
+  実挙動は E2E で確認する)
+- **new-model.xml は差分フィード**のため、item は次回実行(最大約1時間後)で
+  置き換わる。取りこぼしを避けるなら PA の New Model ポーリングは 1 時間より
+  短い間隔(例: 30 分)にする。benchmark.xml は 90 日保持なので 24 時間間隔で十分
 - PA 初回接続時の大量通知を防ぐため、**フィードが空の状態で接続する**
   (過去 item の backfill はしない)
 

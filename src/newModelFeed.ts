@@ -6,8 +6,8 @@ import type { Logger } from "ai-benchmark-bot/dist/logger.js";
 import { StateStore } from "ai-benchmark-bot/dist/state.js";
 import type { NewModelAnnouncement } from "ai-benchmark-bot/dist/types.js";
 import type { AppConfig } from "./config.js";
-import { feedItemsPath } from "./feeds.js";
-import { loadFeedItems, mergeFeedItems, saveFeedItems } from "./feedStore.js";
+import { feedItemsPath, regenerateFeedXml } from "./feeds.js";
+import { mergeFeedItems, saveFeedItems } from "./feedStore.js";
 import { toRfc822 } from "./rssBuilder.js";
 import type { FeedItem } from "./types.js";
 
@@ -66,33 +66,46 @@ export function alertToFeedItems(alert: NewModelAnnouncement, timeZone: string):
 }
 
 /**
- * Polls every provider through the bot's alert pipeline, converting each
- * structured alert into per-model feed items. The send callback persists
- * items write-through: if saving fails, the exception propagates and the bot
- * leaves those models unseen, so the next poll retries the alert (its
- * documented contract). The very first poll only baselines seen-models and
- * produces no items.
+ * Polls every provider through the bot's alert pipeline and publishes
+ * new-model.xml as a DELTA feed: it carries exactly the models this run
+ * detected and is replaced wholesale on the next run — a run with zero fresh
+ * models publishes an item-less, still-valid RSS. Persistent dedup lives
+ * solely in the bot's seen-models.json; the feed itself is ephemeral.
+ *
+ * The send callback persists the accumulated delta write-through: if saving
+ * throws, the bot leaves the models unseen and the next run re-detects and
+ * replaces the delta (its documented contract). The XML is regenerated
+ * immediately after the poll returns — the bot persists seen-models at that
+ * point, so a crash before the XML write would otherwise lose the run's
+ * notifications for good.
  */
 export async function runNewModelFeed(deps: FeedDeps): Promise<NewModelFeedResult> {
   const { config, store, logger } = deps;
   const file = feedItemsPath(config.stateDir, "new-model");
+  const delta: FeedItem[] = [];
   let itemsAdded = 0;
+  let detected = false;
   const alerts = await pollNewModelAlerts({
     timeZone: config.timeZone,
     store,
     logger,
     send: async (_embed, alert) => {
+      detected = true;
       const incoming = alertToFeedItems(alert, config.timeZone);
-      const existing = loadFeedItems(file);
-      const known = new Set(existing.map((item) => item.guid));
-      const merged = mergeFeedItems(existing, incoming, config.newModelMaxItems);
-      saveFeedItems(file, merged);
-      itemsAdded += incoming.filter((item) => !known.has(item.guid)).length;
+      delta.push(...incoming);
+      saveFeedItems(file, mergeFeedItems([], delta, config.newModelMaxItems));
+      itemsAdded = delta.length;
     },
     ...(deps.sources ? { sources: deps.sources } : {}),
     ...(deps.fetchFn ? { fetchFn: deps.fetchFn } : {}),
     ...(deps.now ? { now: deps.now } : {}),
     ...(deps.retryDelayMs !== undefined ? { retryDelayMs: deps.retryDelayMs } : {})
   });
+  if (!detected) {
+    // Zero fresh models (or a baseline run): clear any stale delta so the
+    // feed never carries items from a previous run.
+    saveFeedItems(file, []);
+  }
+  regenerateFeedXml(config, "new-model");
   return { alerts, itemsAdded };
 }
