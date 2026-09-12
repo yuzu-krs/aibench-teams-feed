@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Feed Preview — AIBench Teams Feed</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1f2430;
+        --muted: #6b7280;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --accent: #4f46e5;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #e5e7eb;
+          --muted: #9ca3af;
+          --card: #1b1e27;
+          --border: #31363f;
+          --accent: #a5b4fc;
+        }
+      }
+      body {
+        margin: 0;
+        padding: 2rem 1.25rem;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      main {
+        max-width: 46rem;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.35rem;
+        margin: 0 0 0.25rem;
+      }
+      p.lead {
+        color: var(--muted);
+        margin: 0 0 1.5rem;
+        font-size: 0.9rem;
+      }
+      section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.25rem;
+      }
+      h2 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 0.2rem 0 0.6rem;
+      }
+      pre {
+        white-space: pre-wrap;
+        overflow-x: auto;
+        background: color-mix(in srgb, var(--fg) 6%, transparent);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.75rem 0.9rem;
+        font-size: 0.82rem;
+        line-height: 1.55;
+        margin: 0.4rem 0 0;
+        max-width: 100%;
+      }
+      code {
+        font-size: 0.8rem;
+        background: color-mix(in srgb, var(--fg) 8%, transparent);
+        padding: 0.1em 0.4em;
+        border-radius: 0.4em;
+        word-break: break-all;
+      }
+      .error {
+        color: #dc2626;
+        font-size: 0.85rem;
+      }
+      a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Feed Preview</h1>
+      <p class="lead">
+        RSS 内の <code>description</code> を改行を保持したまま表示します(ブラウザの XML
+        ビューとは違い、改行は空白に折りたたまれません)。Teams への配信イメージの確認用。
+        このページは Pages 上で開く必要があります。
+      </p>
+      <section id="benchmark"><h2>📊 デイリーランキング</h2><div class="body">読み込み中…</div></section>
+      <section id="new-model"><h2>🚀 新モデル通知</h2><div class="body">読み込み中…</div></section>
+    </main>
+    <script>
+      async function renderFeed(id, url) {
+        const section = document.getElementById(id);
+        const body = section.querySelector(".body");
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const text = await response.text();
+          const doc = new DOMParser().parseFromString(text, "application/xml");
+          if (doc.querySelector("parsererror")) throw new Error("XML parse error");
+          const items = Array.from(doc.getElementsByTagName("item"));
+          if (items.length === 0) {
+            body.textContent = "item なし(空フィード)";
+            return;
+          }
+          body.textContent = "";
+          for (const item of items) {
+            const get = (tag) =>
+              item.getElementsByTagName(tag)[0]?.textContent ?? "(なし)";
+            const description = get("description");
+            const lineCount = description.split("\n").length;
+            const card = document.createElement("article");
+            const title = document.createElement("h2");
+            title.textContent = get("title");
+            const meta = document.createElement("p");
+            meta.className = "meta";
+            meta.textContent = `GUID: ${get("guid")} · pubDate: ${get("pubDate")} · ${lineCount}行`;
+            const pre = document.createElement("pre");
+            pre.textContent = description;
+            card.append(title, meta, pre);
+            body.append(card);
+          }
+        } catch (error) {
+          body.innerHTML = "";
+          const message = document.createElement("p");
+          message.className = "error";
+          message.textContent = `読み込み失敗: ${error.message}`;
+          body.append(message);
+        }
+      }
+      renderFeed("benchmark", "rss/benchmark.xml");
+      renderFeed("new-model", "rss/new-model.xml");
+    </script>
+  </body>
+</html>
