@@ -1,106 +1,107 @@
 {
-  "savedAt": "2026-09-12T17:46:06.436Z",
-  "snapshotDate": "2026-06-25",
+  "savedAt": "2026-09-12T22:29:15.067Z",
+  "snapshotDate": "2026-09-10",
+  "releaseDate": "2026-06-25",
   "entries": [
+    {
+      "entityKey": "claude-fable-5-1-max-effort",
+      "name": "claude-fable-5-1-max-effort",
+      "rank": 1,
+      "score": 83.41,
+      "scoreDisplay": "83.41",
+      "overall": 83.41,
+      "coding": 86.375,
+      "agenticCoding": 66.06066666666668
+    },
+    {
+      "entityKey": "claude-fable-5-max-effort",
+      "name": "claude-fable-5-max-effort",
+      "rank": 2,
+      "score": 82.97,
+      "scoreDisplay": "82.97",
+      "overall": 82.97,
+      "coding": 85.992,
+      "agenticCoding": 62.17166666666666
+    },
+    {
+      "entityKey": "gpt-6-astra-max",
+      "name": "gpt-6-astra-max",
+      "rank": 3,
+      "score": 82.16,
+      "scoreDisplay": "82.16",
+      "overall": 82.16,
+      "coding": 80.35849999999999,
+      "agenticCoding": 57.323
+    },
+    {
+      "entityKey": "muse-spark-1.3-xhigh",
+      "name": "muse-spark-1.3-xhigh",
+      "rank": 4,
+      "score": 81.59,
+      "scoreDisplay": "81.59",
+      "overall": 81.59,
+      "coding": 81.0625,
+      "agenticCoding": 64.091
+    },
+    {
+      "entityKey": "deepseek-v4.1-flash-max",
+      "name": "deepseek-v4.1-flash-max",
+      "rank": 5,
+      "score": 81.11,
+      "scoreDisplay": "81.11",
+      "overall": 81.11,
+      "coding": 80.037,
+      "agenticCoding": 77.27266666666667
+    },
+    {
+      "entityKey": "gpt-5.6-sol-max",
+      "name": "gpt-5.6-sol-max",
+      "rank": 6,
+      "score": 81.05,
+      "scoreDisplay": "81.05",
+      "overall": 81.05,
+      "coding": 83.941,
+      "agenticCoding": 56.211999999999996
+    },
     {
       "entityKey": "gpt-5.5-xhigh",
       "name": "gpt-5.5-xhigh",
-      "rank": 1,
-      "score": 79.91,
-      "scoreDisplay": "79.91",
-      "overall": 79.91,
-      "coding": 82.14949999999999,
-      "agenticCoding": 52.07066666666666
-    },
-    {
-      "entityKey": "claude-fable-5-xhigh-effort",
-      "name": "claude-fable-5-xhigh-effort",
-      "rank": 2,
-      "score": 79.53,
-      "scoreDisplay": "79.53",
-      "overall": 79.53,
-      "coding": 82.5325,
-      "agenticCoding": 50.65633333333333
-    },
-    {
-      "entityKey": "claude-opus-4-8-xhigh-effort",
-      "name": "claude-opus-4-8-xhigh-effort",
-      "rank": 3,
-      "score": 78.93,
-      "scoreDisplay": "78.93",
-      "overall": 78.93,
-      "coding": 79.2715,
-      "agenticCoding": 56.06066666666667
-    },
-    {
-      "entityKey": "gpt-5.5-high",
-      "name": "gpt-5.5-high",
-      "rank": 4,
-      "score": 78.75,
-      "scoreDisplay": "78.75",
-      "overall": 78.75,
-      "coding": 80.037,
-      "agenticCoding": 46.76766666666666
-    },
-    {
-      "entityKey": "gpt-5.4-xhigh",
-      "name": "gpt-5.4-xhigh",
-      "rank": 5,
-      "score": 77.97,
-      "scoreDisplay": "77.97",
-      "overall": 77.97,
-      "coding": 77.5415,
-      "agenticCoding": 53.83833333333333
-    },
-    {
-      "entityKey": "gemini-3.1-pro-preview-high",
-      "name": "gemini-3.1-pro-preview-high",
-      "rank": 6,
-      "score": 77.13,
-      "scoreDisplay": "77.13",
-      "overall": 77.13,
-      "coding": 76.4545,
-      "agenticCoding": 45.403999999999996
-    },
-    {
-      "entityKey": "claude-opus-4-7-xhigh-effort",
-      "name": "claude-opus-4-7-xhigh-effort",
       "rank": 7,
-      "score": 76.53,
-      "scoreDisplay": "76.53",
-      "overall": 76.53,
-      "coding": 82.088,
-      "agenticCoding": 50.65633333333333
+      "score": 80.19,
+      "scoreDisplay": "80.19",
+      "overall": 80.19,
+      "coding": 82.14949999999999,
+      "agenticCoding": 53.989666666666665
     },
     {
-      "entityKey": "claude-sonnet-5-xhigh-effort",
-      "name": "claude-sonnet-5-xhigh-effort",
+      "entityKey": "claude-opus-5-max-effort",
+      "name": "claude-opus-5-max-effort",
       "rank": 8,
-      "score": 74.85,
-      "scoreDisplay": "74.85",
-      "overall": 74.85,
-      "coding": 80.68,
-      "agenticCoding": 51.06066666666667
+      "score": 80.08,
+      "scoreDisplay": "80.08",
+      "overall": 80.08,
+      "coding": 81.4455,
+      "agenticCoding": 65.202
     },
     {
-      "entityKey": "gemini-3.5-flash-high",
-      "name": "gemini-3.5-flash-high",
+      "entityKey": "smaug-agentic",
+      "name": "smaug-agentic",
       "rank": 9,
-      "score": 74.64,
-      "scoreDisplay": "74.64",
-      "overall": 74.64,
-      "coding": 78.1845,
-      "agenticCoding": 48.989666666666665
+      "score": 79.51,
+      "scoreDisplay": "79.51",
+      "overall": 79.51,
+      "coding": 82.471,
+      "agenticCoding": 64.64666666666666
     },
     {
-      "entityKey": "gpt-5.2-2025-12-11-high",
-      "name": "gpt-5.2-2025-12-11-high",
+      "entityKey": "kimi-k3",
+      "name": "kimi-k3",
       "rank": 10,
-      "score": 74.63,
-      "scoreDisplay": "74.63",
-      "overall": 74.63,
-      "coding": 76.0715,
-      "agenticCoding": 50.25266666666667
+      "score": 79.19,
+      "scoreDisplay": "79.19",
+      "overall": 79.19,
+      "coding": 81.4455,
+      "agenticCoding": 62.17166666666666
     }
   ]
 }
