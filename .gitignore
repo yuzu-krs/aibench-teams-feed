@@ -6,3 +6,4 @@ dist/
 # Vendored reference copy of the upstream bot. It holds local secrets (.env,
 # Discord token) and must never be committed. Safe to delete by hand.
 ai-benchmark-bot/
+local-tmp-*.xml
