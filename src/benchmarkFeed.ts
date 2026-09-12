@@ -20,7 +20,9 @@ import type { FeedItem } from "./types.js";
 
 /** Same failure line as the bot's embeds (its constant is not exported). */
 const NO_RANKING_MESSAGE = "⚠️ ランキングを取得できませんでした。";
-const FOOTER_LEGEND = "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし · 🆕 新規ランクイン · 💰 入力/出力 $/1Mトークン";
+/** Legend split into short lines — Teams reads plain text, one topic per line. */
+const FOOTER_MOVEMENT = "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし";
+const FOOTER_PRICE = "💰 入力/出力 $/1Mトークン";
 
 export type BenchmarkStatus = "posted" | "skipped-before-digest" | "skipped-already-posted";
 
@@ -135,8 +137,9 @@ export async function runBenchmarkFeed(
 
   const meta = await embedMeta();
   const footerLines = [
-    ...(meta.aa ? [`🧠 AA指数 0-100 · データ: ${creditHost(meta.aa.attributionUrl)}`] : []),
-    FOOTER_LEGEND
+    ...(meta.aa ? ["🧠 AA指数 0-100", `データ: ${creditHost(meta.aa.attributionUrl)}`] : []),
+    FOOTER_MOVEMENT,
+    FOOTER_PRICE
   ];
   const description = [
     `📅 ${formatLocalDate(now, config.timeZone)}`,

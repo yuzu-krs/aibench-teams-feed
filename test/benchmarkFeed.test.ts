@@ -210,6 +210,9 @@ describe("digest", () => {
     expect(digest?.description).toContain("🏆 LMArena Overall");
     expect(digest?.description).toContain("🥇 1. model-a · 1500 ➖");
     expect(digest?.description).toContain("💻 LMArena Coding");
+    // Sections and rank lines are newline-separated, with a blank line
+    // between blocks so Teams renders readable paragraphs.
+    expect(digest?.description).toContain("🥈 2. model-b · 1493 ➖\n\n💻 LMArena Coding");
     expect(digest?.description).toContain("⬆️ 上昇 · ⬇️ 下降");
     expect(digest?.description).not.toContain("artificialanalysis.ai");
 
@@ -262,8 +265,9 @@ describe("digest", () => {
     const digest = loadFeedItems(join(withKey.stateDir, "feed-items-benchmark.json"))[0];
     expect(digest?.description).toContain("🧠 AA Intelligence");
     expect(digest?.description).toContain("🛠️ AA Coding");
-    expect(digest?.description).toContain("データ: artificialanalysis.ai");
-    expect(digest?.description).toContain("🧠 AA指数 0-100");
+    expect(digest?.description).toContain(
+      "🧠 AA指数 0-100\nデータ: artificialanalysis.ai\n⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン"
+    );
   });
 });
 
