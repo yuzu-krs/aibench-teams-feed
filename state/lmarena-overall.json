@@ -1,0 +1,85 @@
+{
+  "savedAt": "2026-09-12T11:19:32.064Z",
+  "entries": [
+    {
+      "entityKey": "claude-fable-5",
+      "name": "claude-fable-5",
+      "organization": "anthropic",
+      "rank": 1,
+      "score": 1506,
+      "scoreDisplay": "1506"
+    },
+    {
+      "entityKey": "claude-opus-4-6-high",
+      "name": "claude-opus-4-6-high",
+      "organization": "anthropic",
+      "rank": 2,
+      "score": 1505,
+      "scoreDisplay": "1505"
+    },
+    {
+      "entityKey": "claude-opus-4-7-high",
+      "name": "claude-opus-4-7-high",
+      "organization": "anthropic",
+      "rank": 3,
+      "score": 1502,
+      "scoreDisplay": "1502"
+    },
+    {
+      "entityKey": "claude-fable-5.1-max",
+      "name": "claude-fable-5.1-max",
+      "organization": "anthropic",
+      "rank": 4,
+      "score": 1501,
+      "scoreDisplay": "1501"
+    },
+    {
+      "entityKey": "muse-spark-1.2 (xHigh)",
+      "name": "muse-spark-1.2 (xHigh)",
+      "organization": "meta",
+      "rank": 5,
+      "score": 1499,
+      "scoreDisplay": "1499"
+    },
+    {
+      "entityKey": "claude-opus-4-6",
+      "name": "claude-opus-4-6",
+      "organization": "anthropic",
+      "rank": 6,
+      "score": 1497,
+      "scoreDisplay": "1497"
+    },
+    {
+      "entityKey": "claude-opus-4-7",
+      "name": "claude-opus-4-7",
+      "organization": "anthropic",
+      "rank": 7,
+      "score": 1494,
+      "scoreDisplay": "1494"
+    },
+    {
+      "entityKey": "muse-spark-1.1",
+      "name": "muse-spark-1.1",
+      "organization": "meta",
+      "rank": 8,
+      "score": 1494,
+      "scoreDisplay": "1494"
+    },
+    {
+      "entityKey": "claude-opus-5-high",
+      "name": "claude-opus-5-high",
+      "organization": "anthropic",
+      "rank": 9,
+      "score": 1493,
+      "scoreDisplay": "1493"
+    },
+    {
+      "entityKey": "gemini-3.8-flash-high",
+      "name": "gemini-3.8-flash-high",
+      "organization": "google",
+      "rank": 10,
+      "score": 1493,
+      "scoreDisplay": "1493"
+    }
+  ]
+}
