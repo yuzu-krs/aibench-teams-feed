@@ -207,6 +207,8 @@ describe("digest", () => {
     expect(digest?.title).toBe("📊 AI Benchmark Daily — 2026/08/17");
     expect(digest?.description).toContain("📅 2026/08/17");
     expect(digest?.description).toContain("🕒 Updated: 2026/08/17 07:30 JST");
+    // The two header lines sit adjacent, then a blank line opens the boards.
+    expect(digest?.description).toContain("📅 2026/08/17\n🕒 Updated: 2026/08/17 07:30 JST\n\n🏆 LMArena Overall");
     expect(digest?.description).toContain("🏆 LMArena Overall");
     expect(digest?.description).toContain("🥇 1. model-a · 1500 ➖");
     expect(digest?.description).toContain("💻 LMArena Coding");

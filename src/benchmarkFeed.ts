@@ -142,8 +142,7 @@ export async function runBenchmarkFeed(
     FOOTER_PRICE
   ];
   const description = [
-    `📅 ${formatLocalDate(now, config.timeZone)}`,
-    `🕒 Updated: ${formatLocalDateTime(now, config.timeZone)}`,
+    `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 Updated: ${formatLocalDateTime(now, config.timeZone)}`,
     sectionBlocks.join("\n\n"),
     footerLines.join("\n")
   ].join("\n\n");
