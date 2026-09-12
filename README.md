@@ -68,8 +68,9 @@ npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 | `NEW_MODEL_MAX_ITEMS` / `BENCHMARK_MAX_ITEMS` | `200` / `90` | フィード保持件数 |
 | `LOG_LEVEL` | `info` | debug/info/warn/error |
 
-Secret をリポジトリに置かないこと。Actions では `AA_API_KEY` と `HUGGINGFACE_TOKEN`
-を GitHub Actions Secrets に設定する(Discord token はこのプロジェクトに存在しない)。
+Secret をリポジトリに置かないこと。Actions では `GITHUB_TOKEN`(workflow 内で
+`github.token` を使用)と `HUGGINGFACE_TOKEN` を GitHub Actions Secrets に設定する
+(Discord token はこのプロジェクトに存在しない)。
 
 ## bot 依存の更新手順
 
@@ -91,6 +92,31 @@ Secret をリポジトリに置かないこと。Actions では `AA_API_KEY` と
   短い間隔(例: 30 分)にする。benchmark.xml は 90 日保持なので 24 時間間隔で十分
 - PA 初回接続時の大量通知を防ぐため、**フィードが空の状態で接続する**
   (過去 item の backfill はしない)
+
+## Power Automate での判定方法(item の有無と新着検出)
+
+PA の標準 RSS トリガー「フィードアイテムが公開されるとき」は、ポーリングごとに
+フィードを取得し、**取得した item の GUID が既読(トリガー状態に記録済み)かどうか**
+だけで新着を判定する。PA 側にこちらの state は不要で、フィードの GUID の安定性だけが
+前提になる。
+
+| フィードの状態 | PA の動作 |
+|---|---|
+| `<item>` なし(空フィード) | 新着候補ゼロ → **フローは実行されない**(Teams投稿も無し) |
+| item あり & GUID 未処理 | フローが実行され、未処理 item が動的コンテンツに渡る |
+| item あり & GUID 処理済み | 実行されない(同一 GUID は二度と届かない) |
+
+- **new-model.xml は差分フィード**: Actions の実行ごとに丸ごと置き換わる。
+  新規検出 0 件の時間帯は空フィードになるため PA は何もせず、検出された実行の
+  item だけが1度だけ届く。1 実行で複数モデルを検出した場合は 1 回のフロー実行に
+  複数 item が入るため、Teams 投稿は「Apply to each(各々に適用)」でループさせる。
+- **benchmark.xml は履歴フィード**(1日1item・90日保持): 毎日新しい dateKey の
+  GUID が1件増えるだけ。24時間間隔のポーリングでもズレて見えるだけで
+  取りこぼしはない。
+- **初回接続**: フィードが空の状態で接続する(new-model は通常ずっと空)。
+  PA の初回ポーリングが既存 item を「新着」として扱うかは仕様上断定できないため、
+  接続直後の実行履歴で E2E 確認をする。GUID が常に安定しているため、PA 側の
+  実挙動によらず二重通知は構造的に防がれている。
 
 ## Data Sources
 
