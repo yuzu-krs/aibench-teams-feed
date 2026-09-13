@@ -917,6 +917,12 @@
       "providerId": "e2e-test",
       "modelId": "gpt-e2e-check-4",
       "firstSeenAt": "2026-09-13T06:54:26.448Z"
+    },
+    {
+      "key": "e2e-test:gpt-e2e-check-5",
+      "providerId": "e2e-test",
+      "modelId": "gpt-e2e-check-5",
+      "firstSeenAt": "2026-09-13T07:19:28.204Z"
     }
   ]
 }

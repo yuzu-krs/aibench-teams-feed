@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "guid": "urn:aibench:new-model:e2e-test:gpt-e2e-check-4",
-      "title": "🚀 New Model: gpt-e2e-check-4 · E2E Test Provider",
+      "guid": "urn:aibench:new-model:e2e-test:gpt-e2e-check-5",
+      "title": "🚀 New Model: gpt-e2e-check-5 · E2E Test Provider",
       "link": "https://example.com/announcement",
-      "pubDate": "Sun, 13 Sep 2026 06:54:26 GMT",
-      "description": "🏢 E2E Test Provider\n🧠 gpt-e2e-check-4\n📝 Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。\n🕒 2026/09/13 15:54 JST",
-      "createdAt": "2026-09-13T06:54:26.448Z"
+      "pubDate": "Sun, 13 Sep 2026 07:19:28 GMT",
+      "description": "🏢 E2E Test Provider\n🧠 gpt-e2e-check-5\n📝 Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。\n🕒 2026/09/13 16:19 JST",
+      "createdAt": "2026-09-13T07:19:28.204Z"
     }
   ]
 }
