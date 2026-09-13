@@ -291,14 +291,11 @@ describe("digest", () => {
     expect(description).toContain(
       "Source: Arena\nDataset: lmarena-ai/leaderboard-dataset\nLicense: CC BY 4.0\nChanges: Ranking data reformatted for RSS."
     );
-    expect(description).toContain("Source: LiveBench\nLicense: Apache License 2.0");
-    // Legend first, then attribution blocks grouped at the bottom in digest
-    // order: Arena -> LiveBench -> OpenRouter, each starting with "Source:".
+    expect(description).toContain("LiveBench (Apache 2.0)");
+    // Legend first, then a ONE-LINE attribution carrying every element the
+    // licenses require (source, dataset, license, modification notice).
     expect(description).toContain(
-      "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n\nSource: Arena"
-    );
-    expect(description).toContain(
-      "Changes: Ranking data reformatted for RSS.\n\nSource: LiveBench\nLicense: Apache License 2.0\n\nSource: OpenRouter\nSite: openrouter.ai"
+      "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai"
     );
 
     // Removed benchmarks: no Arena Overall, no MMLU-Pro, no Artificial Analysis.

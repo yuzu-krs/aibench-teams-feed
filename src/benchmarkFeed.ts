@@ -325,24 +325,14 @@ export async function runBenchmarkFeed(
     boardStatus["livebench"] = "failed";
   }
 
-  // Legend first (what the reader needs), then the official attributions —
-  // one "Source:" block per board in digest order (Arena -> LiveBench ->
-  // OpenRouter prices), grouped at the very bottom, verbatim per the
-  // data-source policy.
+  // Legend first (what the reader needs), then the data-source attributions
+  // compressed into one line — every element CC BY 4.0 requires (source,
+  // dataset, license, modification notice) plus the LiveBench/OpenRouter
+  // credits survives; the detailed links live in the README.
   const footerLines = [
     FOOTER_MOVEMENT,
     FOOTER_PRICE,
-    "",
-    "Source: Arena",
-    "Dataset: lmarena-ai/leaderboard-dataset",
-    "License: CC BY 4.0",
-    "Changes: Ranking data reformatted for RSS.",
-    "",
-    "Source: LiveBench",
-    "License: Apache License 2.0",
-    "",
-    "Source: OpenRouter",
-    "Site: openrouter.ai"
+    "📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai"
   ];
   const description = [
     `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 取得: ${formatLocalDateTime(now, config.timeZone)}`,

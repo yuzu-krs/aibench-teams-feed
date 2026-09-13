@@ -228,13 +228,13 @@ License:
 Apache License 2.0
 
 Note: the LiveBench project is licensed Apache License 2.0; the score data
-is published on livebench.ai without a separate data-license file. It is
-credited as "Source: LiveBench" in every digest.
+is published on livebench.ai without a separate data-license file. Every
+digest credits it in the footer.
 
 ### OpenRouter
 
 Model prices shown in the RSS come from the public OpenRouter models API
-(unauthenticated, no API key) and are credited as "Source: OpenRouter" in
+(unauthenticated, no API key) and are credited in
 the digest footer. aibench-teams-feed is not affiliated with OpenRouter.
 
 Effort-tier names ("-max", "-xhigh", …) share the base listing's per-token
