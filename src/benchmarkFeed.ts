@@ -248,20 +248,20 @@ export async function runBenchmarkFeed(
     boardStatus["livebench"] = "failed";
   }
 
-  // Official attributions, verbatim per the data-source policy.
+  // Legend first (what the reader needs), official attributions last and
+  // grouped together at the very bottom, verbatim per the data-source policy.
   const footerLines = [
+    FOOTER_MOVEMENT,
+    FOOTER_PRICE,
+    "Prices: openrouter.ai",
+    "",
     "Source: Arena",
     "Dataset: lmarena-ai/leaderboard-dataset",
     "License: CC BY 4.0",
     "Changes: Ranking data reformatted for RSS.",
     "",
     "Source: LiveBench",
-    "License: Apache License 2.0",
-    "",
-    FOOTER_MOVEMENT,
-    FOOTER_PRICE,
-    "",
-    "Prices: openrouter.ai"
+    "License: Apache License 2.0"
   ];
   const description = [
     `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 Updated: ${formatLocalDateTime(now, config.timeZone)}`,
