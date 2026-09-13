@@ -6,7 +6,7 @@ describe("loadConfig", () => {
     const config = loadConfig({});
     expect(config.feedBaseUrl).toBe("https://yuzu-krs.github.io/aibench-teams-feed");
     expect(config.timeZone).toBe("Asia/Tokyo");
-    expect(config.digestHour).toBe(7);
+    expect(config.digestHour).toBe(6);
     expect(config.digestMinute).toBe(0);
     expect(config.newModelMaxItems).toBe(200);
     expect(config.benchmarkMaxItems).toBe(90);

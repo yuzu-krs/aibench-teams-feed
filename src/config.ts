@@ -22,7 +22,7 @@ const configSchema = z.object({
     .min(1)
     .refine(isIanaTimeZone, "TIME_ZONE must be a valid IANA time zone")
     .default("Asia/Tokyo"),
-  DIGEST_HOUR: z.coerce.number().int().min(0).max(23).default(7),
+  DIGEST_HOUR: z.coerce.number().int().min(0).max(23).default(6),
   DIGEST_MINUTE: z.coerce.number().int().min(0).max(59).default(0),
   STATE_DIR: z.string().min(1).default("./state"),
   RSS_DIR: z.string().min(1).default("./docs/rss"),

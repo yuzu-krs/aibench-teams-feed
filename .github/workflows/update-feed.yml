@@ -4,7 +4,8 @@ on:
   schedule:
     # UTC. GitHub delays scheduled runs by 0-40 min; the benchmark's daily
     # gate lives in the CLI, so jitter only shifts the digest, never skips it.
-    # 22:17 UTC = 07:17 JST = the first digest chance of each JST day.
+    # 21:17 UTC = 06:17 JST = the digest is generated ahead of the 07:00
+    # JST Teams publication.
     - cron: "17 * * * *"
   workflow_dispatch:
     inputs:

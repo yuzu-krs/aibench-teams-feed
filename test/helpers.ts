@@ -16,7 +16,7 @@ export function testConfig(stateDir: string, overrides: Partial<AppConfig> = {})
   return {
     feedBaseUrl: "https://yuzu-krs.github.io/aibench-teams-feed",
     timeZone: "Asia/Tokyo",
-    digestHour: 7,
+    digestHour: 6,
     digestMinute: 0,
     stateDir,
     rssDir: join(stateDir, "rss"),

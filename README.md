@@ -62,7 +62,7 @@ npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 | `HUGGINGFACE_TOKEN` | なし | HF datasets-server のレート制限対策 |
 | `GITHUB_TOKEN` | なし | LiveBenchスナップショット探索(api.github.com)のレート制限対策 |
 | `TIME_ZONE` | `Asia/Tokyo` | dateKey・表示の基準タイムゾーン |
-| `DIGEST_HOUR` / `DIGEST_MINUTE` | `7` / `0` | benchmark 発火時刻(JST) |
+| `DIGEST_HOUR` / `DIGEST_MINUTE` | `6` / `0` | benchmark 発火時刻(JST) |
 | `FEED_BASE_URL` | `https://yuzu-krs.github.io/aibench-teams-feed` | channel link |
 | `STATE_DIR` / `RSS_DIR` | `./state` / `./docs/rss` | 出力先 |
 | `NEW_MODEL_MAX_ITEMS` / `BENCHMARK_MAX_ITEMS` | `200` / `90` | フィード保持件数 |
@@ -84,7 +84,9 @@ Secret をリポジトリに置かないこと。Actions では `GITHUB_TOKEN`(w
 ## 運用
 
 - 普段は無運用。Actions の赤ランは障害シグナル。state 破損時は `git revert` で復旧
-- cron は UTC 指定で 0〜40 分遅延する。benchmark が 07:17〜07:45 JST 頃に届くのは正常
+- cron は UTC 指定で 0〜40 分遅延する。benchmark digest が **06:17〜06:45 JST 頃**に
+  生成されるのは正常。目的は **07:00 の Teams 公開に先立って最新データを生成
+ しておく**こと(06:17 生成 → 07:00 公開)
 - Power Automate 側に独自の通知済み管理を作らない(GUID による重複排除に委任し、
   実挙動は E2E で確認する)
 - **new-model.xml は差分フィード**のため、item は次回実行(最大約1時間後)で

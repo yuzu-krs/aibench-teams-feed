@@ -8,10 +8,10 @@ import { loadFeedItems, loadRankingSnapshot, saveRankingSnapshot } from "../src/
 import { feedXmlPath, regenerateFeedXml } from "../src/feeds.js";
 import { silentLogger, tempDir, testConfig } from "./helpers.js";
 
-// 22:00 JST on 2026-09-13: past the digest time, dateKey 2026-09-13.
-const digestTime = () => new Date("2026-09-13T13:00:00.000Z");
-// 06:00 JST on 2026-09-14: before the digest time.
-const beforeDigest = () => new Date("2026-09-13T21:00:00.000Z");
+// 06:30 JST on 2026-09-14: past the digest time, dateKey 2026-09-14.
+const digestTime = () => new Date("2026-09-13T21:30:00.000Z");
+// 05:00 JST on 2026-09-14: before the digest time.
+const beforeDigest = () => new Date("2026-09-13T20:00:00.000Z");
 
 const ARENA_DATE = "2026-08-30";
 
@@ -217,12 +217,12 @@ describe("digest", () => {
     const items = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"));
     expect(items).toHaveLength(1);
     const digest = items[0];
-    expect(digest?.guid).toBe("urn:aibench:benchmark:2026-09-13");
-    expect(digest?.title).toBe("📊 Benchmark Daily — 2026/09/13");
+    expect(digest?.guid).toBe("urn:aibench:benchmark:2026-09-14");
+    expect(digest?.title).toBe("📊 Benchmark Daily — 2026/09/14");
     const description = digest?.description ?? "";
     // The header states when the data was FETCHED; the per-board dates
     // (データ: / Snapshot:) state when the sources published it.
-    expect(description).toContain("🕒 取得: 2026/09/13 22:00 JST");
+    expect(description).toContain("🕒 取得: 2026/09/14 06:30 JST");
 
     // Arena Coding: official dataset fields — name, organization, rank,
     // rating, leaderboard publish date. Podium ranks carry medals.
@@ -301,7 +301,7 @@ describe("digest", () => {
     expect(livebenchSnapshot?.entries).toHaveLength(2);
 
     const saved = harness.store.loadLastPosted();
-    expect(saved?.dateKey).toBe("2026-09-13");
+    expect(saved?.dateKey).toBe("2026-09-14");
   });
 
   it("keeps descriptions verbatim through XML generation (newlines and escapes)", async () => {
