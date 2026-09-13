@@ -279,7 +279,7 @@ export async function runBenchmarkFeed(
     "Site: openrouter.ai"
   ];
   const description = [
-    `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 Updated: ${formatLocalDateTime(now, config.timeZone)}`,
+    `📅 ${formatLocalDate(now, config.timeZone)}\n🕒 取得: ${formatLocalDateTime(now, config.timeZone)}`,
     sectionBlocks.join("\n\n"),
     footerLines.join("\n")
   ].join("\n\n");

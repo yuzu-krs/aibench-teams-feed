@@ -165,7 +165,9 @@ async function fetchReleaseFile(
   options: FetchLiveBenchOptions
 ): Promise<FetchedFile> {
   const logger = options.logger;
-  const cacheBust = `?v=${isoDay(new Date())}`;
+  // Hourly buster: every run pulls the origin's current bytes, so an
+  // in-place update can never sit behind a same-day CDN cache entry.
+  const cacheBust = `?v=${new Date().toISOString().slice(0, 13)}`;
   const failures: string[] = [];
   for (const source of SOURCE_CHAIN) {
     const url = `${source.base}/${fileName}${source.cacheBust ? cacheBust : ""}`;
@@ -193,6 +195,7 @@ async function fetchReleaseFile(
 }
 
 /** Minimal RFC-4180 parser: quoted fields, escaped quotes, CRLF. */
+
 function parseCsvRows(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];

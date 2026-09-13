@@ -220,6 +220,9 @@ describe("digest", () => {
     expect(digest?.guid).toBe("urn:aibench:benchmark:2026-09-13");
     expect(digest?.title).toBe("📊 Benchmark Daily — 2026/09/13");
     const description = digest?.description ?? "";
+    // The header states when the data was FETCHED; the per-board dates
+    // (データ: / Snapshot:) state when the sources published it.
+    expect(description).toContain("🕒 取得: 2026/09/13 22:00 JST");
 
     // Arena Coding: official dataset fields — name, organization, rank,
     // rating, leaderboard publish date. Podium ranks carry medals.
