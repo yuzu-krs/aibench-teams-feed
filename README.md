@@ -161,8 +161,8 @@ credited as "Source: LiveBench" in every digest.
 ### OpenRouter
 
 Model prices shown in the RSS come from the public OpenRouter models API
-(unauthenticated, no API key) and are credited as "Prices: openrouter.ai".
-aibench-teams-feed is not affiliated with OpenRouter.
+(unauthenticated, no API key) and are credited as "Source: OpenRouter" in
+the digest footer. aibench-teams-feed is not affiliated with OpenRouter.
 
 Site:
 https://openrouter.ai/
