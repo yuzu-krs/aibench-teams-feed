@@ -287,9 +287,10 @@ describe("digest", () => {
     // A model without an official overall is unrankable and must not appear.
     expect(description).not.toContain("model-c");
 
-    // Official attributions, verbatim.
+    // Official attributions: every element CC BY 4.0 requires (source,
+    // dataset, license, modification notice) in the one-line footer credit.
     expect(description).toContain(
-      "Source: Arena\nDataset: lmarena-ai/leaderboard-dataset\nLicense: CC BY 4.0\nChanges: Ranking data reformatted for RSS."
+      "Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット)"
     );
     expect(description).toContain("LiveBench (Apache 2.0)");
     // Legend first, then a ONE-LINE attribution carrying every element the
