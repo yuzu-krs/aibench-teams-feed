@@ -8,7 +8,11 @@ import { loadConfig } from "./dist/config.js";
 import { createLogger } from "ai-benchmark-bot/dist/logger.js";
 import { StateStore } from "ai-benchmark-bot/dist/state.js";
 
-const modelId = process.argv[2] ?? "pa-flow-e2e-check-1";
+const modelIds = process.argv.slice(2);
+if (modelIds.length === 0) {
+  console.error("usage: node e2e-new-model.mjs <modelId> [<modelId> ...]");
+  process.exit(1);
+}
 const config = loadConfig();
 const logger = createLogger(config.logLevel);
 const store = new StateStore(config.stateDir);
@@ -21,12 +25,12 @@ const fakeSource = {
   accept: "text/html",
   parse: () => [
     {
-      key: `e2e-${modelId}`,
-      title: `We've launched ${modelId}`,
+      key: `e2e-${modelIds.join("-")}`,
+      title: `We've launched ${modelIds.join(" and ")}`,
       url: "https://example.com/announcement",
       summary:
         "Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。",
-      explicitModelIds: [modelId]
+      explicitModelIds: modelIds
     }
   ]
 };
@@ -38,4 +42,6 @@ const result = await runNewModelFeed({
   sources: [fakeSource]
 });
 console.log("result:", JSON.stringify(result));
-console.log("guid: urn:aibench:new-model:e2e-test:" + modelId);
+for (const id of modelIds) {
+  console.log("guid: urn:aibench:new-model:e2e-test:" + id);
+}

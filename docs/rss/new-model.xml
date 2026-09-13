@@ -6,5 +6,26 @@
     <description>プロバイダー公式の発表から検出した新モデルの通知 (Teams配信) · Source: OpenRouter</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
+    <lastBuildDate>Sun, 13 Sep 2026 07:48:26 GMT</lastBuildDate>
+    <item>
+      <title>🚀 New Model: gpt-e2e-check-6 · E2E Test Provider</title>
+      <link>https://example.com/announcement</link>
+      <guid isPermaLink="false">urn:aibench:new-model:e2e-test:gpt-e2e-check-6</guid>
+      <pubDate>Sun, 13 Sep 2026 07:48:26 GMT</pubDate>
+      <description>🏢 E2E Test Provider
+🧠 gpt-e2e-check-6
+📝 Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。
+🕒 2026/09/13 16:48 JST</description>
+    </item>
+    <item>
+      <title>🚀 New Model: gpt-e2e-check-7 · E2E Test Provider</title>
+      <link>https://example.com/announcement</link>
+      <guid isPermaLink="false">urn:aibench:new-model:e2e-test:gpt-e2e-check-7</guid>
+      <pubDate>Sun, 13 Sep 2026 07:48:26 GMT</pubDate>
+      <description>🏢 E2E Test Provider
+🧠 gpt-e2e-check-7
+📝 Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。
+🕒 2026/09/13 16:48 JST</description>
+    </item>
   </channel>
 </rss>
