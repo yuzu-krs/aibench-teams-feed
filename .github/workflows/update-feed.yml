@@ -46,6 +46,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # full history keeps the rebase-retry below bulletproof
+      # Queued runs start from the SHA that triggered them, which can trail
+      # behind main after an earlier run in this concurrency group pushed a
+      # digest. Rebasing onto origin/main here makes every run read the
+      # freshest state (gate, snapshots, item cache) — without it a stale
+      # checkout can clobber a freshly published feed.
+      - name: Sync with latest main
+        run: git fetch origin main && git rebase origin/main
       - uses: actions/setup-node@v4
         with:
           node-version: 24
