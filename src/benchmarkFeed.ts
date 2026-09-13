@@ -105,6 +105,11 @@ async function fetchArenaPublishDate(
   return parsed.rows[0]?.row.leaderboard_publish_date;
 }
 
+/** Medals for the podium ranks, matching the bot's Discord rendering. */
+function rankMedal(rank: number): string {
+  return rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : "";
+}
+
 function deltaText(comparison: RankComparison): string {
   if (comparison.isNew) return "🆕 NEW";
   if (comparison.delta === undefined || comparison.delta === 0) return "➖";
@@ -119,10 +124,10 @@ function renderArenaSection(
     const { entry } = comparison;
     const organization = entry.organization ? ` (${entry.organization})` : "";
     const price = comparison.priceDisplay !== undefined ? ` · ${comparison.priceDisplay}` : "";
-    return `${entry.rank}. ${entry.name}${organization} — ${entry.scoreDisplay}${price} ${deltaText(comparison)}`;
+    return `${rankMedal(entry.rank)}${entry.rank}. ${entry.name}${organization} — ${entry.scoreDisplay}${price} ${deltaText(comparison)}`;
   });
   return [
-    "=== Arena Coding ===",
+    "💻 Arena Coding",
     ...(publishDate ? [`データ: ${publishDate} 時点のランキング`] : []),
     ...lines
   ].join("\n");
@@ -131,7 +136,7 @@ function renderArenaSection(
 function renderLiveBenchSection(board: LiveBenchBoard, comparisons: RankComparison[]): string {
   const byKey = new Map(comparisons.map((comparison) => [comparison.entry.entityKey, comparison]));
   const lines = board.entries.map((entry) => {
-    const parts = [`${entry.rank}. ${entry.name}`, `— ${entry.scoreDisplay}`];
+    const parts = [`${rankMedal(entry.rank)}${entry.rank}. ${entry.name}`, `— ${entry.scoreDisplay}`];
     const detail = [
       entry.coding !== undefined ? `coding ${entry.coding.toFixed(2)}` : undefined,
       entry.agenticCoding !== undefined ? `agentic ${entry.agenticCoding.toFixed(2)}` : undefined
@@ -143,7 +148,7 @@ function renderLiveBenchSection(board: LiveBenchBoard, comparisons: RankComparis
     if (comparison) parts.push(deltaText(comparison));
     return parts.join(" ");
   });
-  return ["=== LiveBench ===", `Snapshot: ${board.snapshotDate}`, ...lines].join("\n");
+  return ["🧪 LiveBench", `Snapshot: ${board.snapshotDate}`, ...lines].join("\n");
 }
 
 /**
