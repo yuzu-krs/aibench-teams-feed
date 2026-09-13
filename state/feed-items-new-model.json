@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:e2e-test:gpt-e2e-check-2",
+      "title": "🚀 New Model: gpt-e2e-check-2 · E2E Test Provider",
+      "link": "https://example.com/announcement",
+      "pubDate": "Sun, 13 Sep 2026 03:50:37 GMT",
+      "description": "🏢 E2E Test Provider\n🧠 gpt-e2e-check-2\n📝 Power Automate フロー動作確認用のテスト検知です(自動生成・数分後に自動消滅します)。\n🕒 2026/09/13 12:50 JST",
+      "createdAt": "2026-09-13T03:50:37.199Z"
+    }
+  ]
 }

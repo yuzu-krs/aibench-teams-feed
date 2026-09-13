@@ -128,8 +128,11 @@ Benchmark digest の両方のフローで同じ対応が必要**。description �
 メッセージに直接入れず、**式で `<br/>` に置換**する:
 
 ```
-replace(item()?['description'], decodeUriComponent('%0A'), '<br/>')
+replace(trim(item()?['description']), decodeUriComponent('%0A'), '<br/>')
 ```
+
+`trim()` を忘れると、コネクタが description の末尾に付加する改行まで
+`<br/>` 変換されてカード最下部に空行が残る。
 
 - Apply to each 内の item は `item()?['description']`、トリガー直挿しなら
   `triggerBody()?['description']`
