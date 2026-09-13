@@ -105,9 +105,15 @@ async function fetchArenaPublishDate(
   return parsed.rows[0]?.row.leaderboard_publish_date;
 }
 
-/** Medals for the podium ranks, matching the bot's Discord rendering. */
-function rankMedal(rank: number): string {
-  return rank === 1 ? "🥇 " : rank === 2 ? "🥈 " : rank === 3 ? "🥉 " : "";
+/**
+ * Podium ranks show only the medal (a number after 🥇 is redundant); rank 4+
+ * falls back to the plain number.
+ */
+function rankPrefix(rank: number): string {
+  if (rank === 1) return "🥇 ";
+  if (rank === 2) return "🥈 ";
+  if (rank === 3) return "🥉 ";
+  return `${rank}. `;
 }
 
 function deltaText(comparison: RankComparison): string {
@@ -124,7 +130,7 @@ function renderArenaSection(
     const { entry } = comparison;
     const organization = entry.organization ? ` (${entry.organization})` : "";
     const price = comparison.priceDisplay !== undefined ? ` · ${comparison.priceDisplay}` : "";
-    return `${rankMedal(entry.rank)}${entry.rank}. ${entry.name}${organization} — ${entry.scoreDisplay}${price} ${deltaText(comparison)}`;
+    return `${rankPrefix(entry.rank)}${entry.name}${organization} — ${entry.scoreDisplay}${price} ${deltaText(comparison)}`;
   });
   return [
     "💻 Arena Coding",
@@ -136,7 +142,7 @@ function renderArenaSection(
 function renderLiveBenchSection(board: LiveBenchBoard, comparisons: RankComparison[]): string {
   const byKey = new Map(comparisons.map((comparison) => [comparison.entry.entityKey, comparison]));
   const lines = board.entries.map((entry) => {
-    const parts = [`${rankMedal(entry.rank)}${entry.rank}. ${entry.name}`, `— ${entry.scoreDisplay}`];
+    const parts = [`${rankPrefix(entry.rank)}${entry.name}`, `— ${entry.scoreDisplay}`];
     const detail = [
       entry.coding !== undefined ? `coding ${entry.coding.toFixed(2)}` : undefined,
       entry.agenticCoding !== undefined ? `agentic ${entry.agenticCoding.toFixed(2)}` : undefined
