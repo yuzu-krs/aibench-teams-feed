@@ -120,6 +120,23 @@ PA の標準 RSS トリガー「フィードアイテムが公開されるとき
   接続直後の実行履歴で E2E 確認をする。GUID が常に安定しているため、PA 側の
   実挙動によらず二重通知は構造的に防がれている。
 
+### Teams 投稿で改行を表示する
+
+Teams コネクタはメッセージを HTML として描画するため、description 内の
+改行文字(`\n`)はそのまま挿入すると詰めて表示される。description を
+メッセージに直接入れず、**式で `<br/>` に置換**する:
+
+```
+replace(item()?['description'], decodeUriComponent('%0A'), '<br/>')
+```
+
+- Apply to each 内の item は `item()?['description']`、トリガー直挿しなら
+  `triggerBody()?['description']`
+- 「作成(Compose)」アクションで一度出力を確認してからメッセージへ接続すると確実
+- 「カードを投稿(Adaptive Card)」を使う場合は TextBlock に `"wrap": true` も設定
+- フィード側の description はプレーンテキスト+\n(RSS標準)を維持し、
+  HTML 変換は PA フロー側でのみ行う(仕様)
+
 ### データの日付について
 
 digest ヘッダーの `🕒 取得:` はフィードを取得した日時。各セクションの日付は
