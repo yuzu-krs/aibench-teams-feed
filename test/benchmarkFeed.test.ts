@@ -3,7 +3,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { XMLParser } from "fast-xml-parser";
 import { StateStore } from "ai-benchmark-bot/dist/state.js";
-import { runBenchmarkFeed, shouldRunBenchmark } from "../src/benchmarkFeed.js";
+import { effortTierPrice, runBenchmarkFeed, shouldRunBenchmark } from "../src/benchmarkFeed.js";
+import type { OpenRouterCatalog } from "ai-benchmark-bot/dist/openrouter.js";
 import { loadFeedItems, loadRankingSnapshot, saveRankingSnapshot } from "../src/feedStore.js";
 import { feedXmlPath, regenerateFeedXml } from "../src/feeds.js";
 import { silentLogger, tempDir, testConfig } from "./helpers.js";
@@ -171,6 +172,52 @@ function run(harness: Harness, options: { when?: () => Date; force?: boolean } =
     force: options.force
   });
 }
+
+describe("effortTierPrice", () => {
+  // The bot's PARSED model shape (fetchOpenRouterModels output), not the raw
+  // API payload.
+  const entry = (over: Record<string, unknown>) => ({
+    id: "vendor/model",
+    bareSlug: "model",
+    created: 1,
+    pricing: { promptPerToken: 0.00001, completionPerToken: 0.00005, isFree: false, isVariable: false },
+    ...over
+  });
+  const catalog = {
+    models: [
+      entry({ id: "anthropic/claude-fable-5.1", bareSlug: "claude-fable-5.1", created: 2 }),
+      entry({
+        id: "anthropic/claude-fable-5.1:batch",
+        bareSlug: "claude-fable-5.1",
+        created: 3,
+        pricing: { promptPerToken: 0.000005, completionPerToken: 0.000025, isFree: false, isVariable: false }
+      })
+    ]
+  } as unknown as OpenRouterCatalog;
+
+  it("prices effort-tier names from the base listing", () => {
+    // ":batch" prices differently and must be skipped; the plain listing wins.
+    expect(effortTierPrice(catalog, "claude-fable-5.1-max-effort")).toBe("$10/$50");
+    expect(effortTierPrice(catalog, "claude-fable-5.1-max")).toBe("$10/$50");
+    expect(effortTierPrice(catalog, "claude-fable-5.1-xhigh")).toBe("$10/$50");
+  });
+
+  it("returns undefined for unknown models and non-effort suffixes", () => {
+    const kimi = {
+      models: [
+        entry({
+          id: "moonshotai/kimi-k3",
+          bareSlug: "kimi-k3",
+          created: 1,
+          pricing: { promptPerToken: 0.00000265, completionPerToken: 0.00001328, isFree: false, isVariable: false }
+        })
+      ]
+    } as unknown as OpenRouterCatalog;
+    expect(effortTierPrice(kimi, "gpt-6-astra-max")).toBeUndefined();
+    // "next" is a model generation, not an effort level — never stripped.
+    expect(effortTierPrice(kimi, "qwen3.8-flash-next")).toBeUndefined();
+  });
+});
 
 describe("gate", () => {
   it("skips before the digest time without fetching anything", async () => {

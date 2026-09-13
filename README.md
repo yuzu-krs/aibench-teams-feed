@@ -178,6 +178,11 @@ Model prices shown in the RSS come from the public OpenRouter models API
 (unauthenticated, no API key) and are credited as "Source: OpenRouter" in
 the digest footer. aibench-teams-feed is not affiliated with OpenRouter.
 
+Effort-tier names ("-max", "-xhigh", …) share the base listing's per-token
+unit price; when the tier itself is not listed on OpenRouter, the price is
+resolved from the base model. Models absent from OpenRouter entirely are
+shown without a price.
+
 Site:
 https://openrouter.ai/
 

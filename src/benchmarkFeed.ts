@@ -2,7 +2,12 @@ import { compareWithPrevious, type RankComparison } from "ai-benchmark-bot/dist/
 import { fetchText, parseJson } from "ai-benchmark-bot/dist/http.js";
 import { errorFields, type Logger } from "ai-benchmark-bot/dist/logger.js";
 import { fetchLmArenaTop } from "ai-benchmark-bot/dist/lmarena.js";
-import { fetchOpenRouterModels, resolveRankingPricing } from "ai-benchmark-bot/dist/openrouter.js";
+import {
+  fetchOpenRouterModels,
+  formatPriceDisplay,
+  resolveRankingPricing,
+  type OpenRouterCatalog
+} from "ai-benchmark-bot/dist/openrouter.js";
 import { StateStore } from "ai-benchmark-bot/dist/state.js";
 import {
   formatLocalDate,
@@ -116,6 +121,54 @@ function rankPrefix(rank: number): string {
   return `${rank}. `;
 }
 
+/**
+ * Suffixes that mark a thinking-effort setting. Effort levels share the base
+ * listing's per-token unit price, so a board name ending in one of these can
+ * be priced from the base model when the tier itself is not listed.
+ */
+const EFFORT_TOKENS = [
+  "max-effort",
+  "max",
+  "xhigh",
+  "high",
+  "medium",
+  "low",
+  "minimal",
+  "effort",
+  "thinking"
+];
+
+function baseNameCandidates(name: string): string[] {
+  const candidates: string[] = [];
+  let current = name.toLowerCase();
+  for (;;) {
+    const token = EFFORT_TOKENS.find((suffix) => current.endsWith(`-${suffix}`));
+    if (!token) break;
+    current = current.slice(0, current.length - token.length - 1);
+    if (current) candidates.push(current);
+  }
+  return candidates;
+}
+
+/**
+ * Resolves prices for effort-tier names ("-max", "-xhigh", …) that OpenRouter
+ * carries only as the base model: effort levels share the base listing's
+ * unit price. ":batch"/":free"-style listings price differently and are
+ * excluded. Feed-side only — the bot's own matcher stays conservative so
+ * Discord never gains this inference.
+ */
+export function effortTierPrice(catalog: OpenRouterCatalog, name: string): string | undefined {
+  for (const base of baseNameCandidates(name)) {
+    const matches = catalog.models.filter(
+      (model) => !model.id.includes(":") && model.bareSlug === base
+    );
+    const best = matches.sort((a, b) => (b.created ?? 0) - (a.created ?? 0))[0];
+    if (!best) continue;
+    return formatPriceDisplay(best);
+  }
+  return undefined;
+}
+
 function deltaText(comparison: RankComparison): string {
   if (comparison.isNew) return "🆕 NEW";
   if (comparison.delta === undefined || comparison.delta === 0) return "➖";
@@ -218,10 +271,23 @@ export async function runBenchmarkFeed(
     const previous: RankingSnapshotFile | undefined = loadRankingSnapshot(
       join(config.stateDir, ARENA_SNAPSHOT_FILE)
     );
-    const prices =
-      catalogSettled.status === "fulfilled"
-        ? resolveRankingPricing(catalogSettled.value, entries.map((entry) => entry.name))
-        : undefined;
+    let prices: ReadonlyMap<string, string> | undefined;
+    if (catalogSettled.status === "fulfilled") {
+      const resolved = resolveRankingPricing(
+        catalogSettled.value,
+        entries.map((entry) => entry.name)
+      );
+      // Effort-tier names often have no separate OpenRouter listing; they
+      // share the base listing's unit price, so resolve those feed-side.
+      const merged = new Map(resolved);
+      for (const entry of entries) {
+        if (!merged.has(entry.name)) {
+          const price = effortTierPrice(catalogSettled.value, entry.name);
+          if (price !== undefined) merged.set(entry.name, price);
+        }
+      }
+      prices = merged;
+    }
     const comparisons = compareWithPrevious(entries, previous, prices);
     sectionBlocks.push(renderArenaSection(publishDate, comparisons));
     boardStatus["arena-coding"] = "ok";
