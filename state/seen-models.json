@@ -893,6 +893,12 @@
       "providerId": "meta",
       "modelId": "llama-3.2-1b",
       "firstSeenAt": "2026-09-12T11:15:38.553Z"
+    },
+    {
+      "key": "e2e-test:gpt-e2e-check-1",
+      "providerId": "e2e-test",
+      "modelId": "gpt-e2e-check-1",
+      "firstSeenAt": "2026-09-13T03:27:25.784Z"
     }
   ]
 }
