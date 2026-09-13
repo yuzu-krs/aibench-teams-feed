@@ -120,6 +120,44 @@ PA の標準 RSS トリガー「フィードアイテムが公開されるとき
   接続直後の実行履歴で E2E 確認をする。GUID が常に安定しているため、PA 側の
   実挙動によらず二重通知は構造的に防がれている。
 
+### PA フローの構築手順
+
+2 本とも同じ構成で、**トリガーの URL とポーリング間隔だけが違う**。
+
+| フロー | RSS URL | 間隔 |
+|---|---|---|
+| New Model 通知 | `https://yuzu-krs.github.io/aibench-teams-feed/rss/new-model.xml` | **30分**(推奨) |
+| Benchmark digest | `https://yuzu-krs.github.io/aibench-teams-feed/rss/benchmark.xml` | **24時間** |
+
+1. make.powerautomate.com →「作成」→「自動クラウド フロー」→
+   トリガー検索「RSS」→「**フィードアイテムが公開されるとき**」を選択
+2. トリガー設定: 接続名は任意、**RSS URL** に上表の URL、
+   頻度 `分`/間隔 `30`(New Model)または `時間`/間隔 `24`(Benchmark)を入れて保存
+3. 保存するとトリガーの下に「**Apply to each(各々に適用する)**」が自動で付く
+   (トリガー出力が item 配列のため。benchmark は基本 1 件なので 1 周だけ実行)
+4. その中に Teams アクション「**チャットまたはチャネルでメッセージを投稿する**」を追加:
+   - 投稿者: Flow bot / 投稿先: チャネル(お好み)
+   - チーム・チャネル: 投稿先を選択
+   - Message: 次の**式**(fx)を入力 — description を直接入れないこと
+     (改行が潰れる。下記「Teams 投稿で改行を表示する」参照)
+
+       replace(trim(item()?['description']), decodeUriComponent('%0A'), '<br/>')
+
+   - description の1行目は 📅(benchmark)または 🏢(new-model)で始まるため、
+     title を重ねなくても内容は判別可能。見出しを付けたい場合は Message 先頭に
+     `item()?['title']` を連結
+5. 動作確認: Apply to each の先頭に「**作成(Compose)**」を置き、同じ式の出力を
+   実行履歴で確認してから Teams アクションに接続すると確実
+6. New Model フローの初回 E2E は、テスト検知 item を配信してから行う。
+   リポジトリの `e2e-new-model.mjs` が公式パイプライン経由でテスト検知を
+   差分フィードに掲載する(ID には既知ファミリー名 `gpt` 等を含める必要あり):
+
+       node e2e-new-model.mjs gpt-e2e-check-1
+       git add state docs && git commit -m "test: PA E2E" && git push
+
+   配信済み item は次の毎時実行で自動消滅する(差分フィードの設計)。
+   消滅後の再テストは ID の番号を変えて再実行。
+
 ### Teams 投稿で改行を表示する(new-model / benchmark 両フロー共通)
 
 Teams コネクタはメッセージを HTML として描画するため、description 内の
