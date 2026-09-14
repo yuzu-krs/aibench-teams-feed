@@ -258,7 +258,7 @@ describe("digest", () => {
     const harness = createHarness(["arena-model-x", "arena-model-y"]);
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "arena-coding": "ok", livebench: "ok" });
+    expect(result.boards).toEqual({ "lmarena-coding": "ok", livebench: "ok" });
     expect(result.itemsAdded).toBe(1);
 
     const items = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"));
@@ -267,23 +267,22 @@ describe("digest", () => {
     expect(digest?.guid).toBe("urn:aibench:benchmark:2026-09-14");
     expect(digest?.title).toBe("📊 Benchmark Daily — 2026/09/14");
     const description = digest?.description ?? "";
-    // The header states when the data was FETCHED; the per-board dates
-    // (データ: / Snapshot:) state when the sources published it.
+    // The header states when the data was FETCHED; the Snapshot: line states
+    // when the LiveBench source published it.
     expect(description).toContain("🕒 取得: 2026/09/14 06:30 JST");
 
-    // Arena Coding: official dataset fields — name, organization, rank,
-    // rating, leaderboard publish date. Podium ranks carry medals.
-    expect(description).toContain("💻 Arena Coding");
-    expect(description).toContain(`データ: ${ARENA_DATE} 時点のランキング`);
-    expect(description).toContain("🥇 arena-model-x (Example AI) — 1500 ➖");
-    expect(description).toContain("🥈 arena-model-y (Example AI) — 1493 ➖");
+    // LMArena Coding: rendered with the bot's own rank-line format
+    // (medal + rank + name · score · delta), sourced from the HF dataset.
+    expect(description).toContain("💻 LMArena Coding");
+    expect(description).toContain("🥇 1. arena-model-x · 1500 ➖");
+    expect(description).toContain("🥈 2. arena-model-y · 1493 ➖");
 
     // LiveBench: snapshot date is the data actually used (the served file's
     // Last-Modified), not the release label.
     expect(description).toContain("🧪 LiveBench");
     expect(description).toContain("Snapshot: 2026-09-10");
-    expect(description).toContain("🥇 model-a — 80.00 (coding 80.00 / agentic 80.00) ➖");
-    expect(description).toContain("🥈 model & b — 70.00 (coding 70.00 / agentic 70.00) ➖");
+    expect(description).toContain("🥇 1. model-a · 80.00 ➖");
+    expect(description).toContain("🥈 2. model & b · 70.00 ➖");
     // A model without an official overall is unrankable and must not appear.
     expect(description).not.toContain("model-c");
 
@@ -322,7 +321,7 @@ describe("digest", () => {
       )
     ).toBe(true);
     expect(
-      harness.requests.some((request) => request.includes("lmarena-ai/leaderboard-dataset"))
+      harness.requests.some((request) => request.includes("leaderboard-dataset"))
     ).toBe(true);
     expect(harness.requests.some((request) => request.includes("text_style_control"))).toBe(false);
     expect(harness.requests.some((request) => request.includes("artificialanalysis.ai"))).toBe(
@@ -402,10 +401,10 @@ describe("digest", () => {
     });
     await run(harness);
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
-    expect(digest?.description).toContain("🥇 arena-model-x (Example AI) — 1500 ⬆️ +1");
-    expect(digest?.description).toContain("🥈 arena-model-y (Example AI) — 1493 ⬇️ -1");
+    expect(digest?.description).toContain("🥇 1. arena-model-x · 1500 ⬆️ +1");
+    expect(digest?.description).toContain("🥈 2. arena-model-y · 1493 ⬇️ -1");
     expect(digest?.description).toContain(
-      "🥇 model-a — 80.00 (coding 80.00 / agentic 80.00) ⬆️ +1"
+      "🥇 1. model-a · 80.00 ⬆️ +1"
     );
   });
 
@@ -426,9 +425,9 @@ describe("digest", () => {
     harness.setResponse("arena", httpError(500));
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "arena-coding": "failed", livebench: "ok" });
+    expect(result.boards).toEqual({ "lmarena-coding": "failed", livebench: "ok" });
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
-    expect(digest?.description).toContain("⚠️ Arena Coding: unavailable");
+    expect(digest?.description).toContain("⚠️ LMArena Coding: unavailable");
     expect(digest?.description).toContain("🧪 LiveBench");
     // The failed board keeps its previous snapshot for the next comparison.
     expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"))?.savedAt).toBe(
@@ -446,10 +445,10 @@ describe("digest", () => {
     harness.setResponse("live-categories", httpError(404));
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "arena-coding": "ok", livebench: "failed" });
+    expect(result.boards).toEqual({ "lmarena-coding": "ok", livebench: "failed" });
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
     expect(digest?.description).toContain("⚠️ LiveBench: unavailable");
-    expect(digest?.description).toContain("💻 Arena Coding");
+    expect(digest?.description).toContain("💻 LMArena Coding");
   });
 
   it("throws without writing anything when both boards fail", async () => {
@@ -459,7 +458,7 @@ describe("digest", () => {
     harness.setResponse("listing", httpError(500));
     harness.setResponse("live-table", httpError(404));
     harness.setResponse("live-categories", httpError(404));
-    await expect(run(harness)).rejects.toThrow(/both Arena Coding and LiveBench failed/);
+    await expect(run(harness)).rejects.toThrow(/both LMArena Coding and LiveBench failed/);
     expect(existsSync(join(harness.stateDir, "last-posted.json"))).toBe(false);
     expect(existsSync(join(harness.stateDir, "feed-items-benchmark.json"))).toBe(false);
   });

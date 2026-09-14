@@ -1,5 +1,8 @@
-import { compareWithPrevious, type RankComparison } from "ai-benchmark-bot/dist/embeds.js";
-import { fetchText, parseJson } from "ai-benchmark-bot/dist/http.js";
+import {
+  buildBoardValue,
+  compareWithPrevious,
+  type RankComparison
+} from "ai-benchmark-bot/dist/embeds.js";
 import { errorFields, type Logger } from "ai-benchmark-bot/dist/logger.js";
 import { fetchLmArenaTop } from "ai-benchmark-bot/dist/lmarena.js";
 import {
@@ -16,7 +19,6 @@ import {
   localHourMinute
 } from "ai-benchmark-bot/dist/time.js";
 import type { RankedModel } from "ai-benchmark-bot/dist/types.js";
-import { z } from "zod";
 import { join } from "node:path";
 import type { AppConfig } from "./config.js";
 import { feedItemsPath } from "./feeds.js";
@@ -33,45 +35,32 @@ import type { FeedDeps } from "./newModelFeed.js";
 import { toRfc822 } from "./rssBuilder.js";
 import type { FeedItem } from "./types.js";
 
-/**
- * The Benchmark digest serves exactly two boards, chosen for GHC coding-model
- * selection: Arena Coding (the official lmarena-ai/leaderboard-dataset's
- * webdev split — never the Arena website) and LiveBench (the project's
- * officially published snapshot CSV, scored with the site's own aggregation
- * formula). Arena Overall, MMLU-Pro, and Artificial Analysis are deliberately
- * not part of this feed; AA data is never redistributed through the public
- * RSS (see README, Data Sources).
- */
-
 const TOP_N = 10;
-
-/**
- * Arena Coding keeps the pre-existing snapshot file name, so snapshots seeded
- * from the home server or earlier runs still line up for day-over-day deltas.
- */
-const ARENA_SNAPSHOT_FILE = "lmarena-coding.json";
-const LIVEBENCH_SNAPSHOT_FILE = "livebench.json";
-
-const ARENA_DATE_URL =
-  "https://datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset&config=webdev&split=latest&offset=0&length=1";
-
-const arenaDateResponse = z.object({
-  rows: z
-    .array(
-      z
-        .object({
-          row: z.object({ leaderboard_publish_date: z.string().optional() }).passthrough()
-        })
-        .passthrough()
-    )
-    .min(1)
-});
 
 /** Single-topic legend lines — Teams reads plain text, one note per line. */
 const FOOTER_MOVEMENT = "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし";
 const FOOTER_PRICE = "💰 入力/出力 $/1Mトークン";
 
-export type BenchmarkBoardId = "arena-coding" | "livebench";
+/**
+ * The Benchmark digest serves exactly two boards, chosen for GHC coding-model
+ * selection: LMArena Coding (the official lmarena-ai/leaderboard-dataset's
+ * webdev split — the same source the bot uses, never the Arena website) and
+ * LiveBench (the project's officially published snapshot CSV, scored with the
+ * site's own aggregation formula). Both sections are rendered with the bot's
+ * own rank-line renderer, so the digest looks exactly like the bot's Discord
+ * posts. Arena Overall, MMLU-Pro, and Artificial Analysis are deliberately
+ * not part of this feed; AA data is never redistributed through the public
+ * RSS (see README, Data Sources).
+ */
+
+/**
+ * LMArena Coding keeps the pre-existing snapshot file name, so snapshots
+ * seeded from the home server or earlier runs still line up for deltas.
+ */
+const ARENA_SNAPSHOT_FILE = "lmarena-coding.json";
+const LIVEBENCH_SNAPSHOT_FILE = "livebench.json";
+
+export type BenchmarkBoardId = "lmarena-coding" | "livebench";
 export type BenchmarkStatus = "posted" | "skipped-before-digest" | "skipped-already-posted";
 
 export interface BenchmarkFeedResult {
@@ -92,33 +81,6 @@ export function shouldRunBenchmark(now: Date, config: AppConfig, store: StateSto
   const { hour, minute } = localHourMinute(now, config.timeZone);
   if (hour * 60 + minute < config.digestHour * 60 + config.digestMinute) return false;
   return store.loadLastPosted()?.dateKey !== localDateKey(now, config.timeZone);
-}
-
-/** The official webdev split's leaderboard_publish_date, from one row. */
-async function fetchArenaPublishDate(
-  config: AppConfig,
-  fetchFn?: typeof globalThis.fetch
-): Promise<string | undefined> {
-  const { text } = await fetchText(ARENA_DATE_URL, {
-    headers: {
-      accept: "application/json",
-      ...(config.huggingFaceToken ? { authorization: `Bearer ${config.huggingFaceToken}` } : {})
-    },
-    ...(fetchFn ? { fetchFn } : {})
-  });
-  const parsed = arenaDateResponse.parse(parseJson(text, "lmarena-webdev-date"));
-  return parsed.rows[0]?.row.leaderboard_publish_date;
-}
-
-/**
- * Podium ranks show only the medal (a number after 🥇 is redundant); rank 4+
- * falls back to the plain number.
- */
-function rankPrefix(rank: number): string {
-  if (rank === 1) return "🥇 ";
-  if (rank === 2) return "🥈 ";
-  if (rank === 3) return "🥉 ";
-  return `${rank}. `;
 }
 
 /**
@@ -169,53 +131,34 @@ export function effortTierPrice(catalog: OpenRouterCatalog, name: string): strin
   return undefined;
 }
 
-function deltaText(comparison: RankComparison): string {
-  if (comparison.isNew) return "🆕 NEW";
-  if (comparison.delta === undefined || comparison.delta === 0) return "➖";
-  return comparison.delta > 0 ? `⬆️ +${comparison.delta}` : `⬇️ ${comparison.delta}`;
-}
-
-function renderArenaSection(
-  publishDate: string | undefined,
-  comparisons: RankComparison[]
-): string {
-  const lines = comparisons.map((comparison) => {
-    const { entry } = comparison;
-    const organization = entry.organization ? ` (${entry.organization})` : "";
-    const price = comparison.priceDisplay !== undefined ? ` · ${comparison.priceDisplay}` : "";
-    return `${rankPrefix(entry.rank)}${entry.name}${organization} — ${entry.scoreDisplay}${price} ${deltaText(comparison)}`;
-  });
-  return [
-    "💻 Arena Coding",
-    ...(publishDate ? [`データ: ${publishDate} 時点のランキング`] : []),
-    ...lines
-  ].join("\n");
-}
-
-function renderLiveBenchSection(board: LiveBenchBoard, comparisons: RankComparison[]): string {
-  const byKey = new Map(comparisons.map((comparison) => [comparison.entry.entityKey, comparison]));
-  const lines = board.entries.map((entry) => {
-    const parts = [`${rankPrefix(entry.rank)}${entry.name}`, `— ${entry.scoreDisplay}`];
-    const detail = [
-      entry.coding !== undefined ? `coding ${entry.coding.toFixed(2)}` : undefined,
-      entry.agenticCoding !== undefined ? `agentic ${entry.agenticCoding.toFixed(2)}` : undefined
-    ]
-      .filter((value): value is string => value !== undefined)
-      .join(" / ");
-    if (detail) parts.push(`(${detail})`);
-    const comparison = byKey.get(entry.entityKey);
-    if (comparison) parts.push(deltaText(comparison));
-    return parts.join(" ");
-  });
-  return ["🧪 LiveBench", `Snapshot: ${board.snapshotDate}`, ...lines].join("\n");
+/**
+ * The bot's conservative matcher first, then effort-tier resolution for the
+ * names it could not price (see effortTierPrice).
+ */
+function boardPrices(catalog: OpenRouterCatalog, entries: RankedModel[]): ReadonlyMap<string, string> {
+  const merged = new Map(
+    resolveRankingPricing(
+      catalog,
+      entries.map((entry) => entry.name)
+    )
+  );
+  for (const entry of entries) {
+    if (!merged.has(entry.name)) {
+      const price = effortTierPrice(catalog, entry.name);
+      if (price !== undefined) merged.set(entry.name, price);
+    }
+  }
+  return merged;
 }
 
 /**
- * Builds the daily digest from the two GHC-selection boards. The boards fail
- * independently: whichever succeeds is published, a failed board renders a
- * single unavailability line and keeps its previous snapshot. Only when BOTH
- * fail does the run throw — no item, no day recorded — so Teams never
- * receives an empty card and the day stays retryable.
+ * Builds the daily digest from the two GHC-selection boards, rendering every
+ * section with the bot's own rank-line renderer so the digest looks exactly
+ * like the bot's Discord posts. The boards fail independently: whichever
+ * succeeds is published, a failed board renders a single unavailability line
+ * and keeps its previous snapshot. Only when BOTH fail does the run throw —
+ * no item, no day recorded — so Teams never receives an empty card and the
+ * day stays retryable.
  */
 export async function runBenchmarkFeed(
   deps: FeedDeps & { force?: boolean }
@@ -235,7 +178,7 @@ export async function runBenchmarkFeed(
 
   // Boards and the pricing catalog resolve fully in parallel and fail
   // independently; a catalog failure only drops prices, never the digest.
-  const [arenaSettled, dateSettled, liveSettled, catalogSettled] = await Promise.allSettled([
+  const [arenaSettled, liveSettled, catalogSettled] = await Promise.allSettled([
     fetchLmArenaTop("coding", {
       topN: TOP_N,
       logger,
@@ -243,7 +186,6 @@ export async function runBenchmarkFeed(
       ...(deps.retryDelayMs !== undefined ? { retryDelayMs: deps.retryDelayMs } : {}),
       ...(config.huggingFaceToken ? { token: config.huggingFaceToken } : {})
     }),
-    fetchArenaPublishDate(config, deps.fetchFn),
     fetchLiveBenchTop({
       topN: TOP_N,
       logger,
@@ -258,9 +200,8 @@ export async function runBenchmarkFeed(
   ]);
 
   if (arenaSettled.status === "rejected" && liveSettled.status === "rejected") {
-    throw new Error("both Arena Coding and LiveBench failed; digest not published");
+    throw new Error("both LMArena Coding and LiveBench failed; digest not published");
   }
-  const publishDate = dateSettled.status === "fulfilled" ? dateSettled.value : undefined;
 
   const savedAt = now.toISOString();
   const sectionBlocks: string[] = [];
@@ -271,35 +212,22 @@ export async function runBenchmarkFeed(
     const previous: RankingSnapshotFile | undefined = loadRankingSnapshot(
       join(config.stateDir, ARENA_SNAPSHOT_FILE)
     );
-    let prices: ReadonlyMap<string, string> | undefined;
-    if (catalogSettled.status === "fulfilled") {
-      const resolved = resolveRankingPricing(
-        catalogSettled.value,
-        entries.map((entry) => entry.name)
-      );
-      // Effort-tier names often have no separate OpenRouter listing; they
-      // share the base listing's unit price, so resolve those feed-side.
-      const merged = new Map(resolved);
-      for (const entry of entries) {
-        if (!merged.has(entry.name)) {
-          const price = effortTierPrice(catalogSettled.value, entry.name);
-          if (price !== undefined) merged.set(entry.name, price);
-        }
-      }
-      prices = merged;
-    }
+    const prices =
+      catalogSettled.status === "fulfilled"
+        ? boardPrices(catalogSettled.value, entries)
+        : undefined;
     const comparisons = compareWithPrevious(entries, previous, prices);
-    sectionBlocks.push(renderArenaSection(publishDate, comparisons));
-    boardStatus["arena-coding"] = "ok";
+    sectionBlocks.push(`💻 LMArena Coding\n${buildBoardValue(comparisons)}`);
+    boardStatus["lmarena-coding"] = "ok";
     // Persist only after a clean render, mirroring the bot's save-after-send.
     saveRankingSnapshot(join(config.stateDir, ARENA_SNAPSHOT_FILE), { savedAt, entries });
   } else {
     logger.warn(
-      "arena coding unavailable; publishing digest without it",
+      "LMArena Coding unavailable; publishing digest without it",
       errorFields(arenaSettled.reason)
     );
-    sectionBlocks.push("=== Arena Coding ===\n⚠️ Arena Coding: unavailable");
-    boardStatus["arena-coding"] = "failed";
+    sectionBlocks.push("💻 LMArena Coding\n⚠️ LMArena Coding: unavailable");
+    boardStatus["lmarena-coding"] = "failed";
   }
 
   if (liveSettled.status === "fulfilled") {
@@ -307,8 +235,14 @@ export async function runBenchmarkFeed(
     const previous: RankingSnapshotFile | undefined = loadRankingSnapshot(
       join(config.stateDir, LIVEBENCH_SNAPSHOT_FILE)
     );
-    const comparisons = compareWithPrevious(board.entries, previous);
-    sectionBlocks.push(renderLiveBenchSection(board, comparisons));
+    const prices =
+      catalogSettled.status === "fulfilled"
+        ? boardPrices(catalogSettled.value, board.entries)
+        : undefined;
+    const comparisons = compareWithPrevious(board.entries, previous, prices);
+    sectionBlocks.push(
+      `🧪 LiveBench\nSnapshot: ${board.snapshotDate}\n${buildBoardValue(comparisons)}`
+    );
     boardStatus["livebench"] = "ok";
     saveRankingSnapshot(join(config.stateDir, LIVEBENCH_SNAPSHOT_FILE), {
       savedAt,
@@ -318,17 +252,17 @@ export async function runBenchmarkFeed(
     });
   } else {
     logger.warn(
-      "livebench unavailable; publishing digest without it",
+      "LiveBench unavailable; publishing digest without it",
       errorFields(liveSettled.reason)
     );
-    sectionBlocks.push("=== LiveBench ===\n⚠️ LiveBench: unavailable");
+    sectionBlocks.push("🧪 LiveBench\n⚠️ LiveBench: unavailable");
     boardStatus["livebench"] = "failed";
   }
 
-  // Legend first (what the reader needs), then the data-source attributions
-  // compressed into one line — every element CC BY 4.0 requires (source,
-  // dataset, license, modification notice) plus the LiveBench/OpenRouter
-  // credits survives; the detailed links live in the README.
+  // Official attributions compressed into one line — every element CC BY 4.0
+  // requires (source, dataset, license, modification notice) plus the
+  // LiveBench/OpenRouter credits survives; the detailed links live in the
+  // README.
   const footerLines = [
     FOOTER_MOVEMENT,
     FOOTER_PRICE,
