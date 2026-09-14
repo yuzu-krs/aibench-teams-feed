@@ -50,12 +50,6 @@ const FOOTER_PRICE = "💰 入力/出力 $/1Mトークン";
  */
 const BOARDS = [
   {
-    id: "lmarena-overall",
-    emoji: "🏆",
-    name: "LMArena Overall",
-    snapshotFile: "lmarena-overall.json"
-  },
-  {
     id: "lmarena-coding",
     emoji: "💻",
     name: "LMArena Coding",
@@ -198,8 +192,7 @@ export async function runBenchmarkFeed(
   // Boards and the pricing catalog resolve fully in parallel and fail
   // independently; a catalog failure only drops prices, never the digest.
   let liveBoard: LiveBenchBoard | undefined;
-  const [overall, coding, live, catalogSettled] = await Promise.allSettled([
-    fetchLmArenaTop("overall", lmOptions),
+  const [coding, live, catalogSettled] = await Promise.allSettled([
     fetchLmArenaTop("coding", lmOptions),
     fetchLiveBenchTop({
       topN: TOP_N,
@@ -218,7 +211,7 @@ export async function runBenchmarkFeed(
   ]);
   const catalog = catalogSettled.status === "fulfilled" ? catalogSettled.value : undefined;
 
-  const boardSettled = [overall, coding, live];
+  const boardSettled = [coding, live];
   if (boardSettled.every((result) => result.status === "rejected")) {
     throw new Error("all benchmark boards failed; digest not published");
   }
