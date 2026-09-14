@@ -21,7 +21,6 @@ export function testConfig(stateDir: string, overrides: Partial<AppConfig> = {})
     stateDir,
     rssDir: join(stateDir, "rss"),
     newModelMaxItems: 200,
-    benchmarkMaxItems: 90,
     logLevel: "error",
     ...overrides
   };

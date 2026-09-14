@@ -31,8 +31,8 @@ ai-benchmark-bot (v1.1.1, npm git dependency)
 - **new-model.xml は差分フィード**: 今回の実行で新規検出されたモデルだけを掲載し、
   次回実行で丸ごと置き換わる。新規 0 件なら `<item>` なしの有効な RSS になる。
   検知済みかどうかの永続管理は `state/seen-models.json` のみが担う(RSSは差分、
-  seen-models は永続状態と明確に分離)。benchmark.xml は1日1itemを90件保持する
-  履歴フィードのまま変更なし。
+  seen-models は永続状態と明確に分離)。benchmark.xml は**常に最新ダイジェスト
+  1件のみ**を保持する(毎日06:17に差し替え)。
 - **no-op では commit しない**: 変化がないとき XML はバイト等価。`lastBuildDate` は
   最新 item の pubDate を使うため wall clock に依存しない。
 - **benchmark の日次ゲート**: 「JST 07:00 以降」かつ「今日の dateKey 未記録」の両方を
@@ -65,7 +65,7 @@ npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 | `DIGEST_HOUR` / `DIGEST_MINUTE` | `6` / `0` | benchmark 発火時刻(JST) |
 | `FEED_BASE_URL` | `https://yuzu-krs.github.io/aibench-teams-feed` | channel link |
 | `STATE_DIR` / `RSS_DIR` | `./state` / `./docs/rss` | 出力先 |
-| `NEW_MODEL_MAX_ITEMS` / `BENCHMARK_MAX_ITEMS` | `200` / `90` | フィード保持件数 |
+| `NEW_MODEL_MAX_ITEMS` | `200` | new-model 差分フィードの保持件数 |
 | `LOG_LEVEL` | `info` | debug/info/warn/error |
 
 Secret をリポジトリに置かないこと。Actions では `GITHUB_TOKEN`(workflow 内で
@@ -112,9 +112,8 @@ PA の標準 RSS トリガー「フィードアイテムが公開されるとき
   新規検出 0 件の時間帯は空フィードになるため PA は何もせず、検出された実行の
   item だけが1度だけ届く。1 実行で複数モデルを検出した場合は 1 回のフロー実行に
   複数 item が入るため、Teams 投稿は「Apply to each(各々に適用)」でループさせる。
-- **benchmark.xml は履歴フィード**(1日1item・90日保持): 毎日新しい dateKey の
-  GUID が1件増えるだけ。24時間間隔のポーリングでもズレて見えるだけで
-  取りこぼしはない。
+- **benchmark.xml は常に最新ダイジェスト1件のみ**: 毎日06:17に新しい dateKey の
+  GUID に差し替わるため、24時間間隔のポーリングで1日1カード届く。
 - **初回接続**: フィードが空の状態で接続する(new-model は通常ずっと空)。
   PA の初回ポーリングが既存 item を「新着」として扱うかは仕様上断定できないため、
   接続直後の実行履歴で E2E 確認をする。GUID が常に安定しているため、PA 側の

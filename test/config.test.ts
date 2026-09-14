@@ -9,7 +9,6 @@ describe("loadConfig", () => {
     expect(config.digestHour).toBe(6);
     expect(config.digestMinute).toBe(0);
     expect(config.newModelMaxItems).toBe(200);
-    expect(config.benchmarkMaxItems).toBe(90);
     expect(config.logLevel).toBe("info");
     expect(config.stateDir).toMatch(/state$/);
     expect(config.rssDir).toMatch(/rss$/);

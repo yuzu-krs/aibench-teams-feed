@@ -25,7 +25,6 @@ import { feedItemsPath } from "./feeds.js";
 import {
   loadFeedItems,
   loadRankingSnapshot,
-  mergeFeedItems,
   saveFeedItems,
   saveRankingSnapshot,
   type RankingSnapshotFile
@@ -288,7 +287,9 @@ export async function runBenchmarkFeed(
   const file = feedItemsPath(config.stateDir, "benchmark");
   const existing = loadFeedItems(file);
   const itemsAdded = existing.some((cached) => cached.guid === item.guid) ? 0 : 1;
-  saveFeedItems(file, mergeFeedItems(existing, [item], config.benchmarkMaxItems));
+  // benchmark.xml は常に最新ダイジェスト1件のみ(単一itemフィード)。
+  // 履歴はPA/Teams側とREADMEには不要で、スコアの比較元はスナップショットが担う。
+  saveFeedItems(file, [item]);
   store.saveLastPosted(dateKey, savedAt);
 
   return { dateKey, status: "posted", boards: boardStatus, itemsAdded };

@@ -335,6 +335,18 @@ describe("digest", () => {
     expect(digest?.description).toContain("🥇 1. model-a · 80.00 ⬆️ +1");
   });
 
+  it("replaces the feed with the next day's digest (single-item feed)", async () => {
+    const harness = createHarness(["coding-model-x", "coding-model-y"]);
+    await run(harness); // 2026-09-14 のダイジェスト
+    // 翌日 2026-09-15 06:30 JST
+    const nextDay = () => new Date("2026-09-14T21:30:00.000Z");
+    const result = await run(harness, { when: nextDay });
+    expect(result.status).toBe("posted");
+    const items = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"));
+    expect(items).toHaveLength(1);
+    expect(items[0]?.guid).toBe("urn:aibench:benchmark:2026-09-15");
+  });
+
   it("publishes with a failure line when only LMArena Coding fails", async () => {
     const harness = createHarness(["coding-model-x"]);
     saveRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"), {

@@ -27,7 +27,6 @@ const configSchema = z.object({
   STATE_DIR: z.string().min(1).default("./state"),
   RSS_DIR: z.string().min(1).default("./docs/rss"),
   NEW_MODEL_MAX_ITEMS: z.coerce.number().int().min(10).max(1000).default(200),
-  BENCHMARK_MAX_ITEMS: z.coerce.number().int().min(7).max(365).default(90),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
   HUGGINGFACE_TOKEN: optionalSecret,
   GITHUB_TOKEN: optionalSecret
@@ -42,7 +41,6 @@ export interface AppConfig {
   stateDir: string;
   rssDir: string;
   newModelMaxItems: number;
-  benchmarkMaxItems: number;
   logLevel: "debug" | "info" | "warn" | "error";
   huggingFaceToken?: string;
   /** GitHub token; only raises api.github.com rate limits for LiveBench discovery. */
@@ -59,7 +57,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     stateDir: resolve(parsed.STATE_DIR),
     rssDir: resolve(parsed.RSS_DIR),
     newModelMaxItems: parsed.NEW_MODEL_MAX_ITEMS,
-    benchmarkMaxItems: parsed.BENCHMARK_MAX_ITEMS,
     logLevel: parsed.LOG_LEVEL
   };
   if (parsed.HUGGINGFACE_TOKEN) config.huggingFaceToken = parsed.HUGGINGFACE_TOKEN;
