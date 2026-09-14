@@ -194,8 +194,8 @@ digest ヘッダーの `🕒 取得:` はフィードを取得した日時。各
 ## Data Sources
 
 Benchmark RSS は GHC(コーディング用途)のモデル選定を目的とし、
-**Arena Coding** と **LiveBench** の2ソースのみを扱う。
-Arena Overall・MMLU-Pro・Artificial Analysis は本RSSに含めない。
+**LMArena Overall / LMArena Coding / LiveBench** を扱う。
+MMLU-Pro・Artificial Analysis は本RSSに含めない。
 
 ### Arena / LMArena (Arena Coding)
 

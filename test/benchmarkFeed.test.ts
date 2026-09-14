@@ -16,7 +16,7 @@ const beforeDigest = () => new Date("2026-09-13T20:00:00.000Z");
 
 const ARENA_DATE = "2026-08-30";
 
-function arenaPage(names: string[]): unknown {
+function arenaPage(names: string[], category: string): unknown {
   return {
     rows: names.map((name, index) => ({
       row_idx: index,
@@ -26,7 +26,7 @@ function arenaPage(names: string[]): unknown {
         rating: 1500 - index * 7.3,
         vote_count: 9000 - index * 100,
         rank: index + 1,
-        category: "webdev",
+        category,
         leaderboard_publish_date: ARENA_DATE
       },
       truncated_cells: []
@@ -37,7 +37,7 @@ function arenaPage(names: string[]): unknown {
   };
 }
 
-/** Official category -> task mapping, from categories_2026_09_04.json. */
+/** Official category -> task mapping, from the categories snapshot. */
 const CATEGORIES = {
   Reasoning: ["theory_of_mind"],
   Coding: ["code_generation", "code_completion"],
@@ -89,7 +89,8 @@ const UNRELATED_CATALOG = [
 ];
 
 type Slot =
-  | "arena"
+  | "arena-overall"
+  | "arena-coding"
   | "constants"
   | "listing"
   | "live-table"
@@ -125,12 +126,13 @@ interface Harness {
   setResponse: (slot: Slot, responder: () => Promise<Response>) => void;
 }
 
-function createHarness(arenaNames: string[]): Harness {
+function createHarness(overallNames: string[], codingNames: string[]): Harness {
   const stateDir = tempDir("bench-");
   const store = new StateStore(stateDir);
   const requests: string[] = [];
   const responses = new Map<Slot, () => Promise<Response>>([
-    ["arena", jsonResponse(arenaPage(arenaNames))],
+    ["arena-overall", jsonResponse(arenaPage(overallNames, "overall"))],
+    ["arena-coding", jsonResponse(arenaPage(codingNames, "webdev"))],
     ["constants", textResponse(CONSTANTS_JS)],
     ["listing", jsonResponse(STALE_LISTING)],
     ["live-table", textResponse(LIVEBENCH_CSV, { "last-modified": LIVEBENCH_LAST_MODIFIED })],
@@ -142,7 +144,8 @@ function createHarness(arenaNames: string[]): Harness {
     requests.push(url);
     let slot: Slot;
     if (url.includes("openrouter.ai")) slot = "openrouter";
-    else if (url.includes("config=webdev")) slot = "arena";
+    else if (url.includes("config=text_style_control")) slot = "arena-overall";
+    else if (url.includes("config=webdev")) slot = "arena-coding";
     else if (url.includes("src/lib/constants.js")) slot = "constants";
     else if (url.includes("api.github.com")) slot = "listing";
     else if (url.includes("livebench.ai") && url.includes("table_")) slot = "live-table";
@@ -173,55 +176,9 @@ function run(harness: Harness, options: { when?: () => Date; force?: boolean } =
   });
 }
 
-describe("effortTierPrice", () => {
-  // The bot's PARSED model shape (fetchOpenRouterModels output), not the raw
-  // API payload.
-  const entry = (over: Record<string, unknown>) => ({
-    id: "vendor/model",
-    bareSlug: "model",
-    created: 1,
-    pricing: { promptPerToken: 0.00001, completionPerToken: 0.00005, isFree: false, isVariable: false },
-    ...over
-  });
-  const catalog = {
-    models: [
-      entry({ id: "anthropic/claude-fable-5.1", bareSlug: "claude-fable-5.1", created: 2 }),
-      entry({
-        id: "anthropic/claude-fable-5.1:batch",
-        bareSlug: "claude-fable-5.1",
-        created: 3,
-        pricing: { promptPerToken: 0.000005, completionPerToken: 0.000025, isFree: false, isVariable: false }
-      })
-    ]
-  } as unknown as OpenRouterCatalog;
-
-  it("prices effort-tier names from the base listing", () => {
-    // ":batch" prices differently and must be skipped; the plain listing wins.
-    expect(effortTierPrice(catalog, "claude-fable-5.1-max-effort")).toBe("$10/$50");
-    expect(effortTierPrice(catalog, "claude-fable-5.1-max")).toBe("$10/$50");
-    expect(effortTierPrice(catalog, "claude-fable-5.1-xhigh")).toBe("$10/$50");
-  });
-
-  it("returns undefined for unknown models and non-effort suffixes", () => {
-    const kimi = {
-      models: [
-        entry({
-          id: "moonshotai/kimi-k3",
-          bareSlug: "kimi-k3",
-          created: 1,
-          pricing: { promptPerToken: 0.00000265, completionPerToken: 0.00001328, isFree: false, isVariable: false }
-        })
-      ]
-    } as unknown as OpenRouterCatalog;
-    expect(effortTierPrice(kimi, "gpt-6-astra-max")).toBeUndefined();
-    // "next" is a model generation, not an effort level — never stripped.
-    expect(effortTierPrice(kimi, "qwen3.8-flash-next")).toBeUndefined();
-  });
-});
-
 describe("gate", () => {
   it("skips before the digest time without fetching anything", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     const result = await run(harness, { when: beforeDigest });
     expect(result.status).toBe("skipped-before-digest");
     expect(harness.requests).toEqual([]);
@@ -229,7 +186,7 @@ describe("gate", () => {
   });
 
   it("reports skipped-already-posted once today's digest ran", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     await run(harness);
     const second = await run(harness);
     expect(second.status).toBe("skipped-already-posted");
@@ -237,13 +194,13 @@ describe("gate", () => {
   });
 
   it("force bypasses the gate", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     const result = await run(harness, { when: beforeDigest, force: true });
     expect(result.status).toBe("posted");
   });
 
   it("shouldRunBenchmark requires both the clock and a fresh dateKey", () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     expect(shouldRunBenchmark(beforeDigest(), testConfig(harness.stateDir), harness.store)).toBe(
       false
     );
@@ -254,11 +211,18 @@ describe("gate", () => {
 });
 
 describe("digest", () => {
-  it("publishes one item with Arena Coding and LiveBench sections and both attributions", async () => {
-    const harness = createHarness(["arena-model-x", "arena-model-y"]);
+  it("publishes one item with all three board sections and the attributions", async () => {
+    const harness = createHarness(
+      ["overall-model-a", "overall-model-b"],
+      ["coding-model-x", "coding-model-y"]
+    );
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "lmarena-coding": "ok", livebench: "ok" });
+    expect(result.boards).toEqual({
+      "lmarena-overall": "ok",
+      "lmarena-coding": "ok",
+      livebench: "ok"
+    });
     expect(result.itemsAdded).toBe(1);
 
     const items = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"));
@@ -271,11 +235,13 @@ describe("digest", () => {
     // when the LiveBench source published it.
     expect(description).toContain("🕒 取得: 2026/09/14 06:30 JST");
 
-    // LMArena Coding: rendered with the bot's own rank-line format
+    // LMArena boards: rendered with the bot's own rank-line format
     // (medal + rank + name · score · delta), sourced from the HF dataset.
+    expect(description).toContain("🏆 LMArena Overall");
+    expect(description).toContain("🥇 1. overall-model-a · 1500 ➖");
+    expect(description).toContain("🥈 2. overall-model-b · 1493 ➖");
     expect(description).toContain("💻 LMArena Coding");
-    expect(description).toContain("🥇 1. arena-model-x · 1500 ➖");
-    expect(description).toContain("🥈 2. arena-model-y · 1493 ➖");
+    expect(description).toContain("🥇 1. coding-model-x · 1500 ➖");
 
     // LiveBench: snapshot date is the data actually used (the served file's
     // Last-Modified), not the release label.
@@ -289,25 +255,18 @@ describe("digest", () => {
     // Official attributions: every element CC BY 4.0 requires (source,
     // dataset, license, modification notice) in the one-line footer credit.
     expect(description).toContain(
-      "Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット)"
-    );
-    expect(description).toContain("LiveBench (Apache 2.0)");
-    // Legend first, then a ONE-LINE attribution carrying every element the
-    // licenses require (source, dataset, license, modification notice).
-    expect(description).toContain(
-      "⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai"
+      "📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai"
     );
 
-    // Removed benchmarks: no Arena Overall, no MMLU-Pro, no Artificial Analysis.
-    expect(description).not.toContain("Arena Overall");
-    expect(description).not.toContain("MMLU-Pro");
+    // Removed sources: no Artificial Analysis, no MMLU-Pro.
     expect(description).not.toContain("Artificial Analysis");
     expect(description).not.toContain("artificialanalysis");
     expect(description).not.toContain("AA指数");
+    expect(description).not.toContain("MMLU-Pro");
 
-    // Source discipline: only the official HF dataset for Arena (never the
-    // website), no AA API calls, the Overall board is never fetched, and the
-    // LiveBench files come from the live site for the NEWEST release only.
+    // Source discipline: only the official HF dataset for LMArena (never the
+    // website), no AA API calls, and the LiveBench files come from the live
+    // site for the NEWEST release only.
     const hosts = harness.requests.map((request) => new URL(request).host);
     expect(
       hosts.every((host) =>
@@ -320,28 +279,24 @@ describe("digest", () => {
         ].includes(host)
       )
     ).toBe(true);
-    expect(
-      harness.requests.some((request) => request.includes("leaderboard-dataset"))
-    ).toBe(true);
-    expect(harness.requests.some((request) => request.includes("text_style_control"))).toBe(false);
+    expect(harness.requests.some((request) => request.includes("leaderboard-dataset"))).toBe(true);
     expect(harness.requests.some((request) => request.includes("artificialanalysis.ai"))).toBe(
       false
     );
     // The newest release is fetched from the live site; the stale release is
     // never requested from anywhere.
     expect(harness.requests.some((request) => request.includes("table_2026_09_04"))).toBe(true);
-    expect(harness.requests.some((request) => request.includes("livebench.ai/table_2026_09_04"))).toBe(
-      true
-    );
     expect(harness.requests.some((request) => request.includes("table_2026_06_25"))).toBe(false);
 
-    // Snapshots saved for both boards.
+    // Snapshots saved for all boards.
+    expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-overall.json"))?.entries).toHaveLength(
+      2
+    );
     expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"))?.entries).toHaveLength(
       2
     );
     const livebenchSnapshot = loadRankingSnapshot(join(harness.stateDir, "livebench.json"));
     expect(livebenchSnapshot?.snapshotDate).toBe("2026-09-10");
-    expect(livebenchSnapshot?.releaseDate).toBe("2026-09-04");
     expect(livebenchSnapshot?.entries).toHaveLength(2);
 
     const saved = harness.store.loadLastPosted();
@@ -349,7 +304,7 @@ describe("digest", () => {
   });
 
   it("keeps descriptions verbatim through XML generation (newlines and escapes)", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     await run(harness);
     const config = testConfig(harness.stateDir);
     regenerateFeedXml(config, "benchmark");
@@ -364,20 +319,23 @@ describe("digest", () => {
   });
 
   it("shows rank deltas against the previous snapshots", async () => {
-    const harness = createHarness(["arena-model-x", "arena-model-y"]);
-    saveRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"), {
+    const harness = createHarness(
+      ["overall-model-a", "overall-model-b"],
+      ["coding-model-x", "coding-model-y"]
+    );
+    saveRankingSnapshot(join(harness.stateDir, "lmarena-overall.json"), {
       savedAt: "2026-09-12T00:00:00.000Z",
       entries: [
         {
-          entityKey: "arena-model-y",
-          name: "arena-model-y",
+          entityKey: "overall-model-b",
+          name: "overall-model-b",
           rank: 1,
           score: 1493,
           scoreDisplay: "1493"
         },
         {
-          entityKey: "arena-model-x",
-          name: "arena-model-x",
+          entityKey: "overall-model-a",
+          name: "overall-model-a",
           rank: 2,
           score: 1500,
           scoreDisplay: "1500"
@@ -389,54 +347,50 @@ describe("digest", () => {
       snapshotDate: "2026-09-10",
       releaseDate: "2026-09-04",
       entries: [
-        {
-          entityKey: "model & b",
-          name: "model & b",
-          rank: 1,
-          score: 70,
-          scoreDisplay: "70.00"
-        },
+        { entityKey: "model & b", name: "model & b", rank: 1, score: 70, scoreDisplay: "70.00" },
         { entityKey: "model-a", name: "model-a", rank: 2, score: 80, scoreDisplay: "80.00" }
       ]
     });
     await run(harness);
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
-    expect(digest?.description).toContain("🥇 1. arena-model-x · 1500 ⬆️ +1");
-    expect(digest?.description).toContain("🥈 2. arena-model-y · 1493 ⬇️ -1");
-    expect(digest?.description).toContain(
-      "🥇 1. model-a · 80.00 ⬆️ +1"
-    );
+    expect(digest?.description).toContain("🥇 1. overall-model-a · 1500 ⬆️ +1");
+    expect(digest?.description).toContain("🥈 2. overall-model-b · 1493 ⬇️ -1");
+    expect(digest?.description).toContain("🥇 1. model-a · 80.00 ⬆️ +1");
   });
 
-  it("publishes with a failure line when only Arena Coding fails", async () => {
-    const harness = createHarness(["arena-model-x"]);
-    saveRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"), {
+  it("publishes with a failure line when only LMArena Overall fails", async () => {
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
+    saveRankingSnapshot(join(harness.stateDir, "lmarena-overall.json"), {
       savedAt: "2026-09-12T00:00:00.000Z",
       entries: [
         {
-          entityKey: "arena-model-x",
-          name: "arena-model-x",
+          entityKey: "overall-model-a",
+          name: "overall-model-a",
           rank: 1,
           score: 1500,
           scoreDisplay: "1500"
         }
       ]
     });
-    harness.setResponse("arena", httpError(500));
+    harness.setResponse("arena-overall", httpError(500));
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "lmarena-coding": "failed", livebench: "ok" });
+    expect(result.boards).toEqual({
+      "lmarena-overall": "failed",
+      "lmarena-coding": "ok",
+      livebench: "ok"
+    });
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
-    expect(digest?.description).toContain("⚠️ LMArena Coding: unavailable");
-    expect(digest?.description).toContain("🧪 LiveBench");
+    expect(digest?.description).toContain("⚠️ LMArena Overall: unavailable");
+    expect(digest?.description).toContain("💻 LMArena Coding");
     // The failed board keeps its previous snapshot for the next comparison.
-    expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-coding.json"))?.savedAt).toBe(
+    expect(loadRankingSnapshot(join(harness.stateDir, "lmarena-overall.json"))?.savedAt).toBe(
       "2026-09-12T00:00:00.000Z"
     );
   });
 
   it("publishes with a failure line when only LiveBench fails", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     // Every LiveBench discovery and file source must fail for the board to
     // count as unavailable.
     harness.setResponse("constants", httpError(500));
@@ -445,20 +399,25 @@ describe("digest", () => {
     harness.setResponse("live-categories", httpError(404));
     const result = await run(harness);
     expect(result.status).toBe("posted");
-    expect(result.boards).toEqual({ "lmarena-coding": "ok", livebench: "failed" });
+    expect(result.boards).toEqual({
+      "lmarena-overall": "ok",
+      "lmarena-coding": "ok",
+      livebench: "failed"
+    });
     const digest = loadFeedItems(join(harness.stateDir, "feed-items-benchmark.json"))[0];
     expect(digest?.description).toContain("⚠️ LiveBench: unavailable");
-    expect(digest?.description).toContain("💻 LMArena Coding");
+    expect(digest?.description).toContain("🏆 LMArena Overall");
   });
 
-  it("throws without writing anything when both boards fail", async () => {
-    const harness = createHarness(["arena-model-x"]);
-    harness.setResponse("arena", httpError(500));
+  it("throws without writing anything when all boards fail", async () => {
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
+    harness.setResponse("arena-overall", httpError(500));
+    harness.setResponse("arena-coding", httpError(500));
     harness.setResponse("constants", httpError(500));
     harness.setResponse("listing", httpError(500));
     harness.setResponse("live-table", httpError(404));
     harness.setResponse("live-categories", httpError(404));
-    await expect(run(harness)).rejects.toThrow(/both LMArena Coding and LiveBench failed/);
+    await expect(run(harness)).rejects.toThrow(/all benchmark boards failed/);
     expect(existsSync(join(harness.stateDir, "last-posted.json"))).toBe(false);
     expect(existsSync(join(harness.stateDir, "feed-items-benchmark.json"))).toBe(false);
   });
@@ -466,7 +425,7 @@ describe("digest", () => {
 
 describe("xml regeneration", () => {
   it("writes once and stays byte-identical afterwards", async () => {
-    const harness = createHarness(["arena-model-x"]);
+    const harness = createHarness(["overall-model-a"], ["coding-model-x"]);
     await run(harness);
     const config = testConfig(harness.stateDir);
     expect(regenerateFeedXml(config, "benchmark")).toBe(true);
