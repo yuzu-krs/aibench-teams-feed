@@ -6,14 +6,14 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Wed, 16 Sep 2026 21:24:39 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 21:23:46 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/09/17</title>
+      <title>📊 Benchmark Daily — 2026/09/18</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-17</guid>
-      <pubDate>Wed, 16 Sep 2026 21:24:39 GMT</pubDate>
-      <description>📅 2026/09/17
-🕒 取得: 2026/09/17 06:24 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-18</guid>
+      <pubDate>Thu, 17 Sep 2026 21:23:46 GMT</pubDate>
+      <description>📅 2026/09/18
+🕒 取得: 2026/09/18 06:23 JST
 
 💻 LMArena Coding
 🥇 1. gpt-6-astra-max · 1800 · $10/$50 ➖
@@ -28,7 +28,7 @@
 10. claude-fable-5 · 1628 · $10/$50 ➖
 
 🧪 LiveBench
-Snapshot: 2026-09-10
+Snapshot: 2026-09-17
 🥇 1. claude-fable-5-1-max-effort · 83.41 ➖
 🥈 2. claude-fable-5-max-effort · 82.97 · $10/$50 ➖
 🥉 3. gpt-6-astra-max · 82.16 · $10/$50 ➖
