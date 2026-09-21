@@ -6,17 +6,5 @@
     <description>プロバイダー公式の発表から検出した新モデルの通知 (Teams配信) · Source: OpenRouter</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Mon, 21 Sep 2026 16:29:12 GMT</lastBuildDate>
-    <item>
-      <title>🚀 New Model: grok-4.7 · xAI</title>
-      <link>https://x.ai/news/grok-4-7</link>
-      <guid isPermaLink="false">urn:aibench:new-model:xai:grok-4.7</guid>
-      <pubDate>Mon, 21 Sep 2026 16:29:12 GMT</pubDate>
-      <description>🏢 xAI
-🧠 grok-4.7
-📝 Grok 4.7, SpaceXAI&apos;s frontier model for coding, agentic tasks, and knowledge work, is now available on the xAI API as grok 4.7 . It has a 500k context window, text and image inputs with text only output, and no text output limit. Pricing is $2 / $0.50 / $6 per 1M tokens (input / cached input / output) below 200k promp…
-💰 $1.6/$4.8 · 500K
-🕒 2026/09/22 01:29 JST</description>
-    </item>
   </channel>
 </rss>
