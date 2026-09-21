@@ -947,6 +947,12 @@
       "providerId": "e2e-test",
       "modelId": "gpt-e2e-check-9",
       "firstSeenAt": "2026-09-13T08:15:24.578Z"
+    },
+    {
+      "key": "xai:grok-4.7",
+      "providerId": "xai",
+      "modelId": "grok-4.7",
+      "firstSeenAt": "2026-09-21T16:29:12.646Z"
     }
   ]
 }

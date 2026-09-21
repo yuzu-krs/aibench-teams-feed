@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:xai:grok-4.7",
+      "title": "🚀 New Model: grok-4.7 · xAI",
+      "link": "https://x.ai/news/grok-4-7",
+      "pubDate": "Mon, 21 Sep 2026 16:29:12 GMT",
+      "description": "🏢 xAI\n🧠 grok-4.7\n📝 Grok 4.7, SpaceXAI's frontier model for coding, agentic tasks, and knowledge work, is now available on the xAI API as grok 4.7 . It has a 500k context window, text and image inputs with text only output, and no text output limit. Pricing is $2 / $0.50 / $6 per 1M tokens (input / cached input / output) below 200k promp…\n💰 $1.6/$4.8 · 500K\n🕒 2026/09/22 01:29 JST",
+      "createdAt": "2026-09-21T16:29:12.646Z"
+    }
+  ]
 }
