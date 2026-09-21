@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "guid": "urn:aibench:benchmark:2026-09-21",
-      "title": "📊 Benchmark Daily — 2026/09/21",
+      "guid": "urn:aibench:benchmark:2026-09-22",
+      "title": "📊 Benchmark Daily — 2026/09/22",
       "link": "https://yuzu-krs.github.io/aibench-teams-feed",
-      "pubDate": "Sun, 20 Sep 2026 21:22:17 GMT",
-      "description": "📅 2026/09/21\n🕒 取得: 2026/09/21 06:22 JST\n\n💻 LMArena Coding\n🥇 1. gpt-6-astra-max · 1800 · $10/$50 ➖\n🥈 2. claude-fable-5.1-max · 1758 · $10/$50 ➖\n🥉 3. claude-opus-5-max · 1687 · $5/$25 ➖\n4. qwen3.8-max-0902 · 1681 · $2/$6 ➖\n5. kimi-k3-max · 1674 · $1.7/$8.5 ➖\n6. qwen3.8-max · 1671 ➖\n7. claude-opus-5-high · 1660 · $5/$25 ➖\n8. muse-spark-1.3-max · 1652 · $1.25/$4.25 ➖\n9. qwen3.8-flash-next · 1635 · $0.15/$0.47 ➖\n10. claude-fable-5 · 1628 · $10/$50 ➖\n\n🧪 LiveBench\nSnapshot: 2026-09-17\n🥇 1. claude-fable-5-1-max-effort · 83.41 ➖\n🥈 2. claude-fable-5-max-effort · 82.97 · $10/$50 ➖\n🥉 3. gpt-6-astra-max · 82.16 · $10/$50 ➖\n4. muse-spark-1.3-xhigh · 81.59 · $1.25/$4.25 ➖\n5. deepseek-v4.1-flash-max · 81.11 · $0.15/$0.6 ➖\n6. gpt-5.6-sol-max · 81.05 · $2/$10 ➖\n7. gpt-5.5-xhigh · 80.19 ➖\n8. claude-opus-5-max-effort · 80.08 · $5/$25 ➖\n9. smaug-agentic · 79.51 ➖\n10. kimi-k3 · 79.19 · $1.7/$8.5 ➖\n\n⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai",
-      "createdAt": "2026-09-20T21:22:17.062Z"
+      "pubDate": "Mon, 21 Sep 2026 21:23:43 GMT",
+      "description": "📅 2026/09/22\n🕒 取得: 2026/09/22 06:23 JST\n\n💻 LMArena Coding\n🥇 1. gpt-6-astra-max · 1800 · $10/$50 ➖\n🥈 2. claude-fable-5.1-max · 1758 · $10/$50 ➖\n🥉 3. claude-opus-5-max · 1687 · $5/$25 ➖\n4. qwen3.8-max-0902 · 1681 · $2/$6 ➖\n5. kimi-k3-max · 1674 · $3/$15 ➖\n6. qwen3.8-max · 1671 ➖\n7. claude-opus-5-high · 1660 · $5/$25 ➖\n8. muse-spark-1.3-max · 1652 · $1.25/$4.25 ➖\n9. qwen3.8-flash-next · 1635 · $0.15/$0.47 ➖\n10. claude-fable-5 · 1628 · $10/$50 ➖\n\n🧪 LiveBench\nSnapshot: 2026-09-17\n🥇 1. claude-fable-5-1-max-effort · 83.41 ➖\n🥈 2. claude-fable-5-max-effort · 82.97 · $10/$50 ➖\n🥉 3. gpt-6-astra-max · 82.16 · $10/$50 ➖\n4. muse-spark-1.3-xhigh · 81.59 · $1.25/$4.25 ➖\n5. deepseek-v4.1-flash-max · 81.11 · $0.15/$0.6 ➖\n6. gpt-5.6-sol-max · 81.05 · $2/$10 ➖\n7. gpt-5.5-xhigh · 80.19 ➖\n8. claude-opus-5-max-effort · 80.08 · $5/$25 ➖\n9. smaug-agentic · 79.51 ➖\n10. kimi-k3 · 79.19 · $3/$15 ➖\n\n⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai",
+      "createdAt": "2026-09-21T21:23:43.928Z"
     }
   ]
 }
