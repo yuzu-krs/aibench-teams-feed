@@ -6,5 +6,36 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
+    <lastBuildDate>Tue, 22 Sep 2026 22:58:22 GMT</lastBuildDate>
+    <item>
+      <title>🚀 New Model — 2026/09/23</title>
+      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
+      <guid isPermaLink="false">urn:aibench:new-model:2026-09-23</guid>
+      <pubDate>Tue, 22 Sep 2026 22:58:22 GMT</pubDate>
+      <description>📅 2026/09/23
+🕒 取得: 2026/09/23 07:58 JST
+
+🚀 本日の新モデル: 3件
+
+🏢 OpenAI
+🧠 gpt-6-luna
+📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…
+💰 $0.1/$0.5 · 1.1M
+🕒 2026/09/23 07:58 JST
+
+🏢 OpenAI
+🧠 gpt-6-sol
+📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…
+💰 $2/$10 · 1.1M
+🕒 2026/09/23 07:58 JST
+
+🏢 xAI
+🧠 grok-4.7
+📝 Grok 4.7, SpaceXAI&apos;s frontier model for coding, agentic tasks, and knowledge work, is now available on the xAI API as grok 4.7 . It has a 500k context window, text and image inputs with text only output, and no text output limit. Pricing is $2 / $0.50 / $6 per 1M tokens (input / cached input / output) below 200k promp…
+💰 $1.6/$4.8 · 500K
+🕒 2026/09/23 07:58 JST
+
+💰 価格: openrouter.ai</description>
+    </item>
   </channel>
 </rss>

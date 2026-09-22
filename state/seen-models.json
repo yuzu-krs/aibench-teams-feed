@@ -947,6 +947,24 @@
       "providerId": "e2e-test",
       "modelId": "gpt-e2e-check-9",
       "firstSeenAt": "2026-09-13T08:15:24.578Z"
+    },
+    {
+      "key": "openai:gpt-6-luna",
+      "providerId": "openai",
+      "modelId": "gpt-6-luna",
+      "firstSeenAt": "2026-09-22T22:58:22.128Z"
+    },
+    {
+      "key": "openai:gpt-6-sol",
+      "providerId": "openai",
+      "modelId": "gpt-6-sol",
+      "firstSeenAt": "2026-09-22T22:58:22.128Z"
+    },
+    {
+      "key": "xai:grok-4.7",
+      "providerId": "xai",
+      "modelId": "grok-4.7",
+      "firstSeenAt": "2026-09-22T22:58:22.128Z"
     }
   ]
 }
