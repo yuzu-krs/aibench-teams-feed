@@ -953,6 +953,18 @@
       "providerId": "xai",
       "modelId": "grok-4.7",
       "firstSeenAt": "2026-09-21T16:29:12.646Z"
+    },
+    {
+      "key": "openai:gpt-6-luna",
+      "providerId": "openai",
+      "modelId": "gpt-6-luna",
+      "firstSeenAt": "2026-09-22T18:31:24.108Z"
+    },
+    {
+      "key": "openai:gpt-6-sol",
+      "providerId": "openai",
+      "modelId": "gpt-6-sol",
+      "firstSeenAt": "2026-09-22T18:31:24.108Z"
     }
   ]
 }

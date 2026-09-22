@@ -1,3 +1,20 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:openai:gpt-6-luna",
+      "title": "🚀 New Model: gpt-6-luna · OpenAI",
+      "link": "https://developers.openai.com/api/docs/changelog#september-2026",
+      "pubDate": "Tue, 22 Sep 2026 18:31:24 GMT",
+      "description": "🏢 OpenAI\n🧠 gpt-6-luna\n📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…\n💰 $0.1/$0.5 · 1.1M\n🕒 2026/09/23 03:31 JST",
+      "createdAt": "2026-09-22T18:31:24.108Z"
+    },
+    {
+      "guid": "urn:aibench:new-model:openai:gpt-6-sol",
+      "title": "🚀 New Model: gpt-6-sol · OpenAI",
+      "link": "https://developers.openai.com/api/docs/changelog#september-2026",
+      "pubDate": "Tue, 22 Sep 2026 18:31:24 GMT",
+      "description": "🏢 OpenAI\n🧠 gpt-6-sol\n📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…\n💰 $2/$10 · 1.1M\n🕒 2026/09/23 03:31 JST",
+      "createdAt": "2026-09-22T18:31:24.108Z"
+    }
+  ]
 }
