@@ -6,14 +6,14 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Mon, 21 Sep 2026 21:23:43 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 21:22:19 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/09/22</title>
+      <title>📊 Benchmark Daily — 2026/09/23</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-22</guid>
-      <pubDate>Mon, 21 Sep 2026 21:23:43 GMT</pubDate>
-      <description>📅 2026/09/22
-🕒 取得: 2026/09/22 06:23 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-23</guid>
+      <pubDate>Tue, 22 Sep 2026 21:22:19 GMT</pubDate>
+      <description>📅 2026/09/23
+🕒 取得: 2026/09/23 06:22 JST
 
 💻 LMArena Coding
 🥇 1. gpt-6-astra-max · 1800 · $10/$50 ➖
@@ -28,17 +28,17 @@
 10. claude-fable-5 · 1628 · $10/$50 ➖
 
 🧪 LiveBench
-Snapshot: 2026-09-17
+Snapshot: 2026-09-22
 🥇 1. claude-fable-5-1-max-effort · 83.41 ➖
-🥈 2. claude-fable-5-max-effort · 82.97 · $10/$50 ➖
-🥉 3. gpt-6-astra-max · 82.16 · $10/$50 ➖
-4. muse-spark-1.3-xhigh · 81.59 · $1.25/$4.25 ➖
-5. deepseek-v4.1-flash-max · 81.11 · $0.15/$0.6 ➖
-6. gpt-5.6-sol-max · 81.05 · $2/$10 ➖
-7. gpt-5.5-xhigh · 80.19 ➖
-8. claude-opus-5-max-effort · 80.08 · $5/$25 ➖
-9. smaug-agentic · 79.51 ➖
-10. kimi-k3 · 79.19 · $3/$15 ➖
+🥈 2. claude-opus-5-5-max-effort · 83.22 🆕 NEW
+🥉 3. claude-fable-5-max-effort · 82.97 · $10/$50 ⬇️ -1
+4. gpt-6-astra-max · 82.16 · $10/$50 ⬇️ -1
+5. claude-opus-5-5-xhigh-effort · 82.06 🆕 NEW
+6. muse-spark-1.3-xhigh · 81.59 · $1.25/$4.25 ⬇️ -2
+7. deepseek-v4.1-flash-max · 81.11 · $0.15/$0.6 ⬇️ -2
+8. gpt-5.6-sol-max · 81.05 · $2/$10 ⬇️ -2
+9. gpt-5.5-xhigh · 80.19 ⬇️ -2
+10. claude-opus-5-max-effort · 80.08 · $5/$25 ⬇️ -2
 
 ⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし
 💰 入力/出力 $/1Mトークン
