@@ -13,7 +13,7 @@ const USAGE = `usage: node dist/cli.js <command>
 
 commands:
   auto        new-model poll + gated benchmark digest (scheduled default)
-  new-model   new-model poll only
+  new-model   new-model poll + daily digest [--force bypasses the daily gate]
   benchmark   benchmark digest [--force bypasses the daily gate]
   validate    check that both feed XML files parse as RSS`;
 
@@ -36,24 +36,31 @@ async function main(): Promise<void> {
 
   switch (command) {
     case "auto": {
-      // Benchmark first: a failed digest throws and exits before the
-      // new-model poll, whose delta must always be followed by the commit —
-      // once the bot records models as seen, a lost feed write cannot be
-      // recovered on the next run.
+      // Benchmark first: a failed digest throws and exits before the push.
+      // Each feed records its own day only on success, so the next hourly
+      // run simply re-runs whichever is missing (pending re-accumulation is
+      // idempotent by GUID) — cron misses and outages self-heal.
       const benchmark = await runBenchmarkFeed({ config, store, logger });
       const newModel = await runNewModelFeed({ config, store, logger });
       logger.info("feed update finished", {
+        benchmarkStatus: benchmark.status,
+        newModelStatus: newModel.status,
         newModelAlerts: newModel.alerts,
-        newModelItemsAdded: newModel.itemsAdded,
-        benchmarkStatus: benchmark.status
+        newModelModels: newModel.models
       });
       break;
     }
     case "new-model": {
-      const result = await runNewModelFeed({ config, store, logger });
+      const result = await runNewModelFeed({
+        config,
+        store,
+        logger,
+        force: flags.includes("--force")
+      });
       logger.info("new-model feed finished", {
+        status: result.status,
         alerts: result.alerts,
-        itemsAdded: result.itemsAdded
+        models: result.models
       });
       break;
     }

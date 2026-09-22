@@ -25,23 +25,30 @@ ai-benchmark-bot (v1.1.1, npm git dependency)
   の `dist/` を直接 import する。依存は `package.json` の
   `github:yuzu-krs/ai-benchmark-bot#v1.1.1` で commit SHA まで固定。
 - **GUID は安定・不変**(重複通知防止の必須要件):
-  - New Model: `urn:aibench:new-model:<providerId>:<modelId>`(モデル単位)
+  - New Model: `urn:aibench:new-model:<YYYY-MM-DD>`(JST, 1日1カード)
   - Benchmark: `urn:aibench:benchmark:<YYYY-MM-DD>`(JST, 1日1件)
-  - Benchmark は同一 GUID の再発行でも既存レコードが勝つ(内容・pubDate は初回作成時に凍結)
-- **new-model.xml は差分フィード**: 今回の実行で新規検出されたモデルだけを掲載し、
-  次回実行で丸ごと置き換わる。新規 0 件なら `<item>` なしの有効な RSS になる。
-  検知済みかどうかの永続管理は `state/seen-models.json` のみが担う(RSSは差分、
-  seen-models は永続状態と明確に分離)。benchmark.xml は**常に最新ダイジェスト
-  1件のみ**を保持する(毎日06:17に差し替え)。
+  - 同一 GUID は二度と届かないため PA 側の実挙動によらず二重通知は構造的に
+    防がれる。モデル単位の `urn:aibench:new-model:<providerId>:<modelId>` は
+    公開されず、`state/new-model-pending.json` 内の蓄積キーとしてのみ使う
+- **new-model.xml は日次サマリーカード**: 日中の毎時実行は検知だけを行い、
+  検出分を `state/new-model-pending.json` に蓄積する(RSS は更新しない)。
+  毎日 06:17 頃の最初のゲート通過実行で、前回公開以降の検出全件を 1 枚のカードに
+  まとめて公開し、フィードは**常に最新カード 1 件のみ**になる。新規 0 件の日は
+  `<item>` なしの有効な RSS になる(Teams には何も届かない)。検知済みかどうかの
+  永続管理は `state/seen-models.json` のみが担う。benchmark.xml も
+  **常に最新ダイジェスト 1件のみ**を保持する(毎日06:17に差し替え)。
 - **no-op では commit しない**: 変化がないとき XML はバイト等価。`lastBuildDate` は
   最新 item の pubDate を使うため wall clock に依存しない。
-- **benchmark の日次ゲート**: 「JST 07:00 以降」かつ「今日の dateKey 未記録」の両方を
-  満たした最初の毎時実行が発火。cron 遅延・一時的障害は翌時の実行が自動回収する。
-  全ボード取得失敗時は何も書かず exit 1(「取得できませんでした」カードは流さない)。
+- **両フィード共通の日次ゲート**: 「`DIGEST_HOUR`(既定 6)時以降」かつ
+  「今日の dateKey 未記録」の両方を満たした最初の毎時実行が発火(実運用では
+  06:17 JST 頃)。cron 遅延・一時的障害は翌時の実行が自動回収する。
+  benchmark は全ボード取得失敗時に、new-model はカード書き出し失敗時に
+  何も記録せず exit 1 で翌時にリトライする(「取得できませんでした」カードは流さない)。
 - **状態は git で管理**(`state/*.json`)。bot の `data/` と同一スキーマなので、
   自宅サーバーの `data/*.json` を `state/` にコピーすれば経験の引き継ぎ(シード)も可能。
 - **土日祝の扱いなし**(毎日・毎時)。将来「平日のみ」へは
-  `src/benchmarkFeed.ts` の `shouldRunBenchmark` に曜日チェックを追加するだけ。
+  `src/benchmarkFeed.ts` の `shouldRunBenchmark` と `src/newModelFeed.ts` の
+  `shouldRunNewModel` に曜日チェックを追加するだけ。
 
 ## コマンド
 
@@ -49,8 +56,9 @@ ai-benchmark-bot (v1.1.1, npm git dependency)
 npm ci                    # bot 依存を pinned SHA から構築(prepare が dist/ を生成)
 npm test                  # vitest(ネットワークなし)
 npm run build             # dist/ へコンパイル
-npm run feed -- auto      # new-model + benchmark(ゲート付き)= Actions の既定
-npm run feed -- new-model
+npm run feed -- auto                # new-model + benchmark(両方ゲート付き)= Actions の既定
+npm run feed -- new-model           # 検知 + 当日カードの公開(ゲート付き)
+npm run feed -- new-model --force   # ゲート無視で即公開(手動確認用)
 npm run feed -- benchmark --force   # ゲート無視(手動確認用)
 npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 ```
@@ -62,10 +70,10 @@ npm run feed -- validate  # docs/rss/*.xml の整合性チェック
 | `HUGGINGFACE_TOKEN` | なし | HF datasets-server のレート制限対策 |
 | `GITHUB_TOKEN` | なし | LiveBenchスナップショット探索(api.github.com)のレート制限対策 |
 | `TIME_ZONE` | `Asia/Tokyo` | dateKey・表示の基準タイムゾーン |
-| `DIGEST_HOUR` / `DIGEST_MINUTE` | `6` / `0` | benchmark 発火時刻(JST) |
+| `DIGEST_HOUR` / `DIGEST_MINUTE` | `6` / `0` | 両フィード共通の日次ゲート発火時刻(JST)。最初のゲート通過実行(06:17 頃)で両カードを公開 |
 | `FEED_BASE_URL` | `https://yuzu-krs.github.io/aibench-teams-feed` | channel link |
 | `STATE_DIR` / `RSS_DIR` | `./state` / `./docs/rss` | 出力先 |
-| `NEW_MODEL_MAX_ITEMS` | `200` | new-model 差分フィードの保持件数 |
+| `NEW_MODEL_MAX_ITEMS` | `200` | new-model 待ち(pending)の1日蓄積上限(超過時は古いものから落とす) |
 | `LOG_LEVEL` | `info` | debug/info/warn/error |
 
 Secret をリポジトリに置かないこと。Actions では `GITHUB_TOKEN`(workflow 内で
@@ -84,16 +92,18 @@ Secret をリポジトリに置かないこと。Actions では `GITHUB_TOKEN`(w
 ## 運用
 
 - 普段は無運用。Actions の赤ランは障害シグナル。state 破損時は `git revert` で復旧
-- cron は UTC 指定で 0〜40 分遅延する。benchmark digest が **06:17〜06:45 JST 頃**に
+- cron は UTC 指定で 0〜40 分遅延する。両カードが **06:17〜06:45 JST 頃**に
   生成されるのは正常。目的は **07:00 の Teams 公開に先立って最新データを生成
  しておく**こと(06:17 生成 → 07:00 公開)
 - Power Automate 側に独自の通知済み管理を作らない(GUID による重複排除に委任し、
   実挙動は E2E で確認する)
-- **new-model.xml は差分フィード**のため、item は次回実行(最大約1時間後)で
-  置き換わる。取りこぼしを避けるなら PA の New Model ポーリングは 1 時間より
-  短い間隔(例: 30 分)にする。benchmark.xml は 90 日保持なので 24 時間間隔で十分
-- PA 初回接続時の大量通知を防ぐため、**フィードが空の状態で接続する**
-  (過去 item の backfill はしない)
+- **PA の New Model フローは Benchmark フローと同じ「1日1回・07:00頃」に設定する**
+  (旧「30 分」は差分フィード時代の設定)。06:17 実行が失敗すると再試行の push が
+  07:40 頃になり 07:00 のポーリングに間に合わないため、確実に届けたいなら
+  ポーリング時刻を 08:00 以降にするか 12 時間間隔にする(GUID 重複排除により
+  2 回目のポーリングは通常 no-op)。Benchmark フローも同じ性質を持つ
+- PA 初回接続時の大量通知を防ぐため、**両フィードとも直近カード 1 件以下の状態で
+  接続する**(過去 item の backfill はしない)
 
 ## Power Automate での判定方法(item の有無と新着検出)
 
@@ -108,30 +118,32 @@ PA の標準 RSS トリガー「フィードアイテムが公開されるとき
 | item あり & GUID 未処理 | フローが実行され、未処理 item が動的コンテンツに渡る |
 | item あり & GUID 処理済み | 実行されない(同一 GUID は二度と届かない) |
 
-- **new-model.xml は差分フィード**: Actions の実行ごとに丸ごと置き換わる。
-  新規検出 0 件の時間帯は空フィードになるため PA は何もせず、検出された実行の
-  item だけが1度だけ届く。1 実行で複数モデルを検出した場合は 1 回のフロー実行に
-  複数 item が入るため、Teams 投稿は「Apply to each(各々に適用)」でループさせる。
+- **new-model.xml は日次サマリーカード**: 毎日 06:17 頃に新しい dateKey の GUID に
+  差し替わり、前日公開以降の検出全件が 1 item にまとまって届く。新規 0 件の日は
+  空フィードのため PA は何もしない(Teams 投稿も無し)。item は 1 本なので
+  Apply to each は基本 1 周だけ実行される。
 - **benchmark.xml は常に最新ダイジェスト1件のみ**: 毎日06:17に新しい dateKey の
   GUID に差し替わるため、24時間間隔のポーリングで1日1カード届く。
-- **初回接続**: フィードが空の状態で接続する(new-model は通常ずっと空)。
+- **初回接続**: フィードが空または直近カード1件の状態で接続する。
   PA の初回ポーリングが既存 item を「新着」として扱うかは仕様上断定できないため、
   接続直後の実行履歴で E2E 確認をする。GUID が常に安定しているため、PA 側の
   実挙動によらず二重通知は構造的に防がれている。
 
 ### PA フローの構築手順
 
-2 本とも同じ構成で、**トリガーの URL とポーリング間隔だけが違う**。
+2 本とも同じ構成で、**トリガーの URL だけが違う**(間隔は両方とも 24 時間)。
 
 | フロー | RSS URL | 間隔 |
 |---|---|---|
-| New Model 通知 | `https://yuzu-krs.github.io/aibench-teams-feed/rss/new-model.xml` | **30分**(推奨) |
-| Benchmark digest | `https://yuzu-krs.github.io/aibench-teams-feed/rss/benchmark.xml` | **24時間** |
+| New Model 通知 | `https://yuzu-krs.github.io/aibench-teams-feed/rss/new-model.xml` | **24時間**(時刻 7:00) |
+| Benchmark digest | `https://yuzu-krs.github.io/aibench-teams-feed/rss/benchmark.xml` | **24時間**(時刻 7:00) |
 
 1. make.powerautomate.com →「作成」→「自動クラウド フロー」→
    トリガー検索「RSS」→「**フィードアイテムが公開されるとき**」を選択
 2. トリガー設定: 接続名は任意、**RSS URL** に上表の URL、
-   頻度 `分`/間隔 `30`(New Model)または `時間`/間隔 `24`(Benchmark)を入れて保存
+   頻度 `日`/間隔 `1`/時刻 `07:00`(両フロー共通)を入れて保存。
+   既存の New Model フローが `分`/`30` のままなら、この `日`/`07:00` への
+   変更と保存し直しが必要(これで Teams 配信が毎朝 7 時になる)
 3. 保存するとトリガーの下に「**Apply to each(各々に適用する)**」が自動で付く
    (トリガー出力が item 配列のため。benchmark は基本 1 件なので 1 周だけ実行)
 4. その中に Teams アクション「**チャットまたはチャネルでメッセージを投稿する**」を追加:
@@ -142,20 +154,24 @@ PA の標準 RSS トリガー「フィードアイテムが公開されるとき
 
        replace(trim(item()?['description']), decodeUriComponent('%0A'), '<br/>')
 
-   - description の1行目は 📅(benchmark)または 🏢(new-model)で始まるため、
+   - description の1行目は両フローとも 📅 で始まるため、
      title を重ねなくても内容は判別可能。見出しを付けたい場合は Message 先頭に
      `item()?['title']` を連結
 5. 動作確認: Apply to each の先頭に「**作成(Compose)**」を置き、同じ式の出力を
    実行履歴で確認してから Teams アクションに接続すると確実
-6. New Model フローの初回 E2E は、テスト検知 item を配信してから行う。
+6. New Model フローの初回 E2E は、テスト検知をカードに載せてから行う。
    リポジトリの `e2e-new-model.mjs` が公式パイプライン経由でテスト検知を
-   差分フィードに掲載する(ID には既知ファミリー名 `gpt` 等を含める必要あり):
+   当日のカードに載せて即公開する(force で日次ゲートを無視。ID には既知
+   ファミリー名 `gpt` 等を含める必要あり):
 
        node e2e-new-model.mjs gpt-e2e-check-1
        git add state docs && git commit -m "test: PA E2E" && git push
 
-   配信済み item は次の毎時実行で自動消滅する(差分フィードの設計)。
-   消滅後の再テストは ID の番号を変えて再実行。
+   **実施はその日の定期公開(06:17 頃)より前が望ましい。** 定期公開後に force
+   公開すると、既に公開済みの当日カードをテストカードで上書きし、元の検出が
+   Teams に届かなくなる(カードは1日1件のため)。どうしても日中に試す場合は
+   PA フローを一時的に短い間隔に変える。カードは翌朝 06:17 頃の次回公開で
+   消滅する。消滅後の再テストは ID の番号を変えて再実行。
 
 ### Teams 投稿で改行を表示する(new-model / benchmark 両フロー共通)
 
@@ -189,6 +205,8 @@ digest ヘッダーの `🕒 取得:` はフィードを取得した日時。各
 - LiveBench の `Snapshot: YYYY-MM-DD` = livebench.ai 配信ファイルの
   Last-Modified(リリースは数週間ごとだが、ファイル自体は随時上書き更新される。
   キャッシュバストは 1 時間単位で、同一日中の CDN 古びれも発生しない)
+- new-model カードの `🕒 取得:` = カードの発行時刻(毎日 06:17 頃)。
+  各モデルブロック末尾の `🕒` = そのモデルを検知した時刻(前日公開以降に分散)
 
 ## Data Sources
 
@@ -256,7 +274,8 @@ aibench-teams-feed RSS.
 
 ```
 src/       feed本体(types/config/feedStore/rssBuilder/feeds/newModelFeed/benchmarkFeed/cli)
-state/     git管理の状態(seen-models, <board>.json, last-posted, feed-items-*.json)
+state/     git管理の状態(seen-models, <board>.json, last-posted, last-posted-new-model,
+           new-model-pending, feed-items-*.json)
 docs/      Pages で配信する内容(index.html と rss/*.xml は生成物)
 test/      vitest(bot の fixture スタイル、ネットワークなし)
 ```

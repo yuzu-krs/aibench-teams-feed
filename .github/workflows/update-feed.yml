@@ -2,10 +2,11 @@ name: update-feed
 
 on:
   schedule:
-    # UTC. GitHub delays scheduled runs by 0-40 min; the benchmark's daily
-    # gate lives in the CLI, so jitter only shifts the digest, never skips it.
-    # 21:17 UTC = 06:17 JST = the digest is generated ahead of the 07:00
-    # JST Teams publication.
+    # UTC. GitHub delays scheduled runs by 0-40 min; BOTH feeds' daily gates
+    # live in the CLI, so jitter only shifts the digests, never skips them.
+    # 21:17 UTC = 06:17 JST = the first gate-passing run: the benchmark
+    # digest and the new-model card are generated ahead of the 07:00 JST
+    # Teams publication (Power Automate's daily recurrences).
     - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
@@ -15,6 +16,9 @@ on:
         default: auto
         options:
           - auto
+          # Keeps the daily gate: polls + accumulates, and publishes only if
+          # today's card is not out yet. `node dist/cli.js new-model --force`
+          # (local) bypasses it.
           - new-model
           - benchmark
   push:

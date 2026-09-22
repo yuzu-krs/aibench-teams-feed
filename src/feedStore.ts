@@ -115,6 +115,46 @@ export function saveFeedItems(file: string, items: FeedItem[]): void {
   renameSync(temporary, file);
 }
 
+/** Same shape as the bot's last-posted.json; one file per gated feed. */
+const lastPostedFileSchema = z.object({
+  dateKey: z.string().min(1),
+  postedAt: z.string().min(1)
+});
+
+export type LastPostedFile = z.infer<typeof lastPostedFileSchema>;
+
+/**
+ * Loads a once-per-day gate marker. A missing file is an unpublished day; a
+ * corrupt one throws so a bad state never silently skips a day.
+ */
+export function loadLastPosted(file: string): LastPostedFile | undefined {
+  if (!existsSync(file)) return undefined;
+  let raw: string;
+  try {
+    raw = readFileSync(file, "utf8");
+  } catch (error) {
+    throw new Error(`State file ${file} could not be read`, { cause: error });
+  }
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`State file ${file} is corrupt; fix or restore it before running`, {
+      cause: error
+    });
+  }
+  return lastPostedFileSchema.parse(parsed);
+}
+
+/** Atomic tmp+rename write, mirroring the bot's StateStore. */
+export function saveLastPosted(file: string, dateKey: string, postedAt: string): void {
+  const payload: LastPostedFile = { dateKey, postedAt };
+  mkdirSync(dirname(file), { recursive: true });
+  const temporary = `${file}.tmp`;
+  writeFileSync(temporary, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  renameSync(temporary, file);
+}
+
 /**
  * Merges incoming items into the cache. A GUID that already exists keeps the
  * stored record untouched — content and pubDate are frozen at first creation,
