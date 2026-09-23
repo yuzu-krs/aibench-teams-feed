@@ -6,34 +6,47 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Tue, 22 Sep 2026 22:58:22 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 21:24:36 GMT</lastBuildDate>
     <item>
-      <title>🚀 New Model — 2026/09/23</title>
+      <title>🚀 New Model — 2026/09/24</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:new-model:2026-09-23</guid>
-      <pubDate>Tue, 22 Sep 2026 22:58:22 GMT</pubDate>
-      <description>📅 2026/09/23
-🕒 取得: 2026/09/23 07:58 JST
+      <guid isPermaLink="false">urn:aibench:new-model:2026-09-24</guid>
+      <pubDate>Wed, 23 Sep 2026 21:24:36 GMT</pubDate>
+      <description>📅 2026/09/24
+🕒 取得: 2026/09/24 06:24 JST
 
-🚀 本日の新モデル: 3件
+🚀 本日の新モデル: 6件
 
-🏢 OpenAI
-🧠 gpt-6-luna
-📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…
-💰 $0.1/$0.5 · 1.1M
-🕒 2026/09/23 07:58 JST
+🏢 Anthropic
+🧠 claude-opus-5-5
+📝 We&apos;ve launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…
+🕒 2026/09/24 03:30 JST
 
-🏢 OpenAI
-🧠 gpt-6-sol
-📝 Released GPT 6 Sol ( gpt 6 sol ) and GPT 6 Luna ( gpt 6 luna ). These reasoning models accept text and image inputs and generate text through the Responses and Chat Completions APIs. Standard pricing per 1M tokens for prompts with up to 272K input tokens: GPT 6 Sol: $2 input, $0.20 cached input, and $10 output. GPT 6…
-💰 $2/$10 · 1.1M
-🕒 2026/09/23 07:58 JST
+🏢 Anthropic
+🧠 claude-opus-5.5
+📝 We&apos;ve launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…
+💰 $4/$20 · 1M
+🕒 2026/09/24 03:30 JST
 
-🏢 xAI
-🧠 grok-4.7
-📝 Grok 4.7, SpaceXAI&apos;s frontier model for coding, agentic tasks, and knowledge work, is now available on the xAI API as grok 4.7 . It has a 500k context window, text and image inputs with text only output, and no text output limit. Pricing is $2 / $0.50 / $6 per 1M tokens (input / cached input / output) below 200k promp…
-💰 $1.6/$4.8 · 500K
-🕒 2026/09/23 07:58 JST
+🏢 Google
+🧠 gemini-3.1-flash-tts-preview
+📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
+🕒 2026/09/24 00:26 JST
+
+🏢 Google
+🧠 gemini-3.8-flash-lite
+📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
+🕒 2026/09/24 00:26 JST
+
+🏢 Google
+🧠 gemini-3.8-flash-lite-tts
+📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
+🕒 2026/09/24 00:26 JST
+
+🏢 Google
+🧠 gemini-3.8-flash-tts
+📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
+🕒 2026/09/24 00:26 JST
 
 💰 価格: openrouter.ai</description>
     </item>
