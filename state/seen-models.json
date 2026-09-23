@@ -965,6 +965,30 @@
       "providerId": "xai",
       "modelId": "grok-4.7",
       "firstSeenAt": "2026-09-22T22:58:22.128Z"
+    },
+    {
+      "key": "google:gemini-3.1-flash-tts-preview",
+      "providerId": "google",
+      "modelId": "gemini-3.1-flash-tts-preview",
+      "firstSeenAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "key": "google:gemini-3.8-flash-lite",
+      "providerId": "google",
+      "modelId": "gemini-3.8-flash-lite",
+      "firstSeenAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "key": "google:gemini-3.8-flash-lite-tts",
+      "providerId": "google",
+      "modelId": "gemini-3.8-flash-lite-tts",
+      "firstSeenAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "key": "google:gemini-3.8-flash-tts",
+      "providerId": "google",
+      "modelId": "gemini-3.8-flash-tts",
+      "firstSeenAt": "2026-09-23T15:26:20.055Z"
     }
   ]
 }

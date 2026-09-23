@@ -1,3 +1,36 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:google:gemini-3.1-flash-tts-preview",
+      "title": "🚀 New Model: gemini-3.1-flash-tts-preview · Google",
+      "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts",
+      "pubDate": "Wed, 23 Sep 2026 15:26:20 GMT",
+      "description": "🏢 Google\n🧠 gemini-3.1-flash-tts-preview\n📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…\n🕒 2026/09/24 00:26 JST",
+      "createdAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "guid": "urn:aibench:new-model:google:gemini-3.8-flash-lite",
+      "title": "🚀 New Model: gemini-3.8-flash-lite · Google",
+      "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts",
+      "pubDate": "Wed, 23 Sep 2026 15:26:20 GMT",
+      "description": "🏢 Google\n🧠 gemini-3.8-flash-lite\n📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…\n🕒 2026/09/24 00:26 JST",
+      "createdAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "guid": "urn:aibench:new-model:google:gemini-3.8-flash-lite-tts",
+      "title": "🚀 New Model: gemini-3.8-flash-lite-tts · Google",
+      "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts",
+      "pubDate": "Wed, 23 Sep 2026 15:26:20 GMT",
+      "description": "🏢 Google\n🧠 gemini-3.8-flash-lite-tts\n📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…\n🕒 2026/09/24 00:26 JST",
+      "createdAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "guid": "urn:aibench:new-model:google:gemini-3.8-flash-tts",
+      "title": "🚀 New Model: gemini-3.8-flash-tts · Google",
+      "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts",
+      "pubDate": "Wed, 23 Sep 2026 15:26:20 GMT",
+      "description": "🏢 Google\n🧠 gemini-3.8-flash-tts\n📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…\n🕒 2026/09/24 00:26 JST",
+      "createdAt": "2026-09-23T15:26:20.055Z"
+    }
+  ]
 }
