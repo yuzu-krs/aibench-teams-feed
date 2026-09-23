@@ -989,6 +989,18 @@
       "providerId": "google",
       "modelId": "gemini-3.8-flash-tts",
       "firstSeenAt": "2026-09-23T15:26:20.055Z"
+    },
+    {
+      "key": "anthropic:claude-opus-5-5",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-5-5",
+      "firstSeenAt": "2026-09-23T18:30:50.296Z"
+    },
+    {
+      "key": "anthropic:claude-opus-5.5",
+      "providerId": "anthropic",
+      "modelId": "claude-opus-5.5",
+      "firstSeenAt": "2026-09-23T18:30:50.296Z"
     }
   ]
 }

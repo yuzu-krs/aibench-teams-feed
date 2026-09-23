@@ -1,6 +1,22 @@
 {
   "items": [
     {
+      "guid": "urn:aibench:new-model:anthropic:claude-opus-5-5",
+      "title": "🚀 New Model: claude-opus-5-5 · Anthropic",
+      "link": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+      "pubDate": "Wed, 23 Sep 2026 18:30:50 GMT",
+      "description": "🏢 Anthropic\n🧠 claude-opus-5-5\n📝 We've launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…\n🕒 2026/09/24 03:30 JST",
+      "createdAt": "2026-09-23T18:30:50.296Z"
+    },
+    {
+      "guid": "urn:aibench:new-model:anthropic:claude-opus-5.5",
+      "title": "🚀 New Model: claude-opus-5.5 · Anthropic",
+      "link": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+      "pubDate": "Wed, 23 Sep 2026 18:30:50 GMT",
+      "description": "🏢 Anthropic\n🧠 claude-opus-5.5\n📝 We've launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…\n💰 $4/$20 · 1M\n🕒 2026/09/24 03:30 JST",
+      "createdAt": "2026-09-23T18:30:50.296Z"
+    },
+    {
       "guid": "urn:aibench:new-model:google:gemini-3.1-flash-tts-preview",
       "title": "🚀 New Model: gemini-3.1-flash-tts-preview · Google",
       "link": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts",
