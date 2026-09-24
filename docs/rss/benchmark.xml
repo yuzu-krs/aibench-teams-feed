@@ -6,26 +6,26 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Wed, 23 Sep 2026 21:24:36 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 21:24:00 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/09/24</title>
+      <title>📊 Benchmark Daily — 2026/09/25</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-24</guid>
-      <pubDate>Wed, 23 Sep 2026 21:24:36 GMT</pubDate>
-      <description>📅 2026/09/24
-🕒 取得: 2026/09/24 06:24 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-25</guid>
+      <pubDate>Thu, 24 Sep 2026 21:24:00 GMT</pubDate>
+      <description>📅 2026/09/25
+🕒 取得: 2026/09/25 06:24 JST
 
 💻 LMArena Coding
-🥇 1. gpt-6-astra-max · 1793 · $10/$50 ➖
-🥈 2. claude-fable-5.1-max · 1755 · $10/$50 ➖
-🥉 3. claude-opus-5-max · 1691 · $5/$25 ➖
-4. qwen3.8-max · 1671 ⬆️ +2
-5. qwen3.8-max-0902 · 1662 · $2/$6 ⬇️ -1
-6. claude-opus-5-high · 1661 · $5/$25 ⬆️ +1
-7. kimi-k3-max · 1658 · $3/$15 ⬇️ -2
-8. muse-spark-1.3-max · 1657 · $1.25/$4.25 ➖
-9. qwen3.8-flash-next · 1636 · $0.15/$0.47 ➖
-10. grok-4.7-xhigh · 1632 · $1.6/$4.8 🆕 NEW
+🥇 1. claude-opus-5.5-max · 1818 · $4/$20 🆕 NEW
+🥈 2. gpt-6-astra-max · 1792 · $10/$50 ⬇️ -1
+🥉 3. claude-fable-5.1-max · 1755 · $10/$50 ⬇️ -1
+4. claude-opus-5-max · 1692 · $5/$25 ⬇️ -1
+5. gpt-6-sol-max · 1686 · $2/$10 🆕 NEW
+6. qwen3.8-max · 1671 ⬇️ -2
+7. claude-opus-5-high · 1662 · $5/$25 ⬇️ -1
+8. qwen3.8-max-0902 · 1661 · $2/$6 ⬇️ -3
+9. kimi-k3-max · 1660 · $3/$15 ⬇️ -2
+10. muse-spark-1.3-max · 1658 · $1.25/$4.25 ⬇️ -2
 
 🧪 LiveBench
 Snapshot: 2026-09-22

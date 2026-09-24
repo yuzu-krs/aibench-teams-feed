@@ -6,49 +6,5 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Wed, 23 Sep 2026 21:24:36 GMT</lastBuildDate>
-    <item>
-      <title>🚀 New Model — 2026/09/24</title>
-      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:new-model:2026-09-24</guid>
-      <pubDate>Wed, 23 Sep 2026 21:24:36 GMT</pubDate>
-      <description>📅 2026/09/24
-🕒 取得: 2026/09/24 06:24 JST
-
-🚀 本日の新モデル: 6件
-
-🏢 Anthropic
-🧠 claude-opus-5-5
-📝 We&apos;ve launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…
-🕒 2026/09/24 03:30 JST
-
-🏢 Anthropic
-🧠 claude-opus-5.5
-📝 We&apos;ve launched Claude Opus 5.5 (claude-opus-5-5), a model for long-running agentic coding and knowledge work. It has a 1M token context window by default, 128k max output tokens, and always-on adaptive thinking, at $4 / $20 USD per MTok (Claude Opus 5 is $5 / $25). Claude Opus 5.5 is available on the Claude API, Claud…
-💰 $4/$20 · 1M
-🕒 2026/09/24 03:30 JST
-
-🏢 Google
-🧠 gemini-3.1-flash-tts-preview
-📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
-🕒 2026/09/24 00:26 JST
-
-🏢 Google
-🧠 gemini-3.8-flash-lite
-📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
-🕒 2026/09/24 00:26 JST
-
-🏢 Google
-🧠 gemini-3.8-flash-lite-tts
-📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
-🕒 2026/09/24 00:26 JST
-
-🏢 Google
-🧠 gemini-3.8-flash-tts
-📝 Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA): Released our next-generation text-to-speech (TTS) audio models and the Gemini API Voices endpoint (/v1beta/voices): Gemini 3.8 Flash TTS (gemini-3.8-flash-tts): Flagship creative TTS model engineered for studio-grade voice fidelity, nuanced a…
-🕒 2026/09/24 00:26 JST
-
-💰 価格: openrouter.ai</description>
-    </item>
   </channel>
 </rss>
