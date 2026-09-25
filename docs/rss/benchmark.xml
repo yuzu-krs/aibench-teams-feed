@@ -6,26 +6,26 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Thu, 24 Sep 2026 21:24:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 21:24:07 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/09/25</title>
+      <title>📊 Benchmark Daily — 2026/09/26</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-25</guid>
-      <pubDate>Thu, 24 Sep 2026 21:24:00 GMT</pubDate>
-      <description>📅 2026/09/25
-🕒 取得: 2026/09/25 06:24 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-09-26</guid>
+      <pubDate>Fri, 25 Sep 2026 21:24:07 GMT</pubDate>
+      <description>📅 2026/09/26
+🕒 取得: 2026/09/26 06:24 JST
 
 💻 LMArena Coding
-🥇 1. claude-opus-5.5-max · 1818 · $4/$20 🆕 NEW
-🥈 2. gpt-6-astra-max · 1792 · $10/$50 ⬇️ -1
-🥉 3. claude-fable-5.1-max · 1755 · $10/$50 ⬇️ -1
-4. claude-opus-5-max · 1692 · $5/$25 ⬇️ -1
-5. gpt-6-sol-max · 1686 · $2/$10 🆕 NEW
-6. qwen3.8-max · 1671 ⬇️ -2
-7. claude-opus-5-high · 1662 · $5/$25 ⬇️ -1
-8. qwen3.8-max-0902 · 1661 · $2/$6 ⬇️ -3
-9. kimi-k3-max · 1660 · $3/$15 ⬇️ -2
-10. muse-spark-1.3-max · 1658 · $1.25/$4.25 ⬇️ -2
+🥇 1. claude-opus-5.5-max · 1818 · $4/$20 ➖
+🥈 2. gpt-6-astra-max · 1792 · $10/$50 ➖
+🥉 3. claude-fable-5.1-max · 1755 · $10/$50 ➖
+4. claude-opus-5-max · 1692 · $5/$25 ➖
+5. gpt-6-sol-max · 1686 · $2/$10 ➖
+6. qwen3.8-max · 1671 ➖
+7. claude-opus-5-high · 1662 · $5/$25 ➖
+8. qwen3.8-max-0902 · 1661 · $2/$6 ➖
+9. kimi-k3-max · 1660 · $3/$15 ➖
+10. muse-spark-1.3-max · 1658 · $1.25/$4.25 ➖
 
 🧪 LiveBench
 Snapshot: 2026-09-22
@@ -35,7 +35,7 @@ Snapshot: 2026-09-22
 4. gpt-6-astra-max · 82.16 · $10/$50 ➖
 5. claude-opus-5-5-xhigh-effort · 82.06 ➖
 6. muse-spark-1.3-xhigh · 81.59 · $1.25/$4.25 ➖
-7. deepseek-v4.1-flash-max · 81.11 · $0.15/$0.6 ➖
+7. deepseek-v4.1-flash-max · 81.11 · $0.1/$0.6 ➖
 8. gpt-5.6-sol-max · 81.05 · $2/$10 ➖
 9. gpt-5.5-xhigh · 80.19 ➖
 10. claude-opus-5-max-effort · 80.08 · $5/$25 ➖
