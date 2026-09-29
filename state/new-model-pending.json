@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:anthropic:claude-sonnet-5.5",
+      "title": "🚀 New Model: claude-sonnet-5.5 · Anthropic",
+      "link": "https://platform.claude.com/docs/en/release-notes/overview#september-28-2026",
+      "pubDate": "Tue, 29 Sep 2026 01:40:35 GMT",
+      "description": "🏢 Anthropic\n🧠 claude-sonnet-5.5\n📝 We've launched Claude Sonnet 5.5 (claude-sonnet-5-5). It's available on the Claude API, Claude Platform on AWS, Claude on Google Cloud, and Claude in Microsoft Foundry. For its context window, output limits, and prices, see the Claude Sonnet 5.5 model page.\n💰 $2/$10 · 1M\n🕒 2026/09/29 10:40 JST",
+      "createdAt": "2026-09-29T01:40:35.849Z"
+    }
+  ]
 }
