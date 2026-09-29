@@ -1013,6 +1013,18 @@
       "providerId": "anthropic",
       "modelId": "claude-sonnet-5.5",
       "firstSeenAt": "2026-09-29T01:40:35.849Z"
+    },
+    {
+      "key": "openai:gpt-6.1",
+      "providerId": "openai",
+      "modelId": "gpt-6.1",
+      "firstSeenAt": "2026-09-29T18:33:21.099Z"
+    },
+    {
+      "key": "openai:gpt-6.1-sol",
+      "providerId": "openai",
+      "modelId": "gpt-6.1-sol",
+      "firstSeenAt": "2026-09-29T18:33:21.099Z"
     }
   ]
 }
