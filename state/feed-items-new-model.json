@@ -1,12 +1,3 @@
 {
-  "items": [
-    {
-      "guid": "urn:aibench:new-model:2026-09-30",
-      "title": "🚀 New Model — 2026/09/30",
-      "link": "https://yuzu-krs.github.io/aibench-teams-feed",
-      "pubDate": "Tue, 29 Sep 2026 21:26:00 GMT",
-      "description": "📅 2026/09/30\n🕒 取得: 2026/09/30 06:26 JST\n\n🚀 本日の新モデル: 3件\n\n🏢 OpenAI\n🧠 gpt-6.1\n📝 Released GPT 6.1 Sol ( gpt 6.1 sol ) for complex coding and professional work at a lower cost than GPT 6 Astra. Standard pricing per 1M tokens for prompts with up to 272K input tokens is $2 input, $0.10 cached input, $2.50 cache write, and $10 output. GPT 6.1 Sol also supports Multi agent in beta. Let the model delega…\n🕒 2026/09/30 03:33 JST\n\n🏢 OpenAI\n🧠 gpt-6.1-sol\n📝 Released GPT 6.1 Sol ( gpt 6.1 sol ) for complex coding and professional work at a lower cost than GPT 6 Astra. Standard pricing per 1M tokens for prompts with up to 272K input tokens is $2 input, $0.10 cached input, $2.50 cache write, and $10 output. GPT 6.1 Sol also supports Multi agent in beta. Let the model delega…\n💰 $2/$10 · 1.1M\n🕒 2026/09/30 03:33 JST\n\n🏢 Anthropic\n🧠 claude-sonnet-5.5\n📝 We've launched Claude Sonnet 5.5 (claude-sonnet-5-5). It's available on the Claude API, Claude Platform on AWS, Claude on Google Cloud, and Claude in Microsoft Foundry. For its context window, output limits, and prices, see the Claude Sonnet 5.5 model page.\n💰 $2/$10 · 1M\n🕒 2026/09/29 10:40 JST\n\n💰 価格: openrouter.ai",
-      "createdAt": "2026-09-29T21:26:00.211Z"
-    }
-  ]
+  "items": []
 }
