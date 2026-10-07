@@ -6,14 +6,14 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Tue, 06 Oct 2026 21:25:47 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 21:26:26 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/10/07</title>
+      <title>📊 Benchmark Daily — 2026/10/08</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-07</guid>
-      <pubDate>Tue, 06 Oct 2026 21:25:47 GMT</pubDate>
-      <description>📅 2026/10/07
-🕒 取得: 2026/10/07 06:25 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-08</guid>
+      <pubDate>Wed, 07 Oct 2026 21:26:26 GMT</pubDate>
+      <description>📅 2026/10/08
+🕒 取得: 2026/10/08 06:26 JST
 
 💻 LMArena Coding
 🥇 1. claude-opus-5.5-max · 1815 · $4/$20 ➖
@@ -28,7 +28,7 @@
 10. qwen3.8-max · 1671 ➖
 
 🧪 LiveBench
-Snapshot: 2026-09-29
+Snapshot: 2026-10-07
 🥇 1. claude-fable-5-1-max-effort · 83.41 ➖
 🥈 2. claude-opus-5-5-max-effort · 83.22 ➖
 🥉 3. claude-fable-5-max-effort · 82.97 · $10/$50 ➖

@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:2026-10-08",
+      "title": "🚀 New Model — 2026/10/08",
+      "link": "https://yuzu-krs.github.io/aibench-teams-feed",
+      "pubDate": "Wed, 07 Oct 2026 21:26:26 GMT",
+      "description": "📅 2026/10/08\n🕒 取得: 2026/10/08 06:26 JST\n\n🚀 本日の新モデル: 1件\n\n🏢 Anthropic\n🧠 claude-haiku-5-5\n📝 We've launched Claude Haiku 5.5 (claude-haiku-5-5), our most capable model tuned for high-volume and latency-sensitive work. It has a 1M token context window, 128k max output tokens, and adaptive thinking with the effort parameter. It's available on the Claude API, Claude in Amazon Bedrock, Claude Platform on AWS, Cla…\n🕒 2026/10/08 03:33 JST\n\n💰 価格: openrouter.ai",
+      "createdAt": "2026-10-07T21:26:26.817Z"
+    }
+  ]
 }
