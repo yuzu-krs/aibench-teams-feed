@@ -1025,6 +1025,18 @@
       "providerId": "openai",
       "modelId": "gpt-6.1-sol",
       "firstSeenAt": "2026-09-29T18:33:21.099Z"
+    },
+    {
+      "key": "anthropic:claude-haiku-5-5",
+      "providerId": "anthropic",
+      "modelId": "claude-haiku-5-5",
+      "firstSeenAt": "2026-10-07T18:33:49.422Z"
+    },
+    {
+      "key": "anthropic:claude-haiku-5.5",
+      "providerId": "anthropic",
+      "modelId": "claude-haiku-5.5",
+      "firstSeenAt": "2026-10-07T18:33:49.422Z"
     }
   ]
 }
