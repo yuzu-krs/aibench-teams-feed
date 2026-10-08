@@ -6,23 +6,5 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Wed, 07 Oct 2026 21:26:26 GMT</lastBuildDate>
-    <item>
-      <title>🚀 New Model — 2026/10/08</title>
-      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:new-model:2026-10-08</guid>
-      <pubDate>Wed, 07 Oct 2026 21:26:26 GMT</pubDate>
-      <description>📅 2026/10/08
-🕒 取得: 2026/10/08 06:26 JST
-
-🚀 本日の新モデル: 1件
-
-🏢 Anthropic
-🧠 claude-haiku-5-5
-📝 We&apos;ve launched Claude Haiku 5.5 (claude-haiku-5-5), our most capable model tuned for high-volume and latency-sensitive work. It has a 1M token context window, 128k max output tokens, and adaptive thinking with the effort parameter. It&apos;s available on the Claude API, Claude in Amazon Bedrock, Claude Platform on AWS, Cla…
-🕒 2026/10/08 03:33 JST
-
-💰 価格: openrouter.ai</description>
-    </item>
   </channel>
 </rss>

@@ -1,13 +1,13 @@
 {
-  "savedAt": "2026-10-07T21:26:26.175Z",
+  "savedAt": "2026-10-08T21:26:21.354Z",
   "entries": [
     {
       "entityKey": "claude-opus-5.5-max",
       "name": "claude-opus-5.5-max",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1815,
-      "scoreDisplay": "1815"
+      "score": 1814,
+      "scoreDisplay": "1814"
     },
     {
       "entityKey": "gpt-6-astra-max",
@@ -22,64 +22,64 @@
       "name": "claude-sonnet-5.5-xhigh",
       "organization": "anthropic",
       "rank": 3,
-      "score": 1786,
-      "scoreDisplay": "1786"
+      "score": 1773,
+      "scoreDisplay": "1773"
     },
     {
       "entityKey": "gpt-6.1-sol-max",
       "name": "gpt-6.1-sol-max",
       "organization": "openai",
       "rank": 4,
-      "score": 1758,
-      "scoreDisplay": "1758"
+      "score": 1757,
+      "scoreDisplay": "1757"
     },
     {
       "entityKey": "claude-fable-5.1-max",
       "name": "claude-fable-5.1-max",
       "organization": "anthropic",
       "rank": 5,
-      "score": 1749,
-      "scoreDisplay": "1749"
+      "score": 1745,
+      "scoreDisplay": "1745"
     },
     {
       "entityKey": "claude-sonnet-5.5-high",
       "name": "claude-sonnet-5.5-high",
       "organization": "anthropic",
       "rank": 6,
-      "score": 1715,
-      "scoreDisplay": "1715"
+      "score": 1716,
+      "scoreDisplay": "1716"
     },
     {
       "entityKey": "claude-opus-5-max",
       "name": "claude-opus-5-max",
       "organization": "anthropic",
       "rank": 7,
-      "score": 1695,
-      "scoreDisplay": "1695"
+      "score": 1692,
+      "scoreDisplay": "1692"
     },
     {
       "entityKey": "gpt-6-sol-max",
       "name": "gpt-6-sol-max",
       "organization": "openai",
       "rank": 8,
-      "score": 1689,
-      "scoreDisplay": "1689"
+      "score": 1687,
+      "scoreDisplay": "1687"
     },
     {
       "entityKey": "gemini-4-argon-high",
       "name": "gemini-4-argon-high",
       "organization": "google",
       "rank": 9,
-      "score": 1680,
-      "scoreDisplay": "1680"
+      "score": 1678,
+      "scoreDisplay": "1678"
     },
     {
       "entityKey": "qwen3.8-max",
       "name": "qwen3.8-max",
       "organization": "alibaba",
       "rank": 10,
-      "score": 1671,
-      "scoreDisplay": "1671"
+      "score": 1672,
+      "scoreDisplay": "1672"
     }
   ]
 }
