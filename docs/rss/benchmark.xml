@@ -6,14 +6,14 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Fri, 09 Oct 2026 21:25:49 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 21:25:08 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/10/10</title>
+      <title>📊 Benchmark Daily — 2026/10/11</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-10</guid>
-      <pubDate>Fri, 09 Oct 2026 21:25:49 GMT</pubDate>
-      <description>📅 2026/10/10
-🕒 取得: 2026/10/10 06:25 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-11</guid>
+      <pubDate>Sat, 10 Oct 2026 21:25:08 GMT</pubDate>
+      <description>📅 2026/10/11
+🕒 取得: 2026/10/11 06:25 JST
 
 💻 LMArena Coding
 🥇 1. claude-opus-5.5-max · 1813 · $4/$20 ➖
@@ -25,7 +25,7 @@
 7. claude-opus-5-max · 1691 · $5/$25 ➖
 8. gpt-6-sol-max · 1688 · $2/$10 ➖
 9. gemini-4-argon-high · 1678 ➖
-10. qwen3.8-max-0902 · 1674 · $2/$6 🆕 NEW
+10. qwen3.8-max-0902 · 1674 · $2/$6 ➖
 
 🧪 LiveBench
 Snapshot: 2026-10-07
