@@ -6,5 +6,29 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
+    <lastBuildDate>Tue, 13 Oct 2026 21:22:42 GMT</lastBuildDate>
+    <item>
+      <title>🚀 New Model — 2026/10/14</title>
+      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
+      <guid isPermaLink="false">urn:aibench:new-model:2026-10-14</guid>
+      <pubDate>Tue, 13 Oct 2026 21:22:42 GMT</pubDate>
+      <description>📅 2026/10/14
+🕒 取得: 2026/10/14 06:22 JST
+
+🚀 本日の新モデル: 2件
+
+🏢 Google
+🧠 gemini-4
+📝 Gemini 4 Argon (gemini-4-argon) generally available (GA): Released Gemini 4 Argon (gemini-4-argon), our most capable model built for complex coding, agentic, math, and science tasks. For API changes, pricing, and migration guidance, see What&apos;s new in Gemini 4 Argon.
+🕒 2026/10/14 01:31 JST
+
+🏢 Google
+🧠 gemini-4-argon
+📝 Gemini 4 Argon (gemini-4-argon) generally available (GA): Released Gemini 4 Argon (gemini-4-argon), our most capable model built for complex coding, agentic, math, and science tasks. For API changes, pricing, and migration guidance, see What&apos;s new in Gemini 4 Argon.
+💰 $2/$10 · 1M
+🕒 2026/10/14 01:31 JST
+
+💰 価格: openrouter.ai</description>
+    </item>
   </channel>
 </rss>
