@@ -1037,6 +1037,18 @@
       "providerId": "anthropic",
       "modelId": "claude-haiku-5.5",
       "firstSeenAt": "2026-10-07T18:33:49.422Z"
+    },
+    {
+      "key": "google:gemini-4",
+      "providerId": "google",
+      "modelId": "gemini-4",
+      "firstSeenAt": "2026-10-13T16:31:21.286Z"
+    },
+    {
+      "key": "google:gemini-4-argon",
+      "providerId": "google",
+      "modelId": "gemini-4-argon",
+      "firstSeenAt": "2026-10-13T16:31:21.286Z"
     }
   ]
 }
