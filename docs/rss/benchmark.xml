@@ -6,39 +6,39 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Tue, 13 Oct 2026 21:22:22 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 21:23:49 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/10/14</title>
+      <title>📊 Benchmark Daily — 2026/10/15</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-14</guid>
-      <pubDate>Tue, 13 Oct 2026 21:22:22 GMT</pubDate>
-      <description>📅 2026/10/14
-🕒 取得: 2026/10/14 06:22 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-15</guid>
+      <pubDate>Wed, 14 Oct 2026 21:23:49 GMT</pubDate>
+      <description>📅 2026/10/15
+🕒 取得: 2026/10/15 06:23 JST
 
 💻 LMArena Coding
-🥇 1. claude-opus-5.5-max · 1813 · $4/$20 ➖
-🥈 2. gpt-6-astra-max · 1786 · $10/$50 ➖
+🥇 1. claude-opus-5.5-max · 1811 · $4/$20 ➖
+🥈 2. gpt-6-astra-max · 1780 · $10/$50 ➖
 🥉 3. claude-sonnet-5.5-xhigh · 1774 · $2/$10 ➖
-4. gpt-6.1-sol-max · 1755 · $2/$10 ➖
-5. claude-fable-5.1-max · 1744 · $10/$50 ➖
-6. claude-sonnet-5.5-high · 1715 · $2/$10 ➖
-7. claude-opus-5-max · 1691 · $5/$25 ➖
-8. gpt-6-sol-max · 1688 · $2/$10 ➖
+4. gpt-6.1-sol-max · 1760 · $2/$10 ➖
+5. claude-fable-5.1-max · 1743 · $10/$50 ➖
+6. claude-sonnet-5.5-high · 1713 · $2/$10 ➖
+7. claude-opus-5-max · 1690 · $5/$25 ➖
+8. gpt-6-sol-max · 1686 · $2/$10 ➖
 9. gemini-4-argon-high · 1678 · $2/$10 ➖
-10. qwen3.8-max-0902 · 1674 · $2/$6 ➖
+10. qwen3.8-max-0902 · 1673 · $2/$6 ➖
 
 🧪 LiveBench
-Snapshot: 2026-10-13
-🥇 1. claude-fable-5.1 · 87.99 · $10/$50 🆕 NEW
-🥈 2. claude-opus-5.5 · 86.53 · $4/$20 🆕 NEW
-🥉 3. gpt-6-astra · 86.14 · $10/$50 🆕 NEW
-4. gpt-6.1-sol · 85.41 · $2/$10 🆕 NEW
-5. gemini-4-argon · 84.10 · $2/$10 🆕 NEW
-6. claude-fable-5 · 83.61 · $10/$50 🆕 NEW
-7. claude-sonnet-5.5 · 82.46 · $2/$10 🆕 NEW
-8. claude-opus-5 · 82.09 · $5/$25 🆕 NEW
-9. gpt-6-sol · 81.91 · $2/$10 🆕 NEW
-10. muse-wonder-1.0 · 78.10 🆕 NEW
+Snapshot: 2026-10-14
+🥇 1. claude-fable-5.1 · 87.99 · $10/$50 ➖
+🥈 2. claude-opus-5.5 · 86.53 · $4/$20 ➖
+🥉 3. gpt-6-astra · 86.14 · $10/$50 ➖
+4. gpt-6.1-sol · 85.41 · $2/$10 ➖
+5. gemini-4-argon · 84.10 · $2/$10 ➖
+6. claude-fable-5 · 83.61 · $10/$50 ➖
+7. claude-sonnet-5.5 · 82.46 · $2/$10 ➖
+8. claude-opus-5 · 82.09 · $5/$25 ➖
+9. gpt-6-sol · 81.91 · $2/$10 ➖
+10. muse-wonder-1.0 · 78.10 ➖
 
 ⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし
 💰 入力/出力 $/1Mトークン

@@ -1,21 +1,21 @@
 {
-  "savedAt": "2026-10-13T21:22:22.329Z",
+  "savedAt": "2026-10-14T21:23:49.901Z",
   "entries": [
     {
       "entityKey": "claude-opus-5.5-max",
       "name": "claude-opus-5.5-max",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1813,
-      "scoreDisplay": "1813"
+      "score": 1811,
+      "scoreDisplay": "1811"
     },
     {
       "entityKey": "gpt-6-astra-max",
       "name": "gpt-6-astra-max",
       "organization": "openai",
       "rank": 2,
-      "score": 1786,
-      "scoreDisplay": "1786"
+      "score": 1780,
+      "scoreDisplay": "1780"
     },
     {
       "entityKey": "claude-sonnet-5.5-xhigh",
@@ -30,40 +30,40 @@
       "name": "gpt-6.1-sol-max",
       "organization": "openai",
       "rank": 4,
-      "score": 1755,
-      "scoreDisplay": "1755"
+      "score": 1760,
+      "scoreDisplay": "1760"
     },
     {
       "entityKey": "claude-fable-5.1-max",
       "name": "claude-fable-5.1-max",
       "organization": "anthropic",
       "rank": 5,
-      "score": 1744,
-      "scoreDisplay": "1744"
+      "score": 1743,
+      "scoreDisplay": "1743"
     },
     {
       "entityKey": "claude-sonnet-5.5-high",
       "name": "claude-sonnet-5.5-high",
       "organization": "anthropic",
       "rank": 6,
-      "score": 1715,
-      "scoreDisplay": "1715"
+      "score": 1713,
+      "scoreDisplay": "1713"
     },
     {
       "entityKey": "claude-opus-5-max",
       "name": "claude-opus-5-max",
       "organization": "anthropic",
       "rank": 7,
-      "score": 1691,
-      "scoreDisplay": "1691"
+      "score": 1690,
+      "scoreDisplay": "1690"
     },
     {
       "entityKey": "gpt-6-sol-max",
       "name": "gpt-6-sol-max",
       "organization": "openai",
       "rank": 8,
-      "score": 1688,
-      "scoreDisplay": "1688"
+      "score": 1686,
+      "scoreDisplay": "1686"
     },
     {
       "entityKey": "gemini-4-argon-high",
@@ -78,8 +78,8 @@
       "name": "qwen3.8-max-0902",
       "organization": "alibaba",
       "rank": 10,
-      "score": 1674,
-      "scoreDisplay": "1674"
+      "score": 1673,
+      "scoreDisplay": "1673"
     }
   ]
 }
