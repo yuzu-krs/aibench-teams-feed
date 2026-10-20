@@ -1,21 +1,21 @@
 {
-  "savedAt": "2026-10-19T21:24:26.751Z",
+  "savedAt": "2026-10-20T21:25:41.991Z",
   "entries": [
     {
       "entityKey": "Claude Opus 5.5 (Max)",
       "name": "Claude Opus 5.5 (Max)",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1806,
-      "scoreDisplay": "1806"
+      "score": 1807,
+      "scoreDisplay": "1807"
     },
     {
       "entityKey": "GPT-6 Astra (Max)",
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
       "rank": 2,
-      "score": 1776,
-      "scoreDisplay": "1776"
+      "score": 1774,
+      "scoreDisplay": "1774"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
@@ -30,56 +30,56 @@
       "name": "GPT-6.1 Sol (Max)",
       "organization": "openai",
       "rank": 4,
-      "score": 1754,
-      "scoreDisplay": "1754"
+      "score": 1753,
+      "scoreDisplay": "1753"
     },
     {
       "entityKey": "Claude Fable 5.1 (Max)",
       "name": "Claude Fable 5.1 (Max)",
       "organization": "anthropic",
       "rank": 5,
-      "score": 1742,
-      "scoreDisplay": "1742"
+      "score": 1743,
+      "scoreDisplay": "1743"
+    },
+    {
+      "entityKey": "Muse Wonder Full (Max)",
+      "name": "Muse Wonder Full (Max)",
+      "organization": "meta",
+      "rank": 6,
+      "score": 1726,
+      "scoreDisplay": "1726"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (High)",
       "name": "Claude Sonnet 5.5 (High)",
       "organization": "anthropic",
-      "rank": 6,
-      "score": 1709,
-      "scoreDisplay": "1709"
+      "rank": 7,
+      "score": 1710,
+      "scoreDisplay": "1710"
     },
     {
       "entityKey": "Claude Opus 5 (Max)",
       "name": "Claude Opus 5 (Max)",
       "organization": "anthropic",
-      "rank": 7,
-      "score": 1690,
-      "scoreDisplay": "1690"
+      "rank": 8,
+      "score": 1689,
+      "scoreDisplay": "1689"
     },
     {
       "entityKey": "GPT-6 Sol (Max)",
       "name": "GPT-6 Sol (Max)",
       "organization": "openai",
-      "rank": 8,
-      "score": 1682,
-      "scoreDisplay": "1682"
+      "rank": 9,
+      "score": 1683,
+      "scoreDisplay": "1683"
     },
     {
       "entityKey": "Gemini 4 Argon (High)",
       "name": "Gemini 4 Argon (High)",
       "organization": "google",
-      "rank": 9,
+      "rank": 10,
       "score": 1678,
       "scoreDisplay": "1678"
-    },
-    {
-      "entityKey": "Qwen3.8-Max (0902)",
-      "name": "Qwen3.8-Max (0902)",
-      "organization": "alibaba",
-      "rank": 10,
-      "score": 1674,
-      "scoreDisplay": "1674"
     }
   ]
 }
