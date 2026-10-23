@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-10-22T21:24:16.870Z",
+  "savedAt": "2026-10-23T21:24:17.880Z",
   "entries": [
     {
       "entityKey": "Claude Opus 5.5 (Max)",
@@ -14,24 +14,24 @@
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
       "rank": 2,
-      "score": 1774,
-      "scoreDisplay": "1774"
+      "score": 1775,
+      "scoreDisplay": "1775"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
       "rank": 3,
-      "score": 1768,
-      "scoreDisplay": "1768"
+      "score": 1767,
+      "scoreDisplay": "1767"
     },
     {
       "entityKey": "GPT-6.1 Sol (Max)",
       "name": "GPT-6.1 Sol (Max)",
       "organization": "openai",
       "rank": 4,
-      "score": 1753,
-      "scoreDisplay": "1753"
+      "score": 1749,
+      "scoreDisplay": "1749"
     },
     {
       "entityKey": "Claude Fable 5.1 (Max)",
@@ -54,32 +54,32 @@
       "name": "Claude Sonnet 5.5 (High)",
       "organization": "anthropic",
       "rank": 7,
-      "score": 1710,
-      "scoreDisplay": "1710"
+      "score": 1706,
+      "scoreDisplay": "1706"
     },
     {
       "entityKey": "Claude Opus 5 (Max)",
       "name": "Claude Opus 5 (Max)",
       "organization": "anthropic",
       "rank": 8,
-      "score": 1689,
-      "scoreDisplay": "1689"
+      "score": 1690,
+      "scoreDisplay": "1690"
     },
     {
       "entityKey": "GPT-6 Sol (Max)",
       "name": "GPT-6 Sol (Max)",
       "organization": "openai",
       "rank": 9,
-      "score": 1683,
-      "scoreDisplay": "1683"
+      "score": 1682,
+      "scoreDisplay": "1682"
     },
     {
-      "entityKey": "Gemini 4 Argon (High)",
-      "name": "Gemini 4 Argon (High)",
-      "organization": "google",
+      "entityKey": "Qwen3.8-Max (0902)",
+      "name": "Qwen3.8-Max (0902)",
+      "organization": "alibaba",
       "rank": 10,
-      "score": 1678,
-      "scoreDisplay": "1678"
+      "score": 1673,
+      "scoreDisplay": "1673"
     }
   ]
 }
