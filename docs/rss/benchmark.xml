@@ -6,14 +6,14 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Sat, 24 Oct 2026 21:23:06 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 21:22:07 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/10/25</title>
+      <title>📊 Benchmark Daily — 2026/10/26</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-25</guid>
-      <pubDate>Sat, 24 Oct 2026 21:23:06 GMT</pubDate>
-      <description>📅 2026/10/25
-🕒 取得: 2026/10/25 06:23 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-10-26</guid>
+      <pubDate>Sun, 25 Oct 2026 21:22:07 GMT</pubDate>
+      <description>📅 2026/10/26
+🕒 取得: 2026/10/26 06:22 JST
 
 💻 LMArena Coding
 🥇 1. Claude Opus 5.5 (Max) · 1807 · $4/$20 ➖
@@ -23,9 +23,9 @@
 5. Claude Fable 5.1 (Max) · 1742 · $10/$50 ➖
 6. Muse Wonder Full (Max) · 1726 ➖
 7. Claude Sonnet 5.5 (High) · 1709 · $2/$10 ➖
-8. Kimi K3.1 Pro (Max) · 1692 · $2/$10 🆕 NEW
-9. Claude Opus 5 (Max) · 1691 · $5/$25 ⬇️ -1
-10. GPT-6 Sol (Max) · 1681 · $2/$10 ⬇️ -1
+8. Kimi K3.1 Pro (Max) · 1692 · $2/$10 ➖
+9. Claude Opus 5 (Max) · 1691 · $5/$25 ➖
+10. GPT-6 Sol (Max) · 1681 · $2/$10 ➖
 
 🧪 LiveBench
 ⚠️ LiveBench: unavailable
