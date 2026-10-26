@@ -6,5 +6,24 @@
     <description>プロバイダー公式の発表から検出した新モデルの1日まとめ (毎朝1回 Teams配信) · 価格: openrouter.ai</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
+    <lastBuildDate>Mon, 26 Oct 2026 21:25:30 GMT</lastBuildDate>
+    <item>
+      <title>🚀 New Model — 2026/10/27</title>
+      <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
+      <guid isPermaLink="false">urn:aibench:new-model:2026-10-27</guid>
+      <pubDate>Mon, 26 Oct 2026 21:25:30 GMT</pubDate>
+      <description>📅 2026/10/27
+🕒 取得: 2026/10/27 06:25 JST
+
+🚀 本日の新モデル: 1件
+
+🏢 OpenAI
+🧠 gpt-6.1-terra
+📝 Released GPT 6.1 Terra, a fast, efficient model for visual reasoning, precise computer use, and clear, natural writing. See the GPT 6 guide for prompting and migration guidance.
+💰 $1/$5 · 1.1M
+🕒 2026/10/27 03:39 JST
+
+💰 価格: openrouter.ai</description>
+    </item>
   </channel>
 </rss>
