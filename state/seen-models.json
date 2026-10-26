@@ -1049,6 +1049,12 @@
       "providerId": "google",
       "modelId": "gemini-4-argon",
       "firstSeenAt": "2026-10-13T16:31:21.286Z"
+    },
+    {
+      "key": "openai:gpt-6.1-terra",
+      "providerId": "openai",
+      "modelId": "gpt-6.1-terra",
+      "firstSeenAt": "2026-10-26T18:39:20.364Z"
     }
   ]
 }
