@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:openai:gpt-6-rosalind",
+      "title": "🚀 New Model: gpt-6-rosalind · OpenAI",
+      "link": "https://developers.openai.com/api/docs/changelog#october-2026",
+      "pubDate": "Fri, 30 Oct 2026 18:20:06 GMT",
+      "description": "🏢 OpenAI\n🧠 gpt-6-rosalind\n📝 Released GPT 6 Rosalind, bringing specialized biological reasoning with scientific tool use to complex life sciences research. Access is available to organizations approved for Rosalind Research through the trusted access program for internal research by authorized users.\n🕒 2026/10/31 03:20 JST",
+      "createdAt": "2026-10-30T18:20:06.263Z"
+    }
+  ]
 }

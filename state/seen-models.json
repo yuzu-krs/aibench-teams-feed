@@ -1055,6 +1055,12 @@
       "providerId": "openai",
       "modelId": "gpt-6.1-terra",
       "firstSeenAt": "2026-10-26T18:39:20.364Z"
+    },
+    {
+      "key": "openai:gpt-6-rosalind",
+      "providerId": "openai",
+      "modelId": "gpt-6-rosalind",
+      "firstSeenAt": "2026-10-30T18:20:06.263Z"
     }
   ]
 }
