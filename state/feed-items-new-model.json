@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:2026-10-31",
+      "title": "🚀 New Model — 2026/10/31",
+      "link": "https://yuzu-krs.github.io/aibench-teams-feed",
+      "pubDate": "Fri, 30 Oct 2026 21:18:13 GMT",
+      "description": "📅 2026/10/31\n🕒 取得: 2026/10/31 06:18 JST\n\n🚀 本日の新モデル: 1件\n\n🏢 OpenAI\n🧠 gpt-6-rosalind\n📝 Released GPT 6 Rosalind, bringing specialized biological reasoning with scientific tool use to complex life sciences research. Access is available to organizations approved for Rosalind Research through the trusted access program for internal research by authorized users.\n🕒 2026/10/31 03:20 JST\n\n💰 価格: openrouter.ai",
+      "createdAt": "2026-10-30T21:18:13.649Z"
+    }
+  ]
 }
