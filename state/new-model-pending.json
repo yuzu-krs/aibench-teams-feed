@@ -1,3 +1,12 @@
 {
-  "items": []
+  "items": [
+    {
+      "guid": "urn:aibench:new-model:moonshot:kimi-k3.1-pro",
+      "title": "🚀 New Model: kimi-k3.1-pro · Moonshot AI",
+      "link": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+      "pubDate": "Wed, 04 Nov 2026 16:18:42 GMT",
+      "description": "🏢 Moonshot AI\n🧠 kimi-k3.1-pro\n📝 New model repository published in the moonshotai Hugging Face organization.\n💰 $2/$10 · 1M\n🕒 2026/11/05 01:18 JST",
+      "createdAt": "2026-11-04T16:18:42.293Z"
+    }
+  ]
 }

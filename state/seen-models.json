@@ -1061,6 +1061,12 @@
       "providerId": "openai",
       "modelId": "gpt-6-rosalind",
       "firstSeenAt": "2026-10-30T18:20:06.263Z"
+    },
+    {
+      "key": "moonshot:kimi-k3.1-pro",
+      "providerId": "moonshot",
+      "modelId": "kimi-k3.1-pro",
+      "firstSeenAt": "2026-11-04T16:18:42.293Z"
     }
   ]
 }
