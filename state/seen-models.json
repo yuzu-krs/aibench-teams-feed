@@ -1067,6 +1067,30 @@
       "providerId": "moonshot",
       "modelId": "kimi-k3.1-pro",
       "firstSeenAt": "2026-11-04T16:18:42.293Z"
+    },
+    {
+      "key": "anthropic:claude-fable-5-2",
+      "providerId": "anthropic",
+      "modelId": "claude-fable-5-2",
+      "firstSeenAt": "2026-11-09T19:18:02.643Z"
+    },
+    {
+      "key": "anthropic:claude-fable-5.2",
+      "providerId": "anthropic",
+      "modelId": "claude-fable-5.2",
+      "firstSeenAt": "2026-11-09T19:18:02.643Z"
+    },
+    {
+      "key": "anthropic:claude-mythos-5-2",
+      "providerId": "anthropic",
+      "modelId": "claude-mythos-5-2",
+      "firstSeenAt": "2026-11-09T19:18:02.643Z"
+    },
+    {
+      "key": "anthropic:claude-mythos-5.2",
+      "providerId": "anthropic",
+      "modelId": "claude-mythos-5.2",
+      "firstSeenAt": "2026-11-09T19:18:02.643Z"
     }
   ]
 }
