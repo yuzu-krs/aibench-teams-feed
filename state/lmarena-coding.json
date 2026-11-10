@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-11-09T21:17:52.034Z",
+  "savedAt": "2026-11-10T21:17:58.754Z",
   "entries": [
     {
       "entityKey": "Claude Opus 5.5 (Max)",
@@ -14,8 +14,8 @@
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
       "rank": 2,
-      "score": 1773,
-      "scoreDisplay": "1773"
+      "score": 1774,
+      "scoreDisplay": "1774"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
@@ -38,8 +38,8 @@
       "name": "Claude Fable 5.1 (Max)",
       "organization": "anthropic",
       "rank": 5,
-      "score": 1744,
-      "scoreDisplay": "1744"
+      "score": 1745,
+      "scoreDisplay": "1745"
     },
     {
       "entityKey": "GPT-6.1 Sol (Max)",
@@ -78,8 +78,8 @@
       "name": "Kimi K3.1 Pro (Max)",
       "organization": "moonshot",
       "rank": 10,
-      "score": 1687,
-      "scoreDisplay": "1687"
+      "score": 1688,
+      "scoreDisplay": "1688"
     }
   ]
 }
