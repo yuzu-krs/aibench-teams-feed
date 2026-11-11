@@ -1,27 +1,35 @@
 {
-  "savedAt": "2026-11-10T21:17:58.754Z",
+  "savedAt": "2026-11-11T21:19:55.178Z",
   "entries": [
+    {
+      "entityKey": "Claude Fable 5.2 (xHigh)",
+      "name": "Claude Fable 5.2 (xHigh)",
+      "organization": "anthropic",
+      "rank": 1,
+      "score": 1836,
+      "scoreDisplay": "1836"
+    },
     {
       "entityKey": "Claude Opus 5.5 (Max)",
       "name": "Claude Opus 5.5 (Max)",
       "organization": "anthropic",
-      "rank": 1,
-      "score": 1818,
-      "scoreDisplay": "1818"
+      "rank": 2,
+      "score": 1814,
+      "scoreDisplay": "1814"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
-      "rank": 2,
-      "score": 1774,
-      "scoreDisplay": "1774"
+      "rank": 3,
+      "score": 1773,
+      "scoreDisplay": "1773"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
       "name": "Gemini 4 Carbon (High)",
       "organization": "google",
-      "rank": 3,
+      "rank": 4,
       "score": 1768,
       "scoreDisplay": "1768"
     },
@@ -29,17 +37,9 @@
       "entityKey": "GPT-6 Astra (Max)",
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
-      "rank": 4,
-      "score": 1767,
-      "scoreDisplay": "1767"
-    },
-    {
-      "entityKey": "Claude Fable 5.1 (Max)",
-      "name": "Claude Fable 5.1 (Max)",
-      "organization": "anthropic",
       "rank": 5,
-      "score": 1745,
-      "scoreDisplay": "1745"
+      "score": 1764,
+      "scoreDisplay": "1764"
     },
     {
       "entityKey": "GPT-6.1 Sol (Max)",
@@ -50,36 +50,36 @@
       "scoreDisplay": "1743"
     },
     {
+      "entityKey": "Claude Fable 5.1 (Max)",
+      "name": "Claude Fable 5.1 (Max)",
+      "organization": "anthropic",
+      "rank": 7,
+      "score": 1742,
+      "scoreDisplay": "1742"
+    },
+    {
       "entityKey": "Muse Wonder Full (Max)",
       "name": "Muse Wonder Full (Max)",
       "organization": "meta",
-      "rank": 7,
-      "score": 1724,
-      "scoreDisplay": "1724"
+      "rank": 8,
+      "score": 1723,
+      "scoreDisplay": "1723"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (High)",
       "name": "Claude Sonnet 5.5 (High)",
       "organization": "anthropic",
-      "rank": 8,
-      "score": 1713,
-      "scoreDisplay": "1713"
+      "rank": 9,
+      "score": 1715,
+      "scoreDisplay": "1715"
     },
     {
       "entityKey": "Claude Opus 5 (Max)",
       "name": "Claude Opus 5 (Max)",
       "organization": "anthropic",
-      "rank": 9,
+      "rank": 10,
       "score": 1691,
       "scoreDisplay": "1691"
-    },
-    {
-      "entityKey": "Kimi K3.1 Pro (Max)",
-      "name": "Kimi K3.1 Pro (Max)",
-      "organization": "moonshot",
-      "rank": 10,
-      "score": 1688,
-      "scoreDisplay": "1688"
     }
   ]
 }
