@@ -1,29 +1,29 @@
 {
-  "savedAt": "2026-11-12T21:18:15.277Z",
+  "savedAt": "2026-11-13T21:18:11.161Z",
   "entries": [
     {
       "entityKey": "Claude Fable 5.2 (xHigh)",
       "name": "Claude Fable 5.2 (xHigh)",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1836,
-      "scoreDisplay": "1836"
+      "score": 1838,
+      "scoreDisplay": "1838"
     },
     {
       "entityKey": "Claude Opus 5.5 (Max)",
       "name": "Claude Opus 5.5 (Max)",
       "organization": "anthropic",
       "rank": 2,
-      "score": 1814,
-      "scoreDisplay": "1814"
+      "score": 1815,
+      "scoreDisplay": "1815"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
       "rank": 3,
-      "score": 1773,
-      "scoreDisplay": "1773"
+      "score": 1772,
+      "scoreDisplay": "1772"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
@@ -74,12 +74,12 @@
       "scoreDisplay": "1715"
     },
     {
-      "entityKey": "Claude Opus 5 (Max)",
-      "name": "Claude Opus 5 (Max)",
-      "organization": "anthropic",
+      "entityKey": "Gemini 4 Hydrogen (High)",
+      "name": "Gemini 4 Hydrogen (High)",
+      "organization": "google",
       "rank": 10,
-      "score": 1691,
-      "scoreDisplay": "1691"
+      "score": 1704,
+      "scoreDisplay": "1704"
     }
   ]
 }
