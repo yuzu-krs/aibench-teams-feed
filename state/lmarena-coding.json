@@ -1,85 +1,85 @@
 {
-  "savedAt": "2026-11-18T21:18:03.922Z",
+  "savedAt": "2026-11-19T21:18:10.870Z",
   "entries": [
     {
       "entityKey": "Claude Fable 5.2 (xHigh)",
       "name": "Claude Fable 5.2 (xHigh)",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1826,
-      "scoreDisplay": "1826"
+      "score": 1824,
+      "scoreDisplay": "1824"
     },
     {
       "entityKey": "Claude Opus 5.5 (Max)",
       "name": "Claude Opus 5.5 (Max)",
       "organization": "anthropic",
       "rank": 2,
-      "score": 1816,
-      "scoreDisplay": "1816"
+      "score": 1818,
+      "scoreDisplay": "1818"
+    },
+    {
+      "entityKey": "GPT-6.2 Astra (Max)",
+      "name": "GPT-6.2 Astra (Max)",
+      "organization": "openai",
+      "rank": 3,
+      "score": 1781,
+      "scoreDisplay": "1781"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
-      "rank": 3,
-      "score": 1772,
-      "scoreDisplay": "1772"
+      "rank": 4,
+      "score": 1773,
+      "scoreDisplay": "1773"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
       "name": "Gemini 4 Carbon (High)",
       "organization": "google",
-      "rank": 4,
-      "score": 1768,
-      "scoreDisplay": "1768"
+      "rank": 5,
+      "score": 1769,
+      "scoreDisplay": "1769"
+    },
+    {
+      "entityKey": "Gemini 4 Neon (High)",
+      "name": "Gemini 4 Neon (High)",
+      "organization": "google",
+      "rank": 6,
+      "score": 1764,
+      "scoreDisplay": "1764"
     },
     {
       "entityKey": "GPT-6 Astra (Max)",
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
-      "rank": 5,
+      "rank": 7,
       "score": 1763,
       "scoreDisplay": "1763"
+    },
+    {
+      "entityKey": "GPT-6.2 Sol (Max)",
+      "name": "GPT-6.2 Sol (Max)",
+      "organization": "openai",
+      "rank": 8,
+      "score": 1757,
+      "scoreDisplay": "1757"
     },
     {
       "entityKey": "Qwen4-Max (xHigh)",
       "name": "Qwen4-Max (xHigh)",
       "organization": "alibaba",
-      "rank": 6,
+      "rank": 9,
       "score": 1750,
       "scoreDisplay": "1750"
-    },
-    {
-      "entityKey": "Claude Fable 5.1 (Max)",
-      "name": "Claude Fable 5.1 (Max)",
-      "organization": "anthropic",
-      "rank": 7,
-      "score": 1743,
-      "scoreDisplay": "1743"
     },
     {
       "entityKey": "GPT-6.1 Sol (Max)",
       "name": "GPT-6.1 Sol (Max)",
       "organization": "openai",
-      "rank": 8,
-      "score": 1742,
-      "scoreDisplay": "1742"
-    },
-    {
-      "entityKey": "Muse Wonder Full (Max)",
-      "name": "Muse Wonder Full (Max)",
-      "organization": "meta",
-      "rank": 9,
-      "score": 1724,
-      "scoreDisplay": "1724"
-    },
-    {
-      "entityKey": "Claude Sonnet 5.5 (High)",
-      "name": "Claude Sonnet 5.5 (High)",
-      "organization": "anthropic",
       "rank": 10,
-      "score": 1716,
-      "scoreDisplay": "1716"
+      "score": 1744,
+      "scoreDisplay": "1744"
     }
   ]
 }
