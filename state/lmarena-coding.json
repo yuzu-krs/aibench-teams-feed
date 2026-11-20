@@ -1,13 +1,13 @@
 {
-  "savedAt": "2026-11-19T21:18:10.870Z",
+  "savedAt": "2026-11-20T21:17:53.847Z",
   "entries": [
     {
       "entityKey": "Claude Fable 5.2 (xHigh)",
       "name": "Claude Fable 5.2 (xHigh)",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1824,
-      "scoreDisplay": "1824"
+      "score": 1823,
+      "scoreDisplay": "1823"
     },
     {
       "entityKey": "Claude Opus 5.5 (Max)",
@@ -18,26 +18,18 @@
       "scoreDisplay": "1818"
     },
     {
-      "entityKey": "GPT-6.2 Astra (Max)",
-      "name": "GPT-6.2 Astra (Max)",
-      "organization": "openai",
-      "rank": 3,
-      "score": 1781,
-      "scoreDisplay": "1781"
-    },
-    {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
-      "rank": 4,
-      "score": 1773,
-      "scoreDisplay": "1773"
+      "rank": 3,
+      "score": 1771,
+      "scoreDisplay": "1771"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
       "name": "Gemini 4 Carbon (High)",
       "organization": "google",
-      "rank": 5,
+      "rank": 4,
       "score": 1769,
       "scoreDisplay": "1769"
     },
@@ -45,25 +37,33 @@
       "entityKey": "Gemini 4 Neon (High)",
       "name": "Gemini 4 Neon (High)",
       "organization": "google",
-      "rank": 6,
-      "score": 1764,
-      "scoreDisplay": "1764"
+      "rank": 5,
+      "score": 1763,
+      "scoreDisplay": "1763"
     },
     {
       "entityKey": "GPT-6 Astra (Max)",
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
-      "rank": 7,
+      "rank": 6,
       "score": 1763,
       "scoreDisplay": "1763"
+    },
+    {
+      "entityKey": "GPT-6.2 Astra (Max)",
+      "name": "GPT-6.2 Astra (Max)",
+      "organization": "openai",
+      "rank": 7,
+      "score": 1759,
+      "scoreDisplay": "1759"
     },
     {
       "entityKey": "GPT-6.2 Sol (Max)",
       "name": "GPT-6.2 Sol (Max)",
       "organization": "openai",
       "rank": 8,
-      "score": 1757,
-      "scoreDisplay": "1757"
+      "score": 1755,
+      "scoreDisplay": "1755"
     },
     {
       "entityKey": "Qwen4-Max (xHigh)",
