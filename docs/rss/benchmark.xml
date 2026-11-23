@@ -6,26 +6,26 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Sun, 22 Nov 2026 21:17:32 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 21:17:57 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/11/23</title>
+      <title>📊 Benchmark Daily — 2026/11/24</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-11-23</guid>
-      <pubDate>Sun, 22 Nov 2026 21:17:32 GMT</pubDate>
-      <description>📅 2026/11/23
-🕒 取得: 2026/11/23 06:17 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-11-24</guid>
+      <pubDate>Mon, 23 Nov 2026 21:17:57 GMT</pubDate>
+      <description>📅 2026/11/24
+🕒 取得: 2026/11/24 06:17 JST
 
 💻 LMArena Coding
-🥇 1. Claude Fable 5.2 (xHigh) · 1824 · $8/$40 ➖
-🥈 2. Claude Opus 5.5 (Max) · 1819 · $4/$20 ➖
+🥇 1. Claude Fable 5.2 (xHigh) · 1822 · $8/$40 ➖
+🥈 2. Claude Opus 5.5 (Max) · 1820 · $4/$20 ➖
 🥉 3. Claude Sonnet 5.5 (xHigh) · 1772 · $2/$10 ➖
 4. Gemini 4 Carbon (High) · 1769 · $2/$10 ➖
-5. GPT-6.2 Astra (Max) · 1766 · $8/$40 ➖
-6. Gemini 4 Neon (High) · 1765 · $3/$15 ➖
-7. GPT-6 Astra (Max) · 1764 · $10/$50 ➖
-8. GPT-6.2 Sol (Max) · 1754 · $2/$10 ➖
-9. Qwen4-Max (xHigh) · 1751 · $1.42/$4.27 ➖
-10. GPT-6.1 Sol (Max) · 1743 · $2/$10 ➖
+5. Gemini 4 Neon (High) · 1766 · $3/$15 ⬆️ +1
+6. GPT-6 Astra (Max) · 1764 · $10/$50 ⬆️ +1
+7. GPT-6.2 Astra (Max) · 1759 · $8/$40 ⬇️ -2
+8. GPT-6.2 Sol (Max) · 1755 · $2/$10 ➖
+9. Qwen4-Max (xHigh) · 1752 · $1.42/$4.27 ➖
+10. GPT-6.1 Sol (Max) · 1744 · $2/$10 ➖
 
 🧪 LiveBench
 ⚠️ LiveBench: unavailable

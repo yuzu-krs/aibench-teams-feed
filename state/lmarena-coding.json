@@ -1,21 +1,21 @@
 {
-  "savedAt": "2026-11-22T21:17:32.109Z",
+  "savedAt": "2026-11-23T21:17:57.470Z",
   "entries": [
     {
       "entityKey": "Claude Fable 5.2 (xHigh)",
       "name": "Claude Fable 5.2 (xHigh)",
       "organization": "anthropic",
       "rank": 1,
-      "score": 1824,
-      "scoreDisplay": "1824"
+      "score": 1822,
+      "scoreDisplay": "1822"
     },
     {
       "entityKey": "Claude Opus 5.5 (Max)",
       "name": "Claude Opus 5.5 (Max)",
       "organization": "anthropic",
       "rank": 2,
-      "score": 1819,
-      "scoreDisplay": "1819"
+      "score": 1820,
+      "scoreDisplay": "1820"
     },
     {
       "entityKey": "Claude Sonnet 5.5 (xHigh)",
@@ -34,52 +34,52 @@
       "scoreDisplay": "1769"
     },
     {
-      "entityKey": "GPT-6.2 Astra (Max)",
-      "name": "GPT-6.2 Astra (Max)",
-      "organization": "openai",
+      "entityKey": "Gemini 4 Neon (High)",
+      "name": "Gemini 4 Neon (High)",
+      "organization": "google",
       "rank": 5,
       "score": 1766,
       "scoreDisplay": "1766"
     },
     {
-      "entityKey": "Gemini 4 Neon (High)",
-      "name": "Gemini 4 Neon (High)",
-      "organization": "google",
-      "rank": 6,
-      "score": 1765,
-      "scoreDisplay": "1765"
-    },
-    {
       "entityKey": "GPT-6 Astra (Max)",
       "name": "GPT-6 Astra (Max)",
       "organization": "openai",
-      "rank": 7,
+      "rank": 6,
       "score": 1764,
       "scoreDisplay": "1764"
+    },
+    {
+      "entityKey": "GPT-6.2 Astra (Max)",
+      "name": "GPT-6.2 Astra (Max)",
+      "organization": "openai",
+      "rank": 7,
+      "score": 1759,
+      "scoreDisplay": "1759"
     },
     {
       "entityKey": "GPT-6.2 Sol (Max)",
       "name": "GPT-6.2 Sol (Max)",
       "organization": "openai",
       "rank": 8,
-      "score": 1754,
-      "scoreDisplay": "1754"
+      "score": 1755,
+      "scoreDisplay": "1755"
     },
     {
       "entityKey": "Qwen4-Max (xHigh)",
       "name": "Qwen4-Max (xHigh)",
       "organization": "alibaba",
       "rank": 9,
-      "score": 1751,
-      "scoreDisplay": "1751"
+      "score": 1752,
+      "scoreDisplay": "1752"
     },
     {
       "entityKey": "GPT-6.1 Sol (Max)",
       "name": "GPT-6.1 Sol (Max)",
       "organization": "openai",
       "rank": 10,
-      "score": 1743,
-      "scoreDisplay": "1743"
+      "score": 1744,
+      "scoreDisplay": "1744"
     }
   ]
 }

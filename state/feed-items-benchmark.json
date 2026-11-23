@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "guid": "urn:aibench:benchmark:2026-11-23",
-      "title": "📊 Benchmark Daily — 2026/11/23",
+      "guid": "urn:aibench:benchmark:2026-11-24",
+      "title": "📊 Benchmark Daily — 2026/11/24",
       "link": "https://yuzu-krs.github.io/aibench-teams-feed",
-      "pubDate": "Sun, 22 Nov 2026 21:17:32 GMT",
-      "description": "📅 2026/11/23\n🕒 取得: 2026/11/23 06:17 JST\n\n💻 LMArena Coding\n🥇 1. Claude Fable 5.2 (xHigh) · 1824 · $8/$40 ➖\n🥈 2. Claude Opus 5.5 (Max) · 1819 · $4/$20 ➖\n🥉 3. Claude Sonnet 5.5 (xHigh) · 1772 · $2/$10 ➖\n4. Gemini 4 Carbon (High) · 1769 · $2/$10 ➖\n5. GPT-6.2 Astra (Max) · 1766 · $8/$40 ➖\n6. Gemini 4 Neon (High) · 1765 · $3/$15 ➖\n7. GPT-6 Astra (Max) · 1764 · $10/$50 ➖\n8. GPT-6.2 Sol (Max) · 1754 · $2/$10 ➖\n9. Qwen4-Max (xHigh) · 1751 · $1.42/$4.27 ➖\n10. GPT-6.1 Sol (Max) · 1743 · $2/$10 ➖\n\n🧪 LiveBench\n⚠️ LiveBench: unavailable\n\n⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai",
-      "createdAt": "2026-11-22T21:17:32.109Z"
+      "pubDate": "Mon, 23 Nov 2026 21:17:57 GMT",
+      "description": "📅 2026/11/24\n🕒 取得: 2026/11/24 06:17 JST\n\n💻 LMArena Coding\n🥇 1. Claude Fable 5.2 (xHigh) · 1822 · $8/$40 ➖\n🥈 2. Claude Opus 5.5 (Max) · 1820 · $4/$20 ➖\n🥉 3. Claude Sonnet 5.5 (xHigh) · 1772 · $2/$10 ➖\n4. Gemini 4 Carbon (High) · 1769 · $2/$10 ➖\n5. Gemini 4 Neon (High) · 1766 · $3/$15 ⬆️ +1\n6. GPT-6 Astra (Max) · 1764 · $10/$50 ⬆️ +1\n7. GPT-6.2 Astra (Max) · 1759 · $8/$40 ⬇️ -2\n8. GPT-6.2 Sol (Max) · 1755 · $2/$10 ➖\n9. Qwen4-Max (xHigh) · 1752 · $1.42/$4.27 ➖\n10. GPT-6.1 Sol (Max) · 1744 · $2/$10 ➖\n\n🧪 LiveBench\n⚠️ LiveBench: unavailable\n\n⬆️ 上昇 · ⬇️ 下降 · ➖ 変動なし\n💰 入力/出力 $/1Mトークン\n📊 出典: Arena lmarena-ai/leaderboard-dataset (CC BY 4.0, RSS用に再フォーマット) · LiveBench (Apache 2.0) · 価格: openrouter.ai",
+      "createdAt": "2026-11-23T21:17:57.470Z"
     }
   ]
 }
