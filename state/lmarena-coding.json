@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-11-23T21:17:57.470Z",
+  "savedAt": "2026-11-24T21:17:56.587Z",
   "entries": [
     {
       "entityKey": "Claude Fable 5.2 (xHigh)",
@@ -22,8 +22,8 @@
       "name": "Claude Sonnet 5.5 (xHigh)",
       "organization": "anthropic",
       "rank": 3,
-      "score": 1772,
-      "scoreDisplay": "1772"
+      "score": 1773,
+      "scoreDisplay": "1773"
     },
     {
       "entityKey": "Gemini 4 Carbon (High)",
@@ -34,12 +34,12 @@
       "scoreDisplay": "1769"
     },
     {
-      "entityKey": "Gemini 4 Neon (High)",
-      "name": "Gemini 4 Neon (High)",
+      "entityKey": "Gemini 4 Neon (xHigh)",
+      "name": "Gemini 4 Neon (xHigh)",
       "organization": "google",
       "rank": 5,
-      "score": 1766,
-      "scoreDisplay": "1766"
+      "score": 1765,
+      "scoreDisplay": "1765"
     },
     {
       "entityKey": "GPT-6 Astra (Max)",
@@ -54,8 +54,8 @@
       "name": "GPT-6.2 Astra (Max)",
       "organization": "openai",
       "rank": 7,
-      "score": 1759,
-      "scoreDisplay": "1759"
+      "score": 1761,
+      "scoreDisplay": "1761"
     },
     {
       "entityKey": "GPT-6.2 Sol (Max)",
@@ -78,8 +78,8 @@
       "name": "GPT-6.1 Sol (Max)",
       "organization": "openai",
       "rank": 10,
-      "score": 1744,
-      "scoreDisplay": "1744"
+      "score": 1745,
+      "scoreDisplay": "1745"
     }
   ]
 }
