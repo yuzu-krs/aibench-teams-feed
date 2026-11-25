@@ -6,21 +6,21 @@
     <description>Arena Coding / LiveBench のデイリーランキング (Teams配信)</description>
     <language>ja</language>
     <generator>aibench-teams-feed</generator>
-    <lastBuildDate>Tue, 24 Nov 2026 21:17:56 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 21:18:18 GMT</lastBuildDate>
     <item>
-      <title>📊 Benchmark Daily — 2026/11/25</title>
+      <title>📊 Benchmark Daily — 2026/11/26</title>
       <link>https://yuzu-krs.github.io/aibench-teams-feed</link>
-      <guid isPermaLink="false">urn:aibench:benchmark:2026-11-25</guid>
-      <pubDate>Tue, 24 Nov 2026 21:17:56 GMT</pubDate>
-      <description>📅 2026/11/25
-🕒 取得: 2026/11/25 06:17 JST
+      <guid isPermaLink="false">urn:aibench:benchmark:2026-11-26</guid>
+      <pubDate>Wed, 25 Nov 2026 21:18:18 GMT</pubDate>
+      <description>📅 2026/11/26
+🕒 取得: 2026/11/26 06:18 JST
 
 💻 LMArena Coding
 🥇 1. Claude Fable 5.2 (xHigh) · 1822 · $8/$40 ➖
 🥈 2. Claude Opus 5.5 (Max) · 1820 · $4/$20 ➖
 🥉 3. Claude Sonnet 5.5 (xHigh) · 1773 · $2/$10 ➖
 4. Gemini 4 Carbon (High) · 1769 · $2/$10 ➖
-5. Gemini 4 Neon (xHigh) · 1765 · $3/$15 🆕 NEW
+5. Gemini 4 Neon (xHigh) · 1765 · $3/$15 ➖
 6. GPT-6 Astra (Max) · 1764 · $10/$50 ➖
 7. GPT-6.2 Astra (Max) · 1761 · $8/$40 ➖
 8. GPT-6.2 Sol (Max) · 1755 · $2/$10 ➖
